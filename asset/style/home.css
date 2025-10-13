@@ -1,0 +1,15 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+  .carousel-inner {
+    max-height: 540px;
+    overflow: hidden;
+  }
+  .carousel-inner img {
+    object-fit: cover;
+    height: 550px;   /* Aqui você ajusta a altura*/
+    width: 100%;
+  }
