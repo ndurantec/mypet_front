@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Pet - Profissional</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    </head>
+<body>
+    <div class="container-wrapper">
+        <div class="container container-main">
+            <div class="text-center mb-3">
+                <h1 class="header-title"><i class="bi bi-calendar-check"></i> Agenda Pet</h1>
+                <p class="text-muted">Agende serviços para seu pet de forma rápida</p>
+            </div>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+                
+                <div class="col mb-3">
+                    <div class="card card-service">
+                        <div class="card-header">
+                            <i class="bi bi-scissors"></i> Tosa
+                        </div>
+                        <div class="card-body">
+                            <i class="bi bi-scissors icon-service"></i>
+                            <div class="mb-2">
+                                <label for="tipoTosa" class="form-label">Tipo de Tosa</label>
+                                <select class="form-select" id="tipoTosa">
+                                    <option selected>Selecione o tipo de tosa</option>
+                                    <option value="1">Tosa Higiênica</option>
+                                    <option value="2">Tosa na Máquina</option>
+                                    <option value="3">Tosa Tesoura</option>
+                                    <option value="4">Tosa de Raça</option>
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="dataTosa" class="form-label">Data e Horário</label>
+                                <input class="form-control" type="datetime-local" id="dataTosa">
+                            </div>
+                            <button class="btn btn-agendar">Agendar Tosa <i class="bi bi-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col mb-3">
+                    <div class="card card-service">
+                        <div class="card-header">
+                            <i class="bi bi-droplet"></i> Banho
+                        </div>
+                        <div class="card-body">
+                            <i class="bi bi-droplet icon-service"></i>
+                            <div class="mb-2">
+                                <label for="tipoBanho" class="form-label">Tipo de Banho</label>
+                                <select class="form-select" id="tipoBanho">
+                                    <option selected>Selecione o tipo de banho</option>
+                                    <option value="1">Banho Simples</option>
+                                    <option value="2">Banho Medicamentoso</option>
+                                    <option value="3">Banho com Hidratação</option>
+                                    <option value="4">Banho Antipulgas</option>
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="dataBanho" class="form-label">Data e Horário</label>
+                                <input class="form-control" type="datetime-local" id="dataBanho">
+                            </div>
+                            <button class="btn btn-agendar">Agendar Banho <i class="bi bi-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col mb-3">
+                    <div class="card card-service">
+                        <div class="card-header">
+                            <i class="bi bi-heart-pulse"></i> CheckUp
+                        </div>
+                        <div class="card-body">
+                            <i class="bi bi-heart-pulse icon-service"></i>
+                            <div class="mb-2">
+                                <label for="tipoCheckup" class="form-label">Tipo de CheckUp</label>
+                                <select class="form-select" id="tipoCheckup">
+                                    <option selected>Selecione o tipo de checkup</option>
+                                    <option value="1">CheckUp Básico</option>
+                                    <option value="2">CheckUp Completo</option>
+                                    <option value="3">CheckUp Sênior</option>
+                                    <option value="4">CheckUp Pré-Cirúrgico</option>
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="dataCheckup" class="form-label">Data e Horário</label>
+                                <input class="form-control" type="datetime-local" id="dataCheckup">
+                            </div>
+                            
+                            <button class="btn btn-agendar">Agendar CheckUp <i class="bi bi-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col mb-3">
+                    <div class="card card-service">
+                        <div class="card-header">
+                            <i class="bi bi-person-check"></i> Profissional
+                        </div>
+                        <div class="card-body">
+                            <i class="bi bi-person-check icon-service"></i>
+                            <div class="mb-2">
+                                <label for="selecaoProfissional" class="form-label">Escolha o Atendente</label>
+                                <select class="form-select 1" id="selecaoProfissional">
+                                    <option selected>Selecione o profissional</option>
+                                    <option value="1">Eloá (Esteticista)</option>
+                                    <option value="2">Miranda (Veterinária)</option>
+                                    <option value="3">Marina (Banhista)</option>
+                                    <option value="4">Qualquer Disponível</option>
+                                </select>
+                            </div>
+                            
+                            
+                            <button class="btn btn-profissional">Confirmar Profissional <i class="bi bi-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="footer">
+        <p>© 2025 mypet - Sistema de Agendamento. Todos os direitos reservados.</p>
+        <p class="text-muted">Desenvolvido com <i class="bi bi-heart-fill text-danger"></i> para amantes de pets</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+    
+    <style>
+        :root {
+            --lilas: #DE86F0;
+            --hover: #4F0C5C;
+            --escuro: #912FA5;
+            --lilas-pastel: #EEBFF7;
+            --fundo-claro: #ffffff;
+            --texto-escuro: #333344;
+            --borda-suave: #e0e0e0;
+        }
+        
+        html, body {
+            height: 100%;
+        }
+        
+        body {
+            background-color: var(--fundo-claro);
+            color: var(--texto-escuro);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+        
+   
+
+        .container-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .container-main {
+            background: var(--fundo-claro);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--borda-suave);
+            width: 100%;
+            max-width: 1300px;
+        }
+        
+        .header-title {
+            color: var(--escuro);
+            font-weight: 700;
+            border-bottom: 2px solid var(--lilas-pastel);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        
+        .card-service {
+            background: var(--fundo-claro);
+            border: 1px solid var(--borda-suave);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            margin: 0 auto;
+            max-width: 300px;
+        }
+        
+        .card-service:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(158, 47, 165, 0.15);
+            border-color: var(--lilas);
+        }
+        
+        .card-header {
+            background-color: #4F0C5C;
+            color: white;
+            font-weight: 600;
+            border-radius: 8px 8px 0 0 !important;
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .card-body {
+            padding: 15px;
+        }
+        
+        .form-label {
+            color: var(--escuro);
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .form-control, .form-select {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--borda-suave);
+            color: var(--texto-escuro);
+            padding: 7px 12px;
+            font-size: 0.9rem;
+            height: 38px;
+        }
+
+        
+        
+        .form-control:focus, .form-select:focus {
+            background-color: rgba(255, 255, 255, 1);
+            border-color: var(--lilas);
+            box-shadow: 0 0 0 0.2rem rgba(222, 134, 240, 0.2);
+            color: var(--texto-escuro);
+        }
+        
+        .btn-agendar {
+            background-color: #4F0C5C;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 12px;
+            font-size: 0.9rem;
+           
+        }
+
+        .btn-profissional {
+             background-color: #4F0C5C;
+            color: #ffffff;
+            border: none;
+            padding: 8px 15px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 12px;
+            font-size: 0.9rem;           
+            transform: translateY(75px);
+        }
+    
+        .btn-profissional:hover {
+            background-color: #a046b2;
+            box-shadow: 0 0 10px rgb(111, 29, 129);
+              
+        }
+
+        .btn-agendar:hover {
+            background-color: #a046b2;
+            box-shadow: 0 0 10px rgb(111, 29, 129);
+        }
+        
+        .icon-service {
+            font-size: 1.5rem;
+            color: var(--escuro);
+            margin-bottom: 10px;
+            display: block;
+            text-align: center;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            color: var(--escuro);
+            font-size: 0.8rem;
+            width: 100%;
+        }
+        
+        .row {
+            justify-content: center;
+        }
+        
+        .text-center {
+            text-align: center !important;
+        }
+        
+        .text-muted {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .container-main {
+                max-width: 1000px;
+            }
+            .row-cols-lg-4 > .col {
+                width: 50%; /* 2 cards por linha em telas menores que lg */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container-wrapper {
+                padding: 15px 0;
+            }
+            
+            .container-main {
+                padding: 15px;
+            }
+            
+            .row-cols-md-2 > .col {
+                width: 100%; /* 1 card por linha em telas pequenas */
+            }
+
+            .card-service {
+                margin-bottom: 15px;
+                max-width: 100%;
+            }
+            
+            .header-title {
+                font-size: 1.3rem;
+             
+            }
+        }
+    </style>
