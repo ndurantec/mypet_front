@@ -1,0 +1,192 @@
+ * {
+                 margin: 0;
+                 padding: 0;
+                 box-sizing: border-box;
+                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             }
+             
+             body {
+                 background: linear-gradient(135deg, #eeeeee 0%, #ffffff 100%);
+                 color: #333;
+                 line-height: 1.6;
+                 padding: 20px;
+                 min-height: 100vh;
+                 display: flex;
+                 justify-content: center;
+                 align-items: center;
+             }
+        
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            margin: 20px;
+        }
+        
+        .header {
+            padding: 25px 30px;
+            text-align: center;
+            color: #4F0C5C;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        form {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        
+        }
+        
+        label {
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #4F0C5C;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+        }
+        
+        label i {
+            color: #4F0C5C;
+            font-size: 22px;
+            width: 30px;
+        }
+        
+        input[type="text"],
+        input[type="file"],
+        select {
+            padding: 18px 20px;
+            border: 2px solid #4F0C5C;
+            border-radius: 12px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            background-color: #fbf5fd;
+        }
+        
+        input[type="text"]:focus,
+        input[type="file"]:focus,
+        select {
+            border-color: #4F0C5C;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(145, 47, 165, 0.25);
+            background-color: #fff;
+        }
+        
+        input[type="text"]:hover,
+        input[type="file"]:hover,
+        select {
+            border-color: #912FA5;
+            background-color: #fff;
+        }
+        
+        option {
+            background-color: white ;
+            color:#912FA5;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        input::placeholder {
+            color: #c0a8d0;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #4F0C5C;
+            grid-column: span 2;
+            color: #ffffff;
+            border: none;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(145, 47, 165, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(145, 47, 165, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .form-divider {
+            grid-column: span 2;
+            height: 2px;
+            margin: 10px 0;
+        }
+        
+       
+        @media (max-width: 900px) {
+            form {
+                grid-template-columns: 1fr;
+                padding: 30px 25px;
+                gap: 25px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .header p {
+                font-size: 16px;
+            }
+            
+            button {
+                grid-column: span 1;
+                font-size: 20px;
+                padding: 18px;
+            }
+            
+            .form-divider {
+                grid-column: span 1;
+            }
+            
+            input[type="text"],
+            input[type="file"] {
+                padding: 16px 18px;
+                font-size: 16px;
+            }
+            
+            label {
+                font-size: 17px;
+            }
+        }
+
+        .erro {
+    border: 2px solid red;
+}
+
+/* Estilo para a mensagem de erro */
+    .mensagem-erro {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    }
