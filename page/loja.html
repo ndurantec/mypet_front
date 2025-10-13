@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro da Loja</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --roxo-claro: #4F0C5C;
+            --roxo-escuro: #4F0C5C;
+            --branco: #FFFFFF;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-claro));
+            color: var(--branco);
+            padding: 25px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-container {
+            background-color: var(--branco);
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .address-group {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+        }
+        
+        .address-group:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .address-group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .address-title {
+            font-weight: bold;
+            color: var(--roxo-escuro);
+            font-size: 1.2rem;
+        }
+        
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--roxo-claro);
+            box-shadow: 0 0 0 0.25rem rgba(145, 47, 165, 0.25);
+        }
+        
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+        }
+        
+        .invalid-feedback {
+            display: none;
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 0.875em;
+            color: #dc3545;
+        }
+        
+        .form-control.is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        
+        .btn-primary {
+            background-color: var(--roxo-claro);
+            border-color: var(--roxo-claro);
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--roxo-escuro);
+            border-color: var(--roxo-escuro);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+        
+        .remove-address {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 0.9rem;
+        }
+        
+        .remove-address:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        
+        .btn-add-address {
+            background-color: transparent;
+            color: var(--roxo-claro);
+            border: 1px dashed var(--roxo-claro);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .btn-add-address:hover {
+            background-color: rgba(145, 47, 165, 0.1);
+            border-style: solid;
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: flex-start; /* Alterado para alinhar à esquerda */
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: flex-start; /* Alterado para alinhar à esquerda */
+        }
+        
+        .required::after {
+            content: " *";
+            color: #dc3545;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .alert {
+            display: none;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cadastro de Loja</h1>
+            <p class="mb-0">Preencha as informações abaixo para cadastrar sua loja</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="address-form">
+               
+                    <div class="address-group-header">
+                        <div class="address-title">Endereço Principal</div>
+                        <button type="button" class="remove-address" style="display: none;">Remover</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required" for="nome">Nome da Loja</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Digite o nome da loja" name="nome" required>
+                        <div class="invalid-feedback">Por favor, informe o nome da loja.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required" for="email">E-mail</label>
+                        <input type="email" class="form-control" id="email" placeholder="Digite o e-mail" name="email" required>
+                        <div class="invalid-feedback">Por favor, informe um e-mail válido.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required" for="telefone">Telefone</label>
+                        <input type="text" class="form-control" id="telefone" placeholder="Digite o telefone" name="telefone" required>
+                        <div class="invalid-feedback">Por favor, informe um telefone válido.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required" for="cnpj">CNPJ</label>
+                        <input type="text" class="form-control" id="cnpj" placeholder="Digite o CNPJ" name="cnpj" required>
+                        <div class="invalid-feedback">Por favor, informe um CNPJ válido.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required" for="endereco">Endereço</label>
+                        <select class="form-control" id="endereco" name="endereco" required>
+                            <option value="" selected disabled>Selecione um endereço</option>
+                            <option value="endereco1">Endereço 1</option>
+                            <option value="endereco2">Endereço 2</option>
+                            <option value="endereco3">Endereço 3</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor, selecione um endereço.</div>
+                    </div>
+               
+                
+                <button type="button" class="btn-add-address" id="add-address">
+                    <i class="fas fa-plus"></i> Adicionar Endereço
+                </button>
+                
+                <div class="alert alert-success" id="success-alert" role="alert">
+                    Cadastro realizado com sucesso!
+                </div>
+                
+                <div class="form-footer">
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Cadastrar Loja</button>
+                        <button type="reset" class="btn btn-secondary">Limpar Formulário</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('address-form');
+            const addAddressBtn = document.getElementById('add-address');
+            let addressCount = 1;
+            
+        
+            const telefoneInput = document.getElementById('telefone');
+            telefoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length <= 10) {
+                    value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+                } else {
+                    value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+                }
+                e.target.value = value;
+            });
+            
+           
+            const cnpjInput = document.getElementById('cnpj');
+            cnpjInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{0,2})/, '$1.$2.$3/$4-$5');
+                e.target.value = value;
+            });
+            
+          
+            addAddressBtn.addEventListener('click', function() {
+                addressCount++;
+                const template = document.getElementById('address-template');
+                const newAddress = template.cloneNode(true);
+                newAddress.id = 'address-' + addressCount;
+                
+                
+                const title = newAddress.querySelector('.address-title');
+                title.textContent = 'Endereço Adicional ' + (addressCount - 1);
+                
+                
+                const removeBtn = newAddress.querySelector('.remove-address');
+                removeBtn.style.display = 'block';
+                
+               
+                const inputs = newAddress.querySelectorAll('input, select');
+                inputs.forEach(input => {
+                    if (input.type !== 'button') {
+                        input.value = '';
+                        input.classList.remove('is-invalid');
+                    }
+                });
+                
+                
+                removeBtn.addEventListener('click', function() {
+                    newAddress.remove();
+                    updateAddressTitles();
+                });
+                
+              
+                addAddressBtn.parentNode.insertBefore(newAddress, addAddressBtn);
+                
+                updateAddressTitles();
+            });
+            
+            
+            function updateAddressTitles() {
+                const addresses = document.querySelectorAll('.address-group');
+                addresses.forEach((address, index) => {
+                    if (index === 0) {
+                        address.querySelector('.address-title').textContent = 'Endereço Principal';
+                    } else {
+                        address.querySelector('.address-title').textContent = 'Endereço Adicional ' + index;
+                    }
+                });
+            }
+            
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+               
+                let isValid = true;
+                const requiredFields = form.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('is-invalid');
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+                
+               
+                const cnpjValue = cnpjInput.value.replace(/\D/g, '');
+                if (cnpjValue.length !== 14) {
+                    isValid = false;
+                    cnpjInput.classList.add('is-invalid');
+                }
+                
+               
+                const emailInput = document.getElementById('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value.trim())) {
+                    isValid = false;
+                    emailInput.classList.add('is-invalid');
+                }
+                
+                if (isValid) {
+                    
+                    const successAlert = document.getElementById('success-alert');
+                    successAlert.style.display = 'block';
+                    
+                    
+                    successAlert.scrollIntoView({ behavior: 'smooth' });
+                   
+                    setTimeout(() => {
+                        form.reset();
+                        successAlert.style.display = 'none';
+                        
+                       
+                        const additionalAddresses = document.querySelectorAll('.address-group:not(#address-template)');
+                        additionalAddresses.forEach(address => address.remove());
+                        
+                     
+                        addressCount = 1;
+                    }, 3000);
+                } else {
+                  
+                    const firstInvalidField = form.querySelector('.is-invalid');
+                    if (firstInvalidField) {
+                        firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            });
+            
+           
+            const inputs = form.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+            });
+            
+          
+            form.addEventListener('reset', function() {
+             
+                const additionalAddresses = document.querySelectorAll('.address-group:not(#address-template)');
+                additionalAddresses.forEach(address => address.remove());
+                
+                
+                addressCount = 1;
+                
+                inputs.forEach(input => {
+                    input.classList.remove('is-invalid');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
