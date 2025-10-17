@@ -11,6 +11,11 @@
 <body>
     <div class="container-fluid">
         <div class="row">
+            <div class="col-auto position-absolute p-2">
+                <button type="button" class="btn btn-secondary text-white" onclick="voltar()">
+                    <strong>← voltar</strong>
+                </button>
+            </div>
             <h1 class="p-3 text-center text-white" style="background-color: #4F0C5C;"><strong>Detalhes do Produto</strong></h1>
             <div class="col-5">
                 <img src="https://m.media-amazon.com/images/I/81G3TkOc0XL.jpg" width="700px" alt="" style="margin-left: 10%; margin-top: 2%;">
@@ -30,7 +35,7 @@
                 </div>
 
                 <div style="margin-top: 4%;">
-                    <button class="btn btn-secondary mt-auto text-white" type="button"><strong>Comprar</strong></button>
+                    <button class="btn btn-secondary mt-auto text-white" type="button" onclick="comprar()"><strong>Comprar</strong></button>
                 </div>
 
                 <div class="container" style="margin-top: 5%;">
