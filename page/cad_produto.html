@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/asset/style/cad_produto.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cadastro de Produto</h1>
+        </div>
+
+        <div class="form-container">
+            <form id="cad-prod">
+
+                <div class="form-group">                                     
+                    <label for="imagem"><i class="fas fa-camera"></i> Imagem do Produto:</label>
+                    <input type="file" name="imagem" id="imagem" placeholder="Selecione a foto do produto">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="nome">Nome do Produto:</label>
+                    <input type="text" class="form-control" id="nome" placeholder="Digite o nome do produto" name="nome" required>
+                    <div id="erro-nome" class="erro"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="descricao">Descrição:</label>
+                    <input type="text" class="form-control" id="descricao" placeholder="Digite a descrição do produto" name="descricao">
+                    <div id="erro-descricao" class="erro"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="preco">Preço:</label>
+                    <input type="text" class="form-control" id="preco" placeholder="Digite o preço do produto" name="preco" required>
+                    <div id="erro-preco" class="erro"></div>
+                </div>
+
+                <button type="button" class="btn-submit" onclick="cadastro()">Cadastrar Produto</button>
+
+            </form>
+        </div>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="/script/cad_produto.js"></script>
+
+</body>
+</html>

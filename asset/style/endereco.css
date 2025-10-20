@@ -18,7 +18,7 @@
         
         .header {
             background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-claro));
-            color: var(--branco); 
+            color: var(--branco);
             padding: 25px;
             border-radius: 10px 10px 0 0;
             text-align: center;
@@ -154,7 +154,7 @@
         
         .form-footer {
             display: flex;
-            justify-content: flex-start; /* Alterado para alinhar à esquerda */
+            justify-content: flex-start;
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid #e9ecef;
@@ -164,7 +164,7 @@
             display: flex;
             gap: 10px;
             width: 100%;
-            justify-content: flex-start; /* Alterado para alinhar à esquerda */
+            justify-content: flex-start;
         }
         
         .required::after {
@@ -179,6 +179,12 @@
         .alert {
             display: none;
             margin-top: 20px;
+        }
+        
+        .address-counter {
+            margin-top: 10px;
+            font-size: 14px;
+            opacity: 0.9;
         }
         
         @media (max-width: 576px) {
@@ -199,3 +205,6 @@
                 width: 100%;
             }
         }
+
+        
+    
