@@ -7,7 +7,7 @@ function enviarCadastro() {
     
     let camposInvalidos = false;
 
-    // Limpar as mensagens de erro e estilos anteriores
+    
     const campos = document.querySelectorAll(".erro");
     campos.forEach(function(campo) {
         campo.classList.remove("erro");
@@ -17,7 +17,7 @@ function enviarCadastro() {
         }
     });
 
-    // Verificar cada campo e adicionar erro se estiver vazio
+  
     if (!nome) {
         document.getElementById("nome").classList.add("erro");
         adicionarMensagemErro("nome", "O campo Nome é obrigatório.");
@@ -44,16 +44,16 @@ function enviarCadastro() {
         camposInvalidos = true;
     }
 
-    // Se algum campo for inválido, foca no primeiro campo inválido
+    
     if (camposInvalidos) {
         document.querySelector(".erro").focus();
     } else {
-        // Se todos os campos estiverem preenchidos, você pode enviar o formulário ou fazer algo
+       
         alert("Cadastro enviado com sucesso!");
     }
 }
 
-// Função para adicionar a mensagem de erro
+
 function adicionarMensagemErro(campo, mensagem) {
     let elemento = document.getElementById(campo);
     let mensagemErro = document.createElement("span");
