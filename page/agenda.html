@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda Pet - Profissional</title>
-    
-    <link rel="stylesheet" href="/asset/style/agenda.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-
+    <title>Agenda Pet</title>
+   <link rel="stylesheet" href="/asset/style/agenda.css">
 </head>
 <body>
-    <div class="container-wrapper">
+     <div class="container-wrapper">
         <div class="container container-main">
             <div class="text-center mb-3">
                 <h1 class="header-title"><i class="bi bi-calendar-check"></i> Agenda Pet</h1>
                 <p class="text-muted">Agende serviços para seu pet de forma rápida</p>
             </div>
 
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+            <div class="row ">
                 
                 <div class="col mb-3">
                     <div class="card card-service">
@@ -114,11 +111,13 @@
                                     <option value="3">Marina (Banhista)</option>
                                     <option value="4">Qualquer Disponível</option>
                                 </select>
-                                
                             </div>
-                             <button class="btn btn-profissional">Confirmar Profissional <i class="bi bi-arrow-right"></i></button>
+                            <div class="mb-2">
+                                <label for="dataProfissional" class="form-label">Data e Horário</label>
+                                <input class="form-control" type="datetime-local" id="dataProfissional">
+                            </div>
                             
-                          
+                            <button class="btn btn-agendar" style="margin-top: 10px;">Agendar com Profissional <i class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -130,5 +129,6 @@
         <p>© 2025 mypet - Sistema de Agendamento. Todos os direitos reservados.</p>
         <p class="text-muted">Desenvolvido com <i class="bi bi-heart-fill text-danger"></i> para amantes de pets</p>
     </div>
-</body>
+    <script src="/script/agenda.js"></script>
+</body>cd
 </html>

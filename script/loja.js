@@ -1,5 +1,5 @@
 function cadastrar() {
-    const nome = document.getElementById('nome').value;
+    let nome = document.getElementById('nome').value;
     
     if (nome === '') {
         alert('Digite o nome!');
@@ -14,5 +14,3 @@ function adicionar() {
 }
 
 
-document.getElementById('address-form').onsubmit = cadastrar;
-document.getElementById('add-address').onclick = adicionar;
