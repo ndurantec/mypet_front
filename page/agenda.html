@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <i class="bi bi-scissors icon-service"></i>
                             <div class="mb-2">
-                                <label for="tipoTosa" class="form-label">Tipo de Tosa</label>
+                                <label for="selecione" class="form-label">Tipo de Tosa</label>
                                 <select class="form-select" id="tipoTosa">
                                     <option selected>Selecione o tipo de tosa</option>
                                     <option value="1">Tosa Higiênica</option>
@@ -34,10 +34,10 @@
                                 </select>
                             </div>
                             <div class="mb-2">
-                                <label for="dataTosa" class="form-label">Data e Horário</label>
+                                <label for="horario" class="form-label">Data e Horário</label>
                                 <input class="form-control" type="datetime-local" id="dataTosa">
                             </div>
-                            <button class="btn btn-agendar">Agendar Tosa <i class="bi bi-arrow-right"></i></button>
+                            <button class="btn btn-agendar" onclick="agendarTosa()">Agendar Tosa <i class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                         <div class="card-body">
                             <i class="bi bi-droplet icon-service"></i>
                             <div class="mb-2">
-                                <label for="tipoBanho" class="form-label">Tipo de Banho</label>
+                                <label for="selecione2" class="form-label">Tipo de Banho</label>
                                 <select class="form-select" id="tipoBanho">
                                     <option selected>Selecione o tipo de banho</option>
                                     <option value="1">Banho Simples</option>
@@ -60,10 +60,10 @@
                                 </select>
                             </div>
                             <div class="mb-2">
-                                <label for="dataBanho" class="form-label">Data e Horário</label>
+                                <label for="horario2" class="form-label">Data e Horário</label>
                                 <input class="form-control" type="datetime-local" id="dataBanho">
                             </div>
-                            <button class="btn btn-agendar">Agendar Banho <i class="bi bi-arrow-right"></i></button>
+                            <button class="btn btn-agendar"  onclick="agendarBanho()">Agendar Banho <i class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                         <div class="card-body">
                             <i class="bi bi-heart-pulse icon-service"></i>
                             <div class="mb-2">
-                                <label for="tipoCheckup" class="form-label">Tipo de CheckUp</label>
+                                <label for="selecione3" class="form-label">Tipo de CheckUp</label>
                                 <select class="form-select" id="tipoCheckup">
                                     <option selected>Selecione o tipo de checkup</option>
                                     <option value="1">CheckUp Básico</option>
@@ -86,11 +86,11 @@
                                 </select>
                             </div>
                             <div class="mb-2">
-                                <label for="dataCheckup" class="form-label">Data e Horário</label>
+                                <label for="horario3" class="form-label">Data e Horário</label>
                                 <input class="form-control" type="datetime-local" id="dataCheckup">
                             </div>
                             
-                            <button class="btn btn-agendar">Agendar CheckUp <i class="bi bi-arrow-right"></i></button>
+                            <button class="btn btn-agendar" onclick="agendarCheckup()">Agendar CheckUp <i class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
                         <div class="card-body">
                             <i class="bi bi-person-check icon-service"></i>
                             <div class="mb-2">
-                                <label for="selecaoProfissional" class="form-label">Escolha o Atendente</label>
+                                <label for="selecione4" class="form-label">Escolha o Atendente</label>
                                 <select class="form-select" id="selecaoProfissional">
                                     <option selected>Selecione o profissional</option>
                                     <option value="1">Eloá (Esteticista)</option>
@@ -113,11 +113,11 @@
                                 </select>
                             </div>
                             <div class="mb-2">
-                                <label for="dataProfissional" class="form-label">Data e Horário</label>
+                                <label for="horario4" class="form-label">Data e Horário</label>
                                 <input class="form-control" type="datetime-local" id="dataProfissional">
                             </div>
                             
-                            <button class="btn btn-agendar" style="margin-top: 10px;">Agendar com Profissional <i class="bi bi-arrow-right"></i></button>
+                            <button class="btn btn-agendar" onclick="agendarProfissional()" style="margin-top: 10px;">Agendar com Profissional <i class="bi bi-arrow-right"></i></button>
                         </div>
                     </div>
                 </div>

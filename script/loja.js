@@ -1,16 +1,23 @@
-function cadastrar() {
-    let nome = document.getElementById('nome').value;
+
+function validarNome() {
+
+    const nome = document.getElementById('nome').value;
     
-    if (nome === '') {
-        alert('Digite o nome!');
-    } else {
-        alert('Cadastrado: ' + nome);
-        document.getElementById('address-form').reset();
+    if (nome.trim() === "") {        
+        mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
     }
+
+    if (nome.length < 3) {
+        return "Digite pelo menos 3 caracteres";
+    }
+
+    return ""; 
+
 }
 
-function adicionar() {
-    alert('Adicionado!');
+
+function mostrarErro(idCampo, mensagem) {
+  document.getElementById(idCampo).textContent = mensagem;
 }
 
 
