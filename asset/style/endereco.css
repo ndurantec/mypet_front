@@ -1,4 +1,9 @@
+<<<<<<< HEAD
       :root {
+=======
+
+        :root {
+>>>>>>> e6b93910b91207bf6b55b75a3109669b523dadfd
             --roxo-claro: #4F0C5C;
             --roxo-escuro: #4F0C5C;
             --branco: #FFFFFF;
@@ -203,4 +208,11 @@
             .btn {
                 width: 100%;
             }
+<<<<<<< HEAD
         }
+=======
+        }
+
+        
+    
+>>>>>>> e6b93910b91207bf6b55b75a3109669b523dadfd

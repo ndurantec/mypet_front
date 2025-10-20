@@ -32,10 +32,23 @@
                         <input type="text" id="peso" placeholder="kg">
                             <div id="erro-peso"></div>
                     <p><strong>validade:</p>
-                        <input type="text" id="validade" placeholder="meses">
+                        <label for="horario2" class="form-label">Data de Validade:</label>
+                        <br>
+                        <input type="date" id="validade">
                             <div id="erro-validade"></div>
                     <p><strong>categoria:</p>
-                        <input type="text" id="categoria" placeholder="produto">
+                        <div>
+                            <label>categoria:</label>
+                                <select id="categoria">
+                                    <option value="">Selecione Categoria</option>
+                                    <option value="racao">Ração</option>
+                                    <option value="petisco">Petisco</option>
+                                    <option value="brinquedo">Brinquedo</option>
+                                    <option value="acessorio">Acessório</option>
+                                    <option value="higiene">Higiene</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                        </div>
                             <div id="erro-categoria"></div>
                     <p><strong>indicação:</p>
                         <input type="text" id="indicacao">
@@ -43,7 +56,7 @@
                 </div>
 
                 <div style="margin-top: 4%;">
-                    <button class="btn btn-secondary mt-auto text-white" type="button" onclick="cadastrar()"><strong>cadastrar</strong></button>
+                    <button type="button" class="btn btn-secondary mt-auto text-white" onclick="cadastrar()">cadastrar</button>
                 </div>
 
                 <div class="container" style="margin-top: 5%;">
