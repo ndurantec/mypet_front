@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #4f0c5c;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    color: #4f0c5c;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(79, 12, 92, 0.1);
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(79, 12, 92, 0.15);
+    border: 2px solid #4f0c5c;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #4f0c5c;
+    font-size: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #eebff7;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #4f0c5c;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #4f0c5c;
+    box-shadow: 0 0 0 3px rgba(79, 12, 92, 0.1);
+}
+
+.form-control::placeholder {
+    color: #b4b4b4;
+}
+
+/* Estilização específica para o input de arquivo */
+input[type="file"] {
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px dashed #eebff7;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: #4f0c5c;
+    background-color: #fdf5ff;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #4f0c5c;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #3a0944;
+}
+
+/* Ícone da câmera */
+.fas.fa-camera {
+    color: #4f0c5c;
+    margin-right: 8px;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #4f0c5c;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit:hover {
+    background-color: #3a0944;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 12, 92, 0.3);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem auto;
+        padding: 0 15px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .form-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .form-container {
+        padding: 1rem;
+    }
+    
+    .form-control {
+        padding: 10px 12px;
+    }
+    
+    .btn-submit {
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
