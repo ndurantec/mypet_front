@@ -1,5 +1,5 @@
 function validacaoContaUsuario(){
-    const nome = document.getElementById("nome").value;
+    let nome = document.getElementById("nome").value;
     
     if (nome === '') {
         mostrarErro('erro-nome', 'O nome é obrigatório.');
@@ -10,25 +10,32 @@ function validacaoContaUsuario(){
         ok = false;
         } else 
             if (Number(nome)) {
-                mostrarErro('erro-nome', 'Esta usando números');
+                mostrarErro('erro-nome', 'Seu nome não pode conter apenas números!');
+
+        } else 
+            if (nome.length > 255) {
+                mostrarErro('erro-nome', 'Seu nome apenas pode conter 255 caractéres');
 
         } 
 
-    const email = document.getElementById("email").value;
+    let email = document.getElementById("email").value;
 
     if (email === '') {
         mostrarErro('erro-email', 'Informe o e-mail.');
         ok = false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  } else 
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         mostrarErro('erro-email', 'E-mail inválido.');
         ok = false;
-  } else 
-        if () {
+        
+        } else 
+            if (email.length > 64) {
+                mostrarErro('erro-email', 'Seu email apenas pode conter 64 caractéres');
 
-        }
+        } 
     
 
-    const senha = document.getElementById("senha").value;
+    let senha = document.getElementById("senha").value;
 
     if (senha === '') {
         mostrarErro('erro-senha', 'A senha é obrigatória.');
@@ -39,7 +46,7 @@ function validacaoContaUsuario(){
   }
     
 
-    const telefone = document.getElementById("telefone").value;
+    let telefone = document.getElementById("telefone").value;
 
     if (telefone === '') {
         mostrarErro('erro-telefone', 'Informe o telefone.');
@@ -47,12 +54,12 @@ function validacaoContaUsuario(){
   } else if (!/^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(telefone)) {
         mostrarErro('erro-telefone', 'Formato inválido. Ex: (99) 99999-9999');
         ok = false;
-  }
-    
+  } else 
+        if (telefone.length > 40) {
+            mostrarErro('erro-telefone', 'Seu telefone apenas pode conter 40 caractéres');
 
-    
-
-    
+        } 
+     
 }
 
 function mostrarErro(idCampo, mensagem) {
