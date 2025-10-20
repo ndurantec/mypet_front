@@ -3,41 +3,62 @@ function voltar() {
 }
 
 function cadastrar() {
-    let ok = true;
 
-    document.querySelectorAll('.erro').forEach(div => div.textContent = '');
+    const peso = document.getElementById("peso").value;
+    document.getElementById("erro-peso").textContent = validarpeso(peso);
+    console.log(peso);
 
-    const peso = document.getElementById('peso').value;
-    if (peso === '') {
-        mostrarErro('erro-peso', 'Informe o peso.');
-        ok = false;
-    } else if (!/^\d+(\.\d{1,2})?$/.test(peso)) {
-        mostrarErro('erro-peso', 'Formato inválido. Use ponto como separador decimal.');
-        ok = false;
-    }
+    const validade = document.getElementById("validade").value;
+    document.getElementById("erro-validade").textContent = validarvalidade(validade);
+    console.log(validade);
 
-    const validade = document.getElementById('validade').value;
-    if (validade === '') {
-        mostrarErro('erro-validade', 'Informe a validade.');
-        ok = false;
-    } else if (validade < 0 || validade > 24) {
-        mostrarErro('erro-validade', 'validade inválida.');
-        ok = false;
-    }
-
-    const categoria = document.getElementById('categoria').value.trim();
+    const categoria = document.getElementById("categoria").value;
     if (categoria === '') {
-        mostrarErro('erro-categoria', 'A categoria é obrigatória.');
-        ok = false;
-    } else if (categoria.length < 3) {
-        mostrarErro('erro-categoria', 'A categoria deve ter pelo menos 3 caracteres.');
-        ok = false;
-  }
+         mostrarErro('erro-categoria', 'Selecione uma categoria');
+    } else {
+         mostrarErro('erro-categoria', '');
+    }
+
+    const indicacao = document.getElementById("indicacao").value;
+    document.getElementById("erro-indicacao").textContent = validarindicacao(indicacao);
+    console.log(indicacao);
 }
 
-if (ok) {
-    alert('Tudo certo! Os dados estão válidos.');
-  }
+function validarpeso(peso) {
+    // aceita "12,50" ou "12.50"
+    peso = peso.replace(",", ".");
+    if (isNaN(peso)) return "Peso inválido";
+    if (Number(peso) <= 0) return "Peso deve ser maior que zero";
+    return "";
+}
+
+function validarvalidade(validade) {
+    if (validade === "") return "Selecione uma validade";
+    let hoje = new Date();
+    let validadeDigitada = new Date(validade);
+    if (validadeDigitada < hoje) return "A validade não pode ser antiga";
+    return "";
+}
+
+// function validarcategoria(categoria) {
+//     let cat = document.getElementById(categoria);
+//     alert("Chamou o validarCategoria");
+//     console.log(cat);
+//     if (cat.value === "" || cat.value === "selecione") {
+//         return "Escolha uma opção válida";
+//     }
+//     return "";
+// }
+
+function validarindicacao(indicacao) {
+    if (indicacao.trim() === "") {
+        return "Campo indicação não pode estar vazio";
+    }
+    if (indicacao.length < 3) {
+        return "Digite pelo menos 3 caracteres";
+    }
+    return ""; // sem erro
+}
 
 function mostrarErro(idCampo, mensagem) {
   document.getElementById(idCampo).textContent = mensagem;
