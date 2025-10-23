@@ -8,8 +8,13 @@
     --borda-suave: #e0e0e0;
 }
 
+    
+
+
+
 * {
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html, body {
@@ -35,16 +40,7 @@ body {
     padding: 20px 0;
 }
 
-.container-main {
-    background: var(--fundo-claro);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid var(--borda-suave);
-    width: 100%;
-    max-width: 1300px;
-} 
+
 
 .text-center {
     text-align: center !important;
@@ -55,19 +51,21 @@ body {
 }
 
 .header-title {
-            color: var(--escuro);
-            font-weight: 700;
-            border-bottom: 2px solid var(--lilas-pastel);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 1.5rem;
-        }
+    color: #4F0C5C;
+    font-weight: 700;
+    border-bottom: 2px solid #4F0C5C;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
         
 .text-muted {
     color: #6c757d !important;
     font-size: 0.9rem;
     margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .row {
@@ -104,8 +102,8 @@ body {
 
 .card-service {
     background: var(--fundo-claro);
-    border: 1px solid var(--borda-suave);
-    border-radius: 8px;
+    border: 2px solid #4F0C5C;
+    border-radius: 12px;
     transition: all 0.3s ease;
     height: 100%;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
@@ -124,11 +122,12 @@ body {
     background-color: #4F0C5C;
     color: white;
     font-weight: 600;
-    border-radius: 8px 8px 0 0;
+    border-radius: 10px 10px 0 0;
     padding: 10px 15px;
     text-align: center;
     font-size: 0.95rem;
-    border-bottom: 1px solid var(--borda-suave);
+    border-bottom: 2px solid #4F0C5C;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .card-body {
@@ -136,30 +135,28 @@ body {
     flex: 1 1 auto;
     justify-content: center; 
     align-items: center;
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-
 .form-label {
-    color: var(--escuro);
+    color:#4F0C5C;
     font-weight: 500;
     margin-bottom: 5px;
     font-size: 0.9rem;
     display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form-control, .form-select {
     background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid var(--borda-suave);
+    border: 2px solid #4F0C5C;
     color: var(--texto-escuro);
     padding: 7px 12px;
     font-size: 0.9rem;
     height: 38px;
     width: 100%;
-    border-radius: 4px;
-    font-family: inherit;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-radius: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form-select {
@@ -186,19 +183,19 @@ body {
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    border: 1px solid transparent;
+    border: 2px solid #4F0C5C;
     padding: 8px 15px;
     font-size: 0.9rem;
-    border-radius: 5px;
+    border-radius: 12px;
     transition: all 0.3s ease;
     text-decoration: none;
-    font-family: inherit;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .btn-agendar {
     background-color: #4F0C5C;
     color: white;
-    border: none;
+    border: 2px solid #4F0C5C;
     width: 100%;
     margin-top: 12px;
 }
@@ -206,15 +203,10 @@ body {
 .btn-profissional {
     background-color: #4F0C5C;
     color: #ffffff;
-    border: none;
+    border: 2px solid #4F0C5C;
     width: 100%;
     margin-top: 12px;
     transform: translateY(75px);
-}
-
-.btn-agendar:hover, .btn-profissional:hover {
-    background-color: #a046b2;
-    box-shadow: 0 0 10px rgb(111, 29, 129);
 }
 
 .icon-service {
@@ -223,9 +215,8 @@ body {
     margin-bottom: 10px;
     display: block;
     text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
- 
 
 .footer {
     text-align: center;
@@ -233,12 +224,12 @@ body {
     color: var(--escuro);
     font-size: 0.8rem;
     width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .text-danger {
     color: #dc3545 !important;
 }
-
 
 @media (min-width: 576px) {
     .row-cols-sm-2 > * {
@@ -260,7 +251,6 @@ body {
         width: 25%;
     }
 }
-
 
 @media (max-width: 1200px) {
     .container-main {
@@ -299,7 +289,6 @@ body {
         margin-top: 12px;
     }
 }
-
 
 .g-3 {
     gap: 1rem !important;
