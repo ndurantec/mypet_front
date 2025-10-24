@@ -10,7 +10,7 @@
      <div class="container-wrapper">
         <div class="container container-main">
             <div class="text-center mb-3">
-                <h1 class="header-title"><i class="bi bi-calendar-check"></i> Agenda Pet </h1>
+                <h1 class="header-title"><i class="bi bi-calendar-check"></i> Serviços </h1>
                 <p class="text-muted">Agende serviços para seu pet de forma rápida</p>
             </div>
 
@@ -19,20 +19,35 @@
                 <div class="col mb-3">
                     <div class="card card-service">
                         <div class="card-header">
-                            <i class="bi bi-scissors"></i> ✂  Tosa
+                            <i class="bi bi-scissors"></i>Estética
                         </div>
                         <div class="card-body">
                             <i class="bi bi-scissors icon-service"></i>
                             <div class="mb-2">
-                                <label for="tosa" class="form-label" id="Tosa">Tipo de Tosa</label>
+                                <label for="tosa" class="form-label" id="Tosa">Loja</label>
                                 <select class="form-select" id="tipoTosa">
-                                    <option selected>Selecione o tipo de tosa</option>
+                                    <option selected>Selecione a Loja</option>
+                                    <option value="1">Loja Centro</option>
+                                    <option value="2">Loja Avenida Brasil</option>
+                                    <option value="3">Loja Do Bairro</option>
+                                    <option value="4">Loja Do Shopping</option>
+                                </select>
+                            </div>
+
+                           
+
+                             <div class="mb-2">
+                                <label for="tosa" class="form-label" id="Tosa">Pet</label>
+                                <select class="form-select" id="tipoTosa">
+                                    <option selected>Selecione o tipo de estética</option>
                                     <option value="1">Tosa Higiênica</option>
                                     <option value="2">Tosa na Máquina</option>
                                     <option value="3">Tosa Tesoura</option>
                                     <option value="4">Tosa de Raça</option>
                                 </select>
                             </div>
+
+
                             <div class="mb-2">
                                 <label for="horario" class="form-label">Data e Horário</label>
                                 <input class="form-control" type="datetime-local" id="dataTosa">
