@@ -231,7 +231,7 @@ textarea.form-control {
     opacity: 0.7;
 }
 
-/* Remove button hide utility */
+
 .remove-address {
     display: inline-block !important;
 }
@@ -240,7 +240,7 @@ textarea.form-control {
     display: none !important;
 }
 
-/* Focus states for accessibility */
+
 button:focus,
 input:focus,
 select:focus,
