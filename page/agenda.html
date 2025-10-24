@@ -10,7 +10,7 @@
      <div class="container-wrapper">
         <div class="container container-main">
             <div class="text-center mb-3">
-                <h1 class="header-title"><i class="bi bi-calendar-check"></i> 𝐀𝐆𝐄𝐍𝐃𝐀 𝐏𝐄𝐓 </h1>
+                <h1 class="header-title"><i class="bi bi-calendar-check"></i> Serviços </h1>
                 <p class="text-muted">Agende serviços para seu pet de forma rápida</p>
             </div>
 
@@ -19,20 +19,35 @@
                 <div class="col mb-3">
                     <div class="card card-service">
                         <div class="card-header">
-                            <i class="bi bi-scissors"></i> ✂  Tosa
+                            <i class="bi bi-scissors"></i>Estética
                         </div>
                         <div class="card-body">
                             <i class="bi bi-scissors icon-service"></i>
                             <div class="mb-2">
-                                <label for="tosa" class="form-label" id="Tosa">Tipo de Tosa</label>
+                                <label for="tosa" class="form-label" id="Tosa">Loja</label>
                                 <select class="form-select" id="tipoTosa">
-                                    <option selected>Selecione o tipo de tosa</option>
+                                    <option selected>Selecione a Loja</option>
+                                    <option value="1">Loja Centro</option>
+                                    <option value="2">Loja Avenida Brasil</option>
+                                    <option value="3">Loja Do Bairro</option>
+                                    <option value="4">Loja Do Shopping</option>
+                                </select>
+                            </div>
+
+                           
+
+                             <div class="mb-2">
+                                <label for="tosa" class="form-label" id="Tosa">Pet</label>
+                                <select class="form-select" id="tipoTosa">
+                                    <option selected>Selecione o tipo de estética</option>
                                     <option value="1">Tosa Higiênica</option>
                                     <option value="2">Tosa na Máquina</option>
                                     <option value="3">Tosa Tesoura</option>
                                     <option value="4">Tosa de Raça</option>
                                 </select>
                             </div>
+
+
                             <div class="mb-2">
                                 <label for="horario" class="form-label">Data e Horário</label>
                                 <input class="form-control" type="datetime-local" id="dataTosa">
@@ -42,84 +57,15 @@
                     </div>
                 </div>
                 
-                <div class="col mb-3">
-                    <div class="card card-service">
-                        <div class="card-header">
-                            <i class="bi bi-droplet icon-service"></i> 💧 Banho
-                        </div>
-                        <div class="card-body">
-                            <i class="bi bi-droplet icon-service"></i>
-                            <div class="mb-2">
-                                <label for="banho" class="form-label">Tipo de Banho</label>
-                                <select class="form-select" id="tipoBanho">
-                                    <option selected>Selecione o tipo de banho</option>
-                                    <option value="1">Banho Simples</option>
-                                    <option value="2">Banho Medicamentoso</option>
-                                    <option value="3">Banho com Hidratação</option>
-                                    <option value="4">Banho Antipulgas</option>
-                                </select>
-                            </div>
-                            <div class="mb-2">
-                                <label for="horario2" class="form-label">Data e Horário</label>
-                                <input class="form-control" type="datetime-local" id="dataBanho">
-                            </div>
-                            <button class="btn btn-agendar"  onclick="agendarBanho()">Agendar Banho <i class="bi bi-arrow-right"></i></button>
-                        </div>
+              
                     </div>
                 </div>
                 
-                <div class="col mb-3">
-                    <div class="card card-service">
-                        <div class="card-header">
-                            <i class="bi bi-heart-pulse"></i> ❤ CheckUp
-                        </div>
-                        <div class="card-body">
-                            <i class="bi bi-heart-pulse icon-service"></i>
-                            <div class="mb-2">
-                                <label for="checkup" class="form-label">Tipo de CheckUp</label>
-                                <select class="form-select" id="tipoCheckup">
-                                    <option selected>Selecione o tipo de checkup</option>
-                                    <option value="1">CheckUp Básico</option>
-                                    <option value="2">CheckUp Completo</option>
-                                    <option value="3">CheckUp Sênior</option>
-                                    <option value="4">CheckUp Pré-Cirúrgico</option>
-                                </select>
-                            </div>
-                            <div class="mb-2">
-                                <label for="horario3" class="form-label">Data e Horário</label>
-                                <input class="form-control" type="datetime-local" id="dataCheckup">
-                            </div>
-                            
-                            <button class="btn btn-agendar" onclick="agendarCheckup()">Agendar CheckUp <i class="bi bi-arrow-right"></i></button>
-                        </div>
+                
                     </div>
                 </div>
                 
-                <div class="col mb-3">
-                    <div class="card card-service">
-                        <div class="card-header">
-                            <i class="bi bi-person-check"></i> 𖡌 Profissional
-                        </div>
-                        <div class="card-body">
-                            <i class="bi bi-person-check icon-service"></i>
-                            <div class="mb-2">
-                                <label for="profissional" class="form-label">Escolha o Atendente</label>
-                                <select class="form-select" id="selecaoProfissional">
-                                    <option selected>Selecione o profissional</option>
-                                    <option value="1">Eloá (Esteticista)</option>
-                                    <option value="2">Miranda (Veterinária)</option>
-                                    <option value="3">Marina (Banhista)</option>
-                                    <option value="4">Qualquer Disponível</option>
-                                </select>
-                            </div>
-                            <div class="mb-2">
-                                <label for="horario4" class="form-label">Data e Horário</label>
-                                <input class="form-control" type="datetime-local" id="dataProfissional">
-                            </div>
-                            
-                            <button class="btn btn-agendar" onclick="agendarProfissional()" style="margin-top: 10px;">Agendar com Profissional <i class="bi bi-arrow-right"></i></button>
-                        </div>
-                    </div>
+               
                 </div>
             </div>
         </div>
@@ -130,5 +76,5 @@
         <p class="text-muted">Desenvolvido com <i class="bi bi-heart-fill text-danger"></i> para amantes de pets</p>
     </div>
     <script src="/script/agenda.js"></script>
-</body>cd
+</body>
 </html>
