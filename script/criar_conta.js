@@ -60,7 +60,7 @@ function validacaoContaUsuario(){
 
         } 
      
-}
+} 
 
 function mostrarErro(idCampo, mensagem) {
   document.getElementById(idCampo).textContent = mensagem;
