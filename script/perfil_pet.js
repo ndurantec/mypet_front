@@ -1,25 +1,25 @@
 function enviarCadastro() {
-    let nome = document.getElementById("nome").value;
-    let idade = document.getElementById("idade").value;
-    let raca = document.getElementById("raca").value;
-    let tipo = document.getElementById("tipo").value;
-    let outro_tipo = document.getElementById("outro_tipo").value;
+
+    const nome = document.getElementById("nome");
+    const idade = document.getElementById("idade");
+    const raca = document.getElementById("raca");
+    const tipo = document.getElementById("tipo");
     
-    if(nome == ""){
-        alert("Você precisa preencher o campo nome");
+
+    function validarCampo(campo, texto) {
+        if (campo.value.trim() === "") {
+            campo.placeholder = texto;
+            campo.style.border = "2px solid red";
+            campo.style.color = "red";
+            return false;
+        } else {
+            campo.style.border = "";
+            campo.style.color = "";
+            return true;
+        }
     }
 
-    if(idade == ""){
-        alert("Você precisa preencher o campo idade");
-    }
-
-    if(raca == ""){
-        alert("Você precisa preencher o campo raça");
-    }
-
-    if(tipo == ""){
-        alert("Você precisa preencher o campo tipo");
-    }
-
-         alert(nome + " - " + idade + " - " + raca + " - " + tipo);
+    const nomeOK = validarCampo(nome, "Campo nome é obrigatorio");
+    const idadeOK = validarCampo(idade, "Campo idade é obrigatorio");
+    const racaOK = validarCampo(raca, "Campo raça é obrigatorio");
 }

@@ -49,10 +49,10 @@ function validarPrecoReais(Preco) {
     
     Preco = Preco.replace(",", ".");   
     if (isNaN(Preco)) {
-        return "Preco monetário inválido.";
+        return "Preço monetário inválido.";
     }
     if (Number(Preco) <= 0) {
-        return "Preco deve ser maior que zero.";
+        return "Preço deve ser maior que zero.";
     }
      
     //return "";
