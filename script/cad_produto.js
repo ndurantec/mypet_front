@@ -63,6 +63,15 @@ function validarPrecoReais(Preco) {
 
 function cadastro() {
 
+    if (nome.trim() === "") {
+        return "Campo nome não pode estar vazio.";
+    }
+    if (nome.length < 3) {
+        return "Digite pelo menos 3 caracteres.";
+    }
+    return ""; 
+    
+    // sem erro
 
     // Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
