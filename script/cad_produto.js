@@ -14,7 +14,9 @@ function cadastro() {
     const preco = document.getElementById("preco").value;   
     document.getElementById('erro-preco').textContent = validarPrecoReais(preco);
     console.log(preco);
+    
 }
+
 
 function validarNome(nome) {
 
@@ -56,4 +58,66 @@ function validarPrecoReais(Preco) {
     }
      
     //return "";
+}
+
+
+function cadastro() {
+
+
+    // Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+function alterar() {
+
+
+    // Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+function consultar() {
+
+
+    // Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+
+function deletar() {
+
+
+    // Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
 }
