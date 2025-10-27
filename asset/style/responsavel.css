@@ -1,0 +1,179 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        body {
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .primeira {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .primeira h1 {
+            color: #4F0C5C;
+            padding: 30px 30px 15px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        .terceira h1 {
+            color: #4F0C5C;
+            padding: 30px 30px 15px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: 600;
+        }
+        
+        .segunda {
+            padding: 15px 40px 40px;
+        }
+
+        .terceira {
+            background: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .quarta {
+            width: 100%;
+        }
+
+        .nome, .login, .senha {
+            margin-bottom: 5px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .login, .senha, .nome {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-nome, .form-label {
+            display: block;
+            color: #4F0C5C;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #4F0C5C;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f9fafb;
+        }
+        
+        .form-control {
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f9fafb;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #4F0C5C;
+            box-shadow: 0 0 0 3px rgba(222, 134, 240, 0.2);
+            background-color: white;
+        }
+        
+        .form-control::placeholder {
+            color: #a0aec0;
+        }
+        
+        .botao {
+            margin-top: 10px;
+        }
+        
+        .botao button {
+            width: 100%;
+            padding: 16px;
+            background-color: #4F0C5C;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+.btn {
+    margin-top: 10px;
+}
+
+        .botao button:hover {
+            background-color: #4F0C5C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(145, 47, 165, 0.3);
+        }
+        
+        .botao button:active {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 480px) {
+            .segunda {
+                padding: 15px 20px 30px;
+            }
+            
+            .primeira h1 {
+                padding: 25px 20px 10px;
+                font-size: 22px;
+            }
+            
+            .form-control {
+                padding: 12px 14px;
+            }
+            
+            .botao button {
+                padding: 14px;
+            }
+        }

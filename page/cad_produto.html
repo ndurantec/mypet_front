@@ -11,11 +11,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Cadastro de Produto</h1>
-        </div>
 
-        <div class="form-container">
+        <div class="form-container" style="margin-top: 50px;">
+
+            <div class="header">
+            <h1>Cadastro de Produto</h1>
+            </div>
+
             <form id="cad-prod">
 
                 <div class="form-group">                                     
@@ -41,7 +43,10 @@
                     <div id="erro-preco" class="erro"></div>
                 </div>
 
-                <button type="button" class="btn-submit" onclick="cadastro()">Cadastrar Produto</button>
+                <button type="button" class="btn-submit" onclick="cadastro()">Cadastrar</button>
+                <button type="button" class="btn-submit mt-2" onclick="alterar()">Alterar</button>
+                <button type="button" class="btn-submit mt-2" onclick="consultar()">Consultar</button>
+                <button type="button" class="btn-submit mt-2" onclick="deletar()">Deletar</button>
 
             </form>
         </div>
