@@ -1,5 +1,12 @@
 function Salvarservico() {
    
+function validarData(data) {
+    if (data === "") return "Selecione uma data";
+    let hoje = new Date();
+    let dataDigitada = new Date(data);
+    if (dataDigitada > hoje) return "A data não pode ser futura";
+    return "";
+}
 
 
     // Envia os dados via fetch
@@ -51,7 +58,7 @@ function Alterarservico() {
 
 
 
-function agendarservico() {
+function Deletarservico() {
    
 
 
