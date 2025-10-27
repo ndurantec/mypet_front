@@ -65,3 +65,57 @@ function validacaoContaUsuario(){
 function mostrarErro(idCampo, mensagem) {
   document.getElementById(idCampo).textContent = mensagem;
 }
+
+function salvarConta(){
+    //Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+
+function consultarConta(){
+    //Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+function alterarConta(){
+    //Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+function deletarConta(){
+    //Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
