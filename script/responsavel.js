@@ -129,7 +129,7 @@ function salvar() {
 
         } 
 
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/responsavel/cadresponsavel', { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
@@ -143,7 +143,7 @@ function salvar() {
 
 function consultar() {
 
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/responsavel/nome/{nome}', { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
@@ -157,7 +157,7 @@ function consultar() {
 
 function atualizar() {
 
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
@@ -171,7 +171,7 @@ function atualizar() {
 
 function deletar() {
     
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
