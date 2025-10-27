@@ -29,9 +29,10 @@
                     </div>
                     
                     <div class="form-group">
+                        
                         <label class="form-label required" for="email">E-mail</label>
                         <input type="email" class="form-control" id="email" placeholder="Digite o e-mail" name="email" >
-                        <div class="invalid-feedback">Por favor, informe um e-mail válido.</div>
+                        <div id="erro-email" class="erro"></div>
                     </div>
                     
                     <div class="form-group">
@@ -67,6 +68,12 @@
                 <div class="form-footer">
                     <div class="form-actions">
                         <button type="button" class="btn btn-primary" onclick="validarNome()">Cadastrar Loja</button>
+
+                        <button type="button" class="btn btn-primary" onclick="salvarloja()">salvar cadastro loja</button>
+                        <button type="button" class="btn btn-primary" onclick="consultarloja()">consultar cadastro loja</button>
+                        <button type="button" class="btn btn-primary" onclick="deletarloja()">deletar cadastro loja</button>
+                        <button type="button" class="btn btn-primary" onclick="alterarloja()">alterar cadastro loja</button>
+
                         <button type="reset" class="btn btn-secondary">Limpar Formulário</button>
                     </div>
                 </div>
