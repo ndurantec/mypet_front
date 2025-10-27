@@ -27,7 +27,7 @@ function mostrarErro(idCampo, mensagem) {
   document.getElementById(idCampo).textContent = mensagem;
 }
 
-function salvarloja() {
+function cadastrarloja() {
    
 
 

@@ -1,11 +1,23 @@
 :root {
     --roxo-claro: #4F0C5C;
-    --roxo-escuro: #4F0C5C;
+    --roxo-escuro: #3A0944;
+    --roxo-suave: #E8D4EC;
     --branco: #FFFFFF;
+    --cinza-claro: #f8f9fa;
+    --cinza-medio: #e9ecef;
+    --cinza-escuro: #6c757d;
+    --vermelho: #dc3545;
+    --verde: #28a745;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: #f8f9fa;
+    background-color: var(--cinza-claro);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
@@ -13,10 +25,11 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 20px;
+    line-height: 1.5;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
     margin: 0 auto;
 }
@@ -54,12 +67,13 @@ body {
 }
 
 .address-group {
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--cinza-medio);
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    background-color: #ffffff;
+    background-color: var(--branco);
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .address-group:hover {
@@ -72,7 +86,7 @@ body {
     align-items: center;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--cinza-medio);
 }
 
 .address-title {
@@ -83,6 +97,7 @@ body {
 
 .form-group {
     margin-bottom: 20px;
+    position: relative;
 }
 
 .form-label {
@@ -94,16 +109,17 @@ body {
 
 .form-label.required::after {
     content: " *";
-    color: #dc3545;
+    color: var(--vermelho);
 }
 
 .form-control {
     width: 100%;
     border-radius: 5px;
-    padding: 10px;
-    border: 1px solid #ced4da;
+    padding: 10px 12px;
+    border: 1px solid var(--cinza-escuro);
     transition: all 0.3s;
     font-size: 1rem;
+    background-color: var(--branco);
 }
 
 .form-control:focus {
@@ -112,28 +128,21 @@ body {
     outline: none;
 }
 
-.form-control.is-invalid {
-    border-color: #dc3545;
+.form-control.error {
+    border-color: var(--vermelho);
     box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
 
-.invalid-feedback {
+.erro {
     display: none;
     width: 100%;
     margin-top: 0.25rem;
     font-size: 0.875em;
-    color: #dc3545;
+    color: var(--vermelho);
 }
 
-.form-control.is-invalid ~ .invalid-feedback {
+.form-control.error ~ .erro {
     display: block;
-}
-
-.erro {
-    width: 100%;
-    margin-top: 0.25rem;
-    font-size: 0.875em;
-    color: #dc3545;
 }
 
 .btn {
@@ -151,7 +160,7 @@ body {
 
 .btn-primary {
     background-color: var(--roxo-claro);
-    border-color: var(--roxo-claro);
+    border: 1px solid var(--roxo-claro);
     color: white;
 }
 
@@ -159,55 +168,76 @@ body {
     background-color: var(--roxo-escuro);
     border-color: var(--roxo-escuro);
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
-    background-color: #6c757d;
-    border-color: #6c757d;
+    background-color: var(--cinza-escuro);
+    border: 1px solid var(--cinza-escuro);
     color: white;
 }
 
 .btn-secondary:hover {
     background-color: #5a6268;
     border-color: #545b62;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--cinza-escuro);
+    color: var(--cinza-escuro);
+}
+
+.btn-outline:hover {
+    background-color: var(--cinza-medio);
+    transform: translateY(-2px);
 }
 
 .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: var(--vermelho);
+    border: 1px solid var(--vermelho);
     color: white;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 8px 15px;
     font-size: 0.9rem;
 }
 
 .btn-danger:hover {
     background-color: #c82333;
     border-color: #bd2130;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-add-address {
     background-color: transparent;
     color: var(--roxo-claro);
     border: 1px dashed var(--roxo-claro);
-    padding: 10px 15px;
+    padding: 12px 15px;
     border-radius: 5px;
     font-weight: 500;
     margin-bottom: 20px;
     transition: all 0.3s;
     width: 100%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .btn-add-address:hover {
     background-color: rgba(79, 12, 92, 0.1);
     border-style: solid;
+    transform: translateY(-2px);
 }
 
 .form-footer {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #e9ecef;
+    border-top: 1px solid var(--cinza-medio);
 }
 
 .form-actions {
@@ -215,22 +245,29 @@ body {
     gap: 10px;
     width: 100%;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 select.form-control {
     cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234F0C5C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
 }
 
 textarea.form-control {
     resize: vertical;
     min-height: 80px;
+    font-family: inherit;
 }
 
 .form-control::placeholder {
-    color: #6c757d;
+    color: var(--cinza-escuro);
     opacity: 0.7;
 }
-
 
 .remove-address {
     display: inline-block !important;
@@ -240,13 +277,42 @@ textarea.form-control {
     display: none !important;
 }
 
-
 button:focus,
 input:focus,
 select:focus,
 textarea:focus {
     outline: 2px solid var(--roxo-claro);
     outline-offset: 2px;
+}
+
+.success-message {
+    background-color: var(--verde);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.address-group {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
@@ -267,14 +333,6 @@ textarea:focus {
         padding: 15px;
     }
     
-    .form-actions {
-        flex-direction: column;
-    }
-    
-    .btn {
-        width: 100%;
-    }
-    
     .header {
         padding: 20px 15px;
     }
@@ -291,5 +349,13 @@ textarea:focus {
         flex-direction: column;
         gap: 10px;
         align-items: flex-start;
+    }
+    
+    .form-actions {
+        gap: 8px;
+    }
+    
+    .btn {
+        padding: 12px 15px;
     }
 }
