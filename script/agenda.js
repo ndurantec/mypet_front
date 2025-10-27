@@ -1,16 +1,15 @@
-function Salvarservico() {
+function salvarServico() {
    
-function validarData(data) {
+
     if (data === "") return "Selecione uma data";
     let hoje = new Date();
     let dataDigitada = new Date(data);
     if (dataDigitada > hoje) return "A data não pode ser futura";
-    return "";
-}
+
 
 
     // Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/agenda/imprimir/id', { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
@@ -22,30 +21,12 @@ function validarData(data) {
 }
 
 
-function Consultarservico() {
+function consultarServico() {
    
 
 
     // Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
-       
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
-}
-
-
-
-function Alterarservico() {
-   
-
-
-    // Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/agenda/{id}', { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
@@ -58,12 +39,30 @@ function Alterarservico() {
 
 
 
-function Deletarservico() {
+function alterarServico() {
    
 
 
     // Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/agenda/imprimir/id', { // altere a URL conforme seu endpoint
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+
+
+function deletarServico() {
+   
+
+
+    // Envia os dados via fetch
+    fetch('http://127.0.0.1:8080/agenda/{id}', { // altere a URL conforme seu endpoint
        
     }).then(response => {
            

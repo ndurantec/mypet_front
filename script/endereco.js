@@ -64,7 +64,7 @@ function cadastraendereco() {
          alert( rua + " - " + numero + " - " + bairro + " - " + cep + " - " + complemento);
 
    
-    fetch('http://127.0.0.1:8080/responsaveis', { 
+    fetch('http://127.0.0.1:8080/endereco/cadendereco', { 
        
     }).then(response => {
            
@@ -82,7 +82,7 @@ function consultarendereco() {
 
 
    
-    fetch('http://127.0.0.1:8080/responsaveis', { 
+    fetch('http://127.0.0.1:8080/endereco/findById/{id}', { 
        
     }).then(response => {
            
@@ -99,7 +99,7 @@ function deletarendereco() {
 
 
    
-    fetch('http://127.0.0.1:8080/responsaveis', { 
+    fetch('http://127.0.0.1:8080/endereco/{id}', { 
        
     }).then(response => {
            
@@ -116,7 +116,7 @@ function atualizarendereco() {
 
 
    
-    fetch('http://127.0.0.1:8080/responsaveis', { 
+    fetch('http://127.0.0.1:8080/endereco/UpEndereco/{id}', { 
        
     }).then(response => {
            
