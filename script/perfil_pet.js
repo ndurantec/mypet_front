@@ -23,3 +23,64 @@ function enviarCadastro() {
     const idadeOK = validarCampo(idade, "Campo idade é obrigatorio");
     const racaOK = validarCampo(raca, "Campo raça é obrigatorio");
 }
+
+
+function salvarCadastro() {
+   
+
+
+    fetch('http://127.0.0.1:8080/responsaveis', { 
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+function consultarCadastro() {
+   
+
+
+    fetch('http://127.0.0.1:8080/responsaveis', { 
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+function deletarCadastro() {
+   
+
+
+    fetch('http://127.0.0.1:8080/responsaveis', { 
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+function alterarCadastro() {
+   
+
+
+    fetch('http://127.0.0.1:8080/responsaveis', { 
+       
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
