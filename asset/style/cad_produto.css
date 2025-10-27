@@ -51,7 +51,7 @@ body {
 .form-control {
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #eebff7;
+    border: 2px solid #e3e8f0;
     border-radius: 8px;
     font-size: 1rem;
     background-color: #ffffff;
@@ -73,7 +73,7 @@ body {
 input[type="file"] {
     padding: 10px;
     background-color: #ffffff;
-    border: 2px dashed #eebff7;
+    border: 2px dashed #e2e8f0;
     border-radius: 8px;
     width: 100%;
     cursor: pointer;
