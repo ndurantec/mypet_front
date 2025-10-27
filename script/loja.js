@@ -57,7 +57,7 @@ function consultarloja() {
        
     });
 }
-function salvardeletar() {
+function alterarloja() {
    
 
 
@@ -72,7 +72,7 @@ function salvardeletar() {
        
     });
 }
-function salvaralterar() {
+function deletarloja() {
    
 
 
