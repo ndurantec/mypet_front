@@ -130,7 +130,7 @@ function salvarConta(){
         } 
     
     //Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/login/authenticate', { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
