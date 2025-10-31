@@ -30,6 +30,7 @@ function salvarCadastro() {
      const idade = document.getElementById("idade");
      const raca = document.getElementById("raca");
      const tipo = document.getElementById("tipo");
+     const responsavel = document.getElementById("responsavel");
  
      function validarCampo(campo, texto) {
      if (campo.value.trim() === "") {
@@ -46,6 +47,8 @@ function salvarCadastro() {
  const nomeOK = validarCampo(nome, "Campo nome é obrigatorio");
  const idadeOK = validarCampo(idade, "Campo idade é obrigatorio");
  const racaOK = validarCampo(raca, "Campo raça é obrigatorio");
+ const responsavelOK = validarCampo(responsavel, "Campo responsavel é obrigatorio");
+
         
    
     fetch('http://127.0.0.1:8080/pet/cadpet', { 

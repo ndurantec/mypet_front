@@ -47,6 +47,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
+            
         }
         
         .form-group {
@@ -126,6 +127,7 @@
             align-items: center;
             gap: 15px;
             box-shadow: 0 5px 15px rgba(145, 47, 165, 0.3);
+            margin-left: 4px;
         }
         
         button:hover {
@@ -190,3 +192,10 @@
     font-size: 12px;
     margin-top: 5px;
     }
+
+    .btn-group {
+        display: flex;
+        padding-bottom: 40px;
+         justify-content: center;
+    }
+
