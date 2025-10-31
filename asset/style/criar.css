@@ -101,20 +101,20 @@
         .form-control {
             width: 100%;
             padding: 14px 16px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #e3e8f0;
             border-radius: 8px;
             font-size: 16px;
             transition: all 0.3s ease;
-            background-color: #f9fafb;
+            background-color: #ffffff;
         }
         
         .form-control {
             padding: 14px 16px;
-            border: 2px solid #e2e8f0;
+            border: 2px solid #e3e8f0;
             border-radius: 8px;
             font-size: 16px;
             transition: all 0.3s ease;
-            background-color: #f9fafb;
+            background-color: #ffffff;
         }
         
         .form-control:focus {
