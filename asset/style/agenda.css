@@ -102,7 +102,7 @@ body {
 
 .card-service {
     background: var(--fundo-claro);
-    border: 2px solid #4F0C5C;
+    
     border-radius: 12px;
     transition: all 0.3s ease;
     height: 100%;
@@ -114,7 +114,7 @@ body {
 
 .card-service:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(158, 47, 165, 0.15);
+    box-shadow: 0 6px 12px rgb(219, 216, 219);
     border-color: var(--lilas);
 }
 
@@ -170,8 +170,8 @@ body {
 
 .form-control:focus, .form-select:focus {
     background-color: rgba(255, 255, 255, 1);
-    border-color: var(--lilas);
-    box-shadow: 0 0 0 0.2rem rgba(222, 134, 240, 0.2);
+    border-color: #4F0C5C;
+    
     color: var(--texto-escuro);
     outline: none;
 }

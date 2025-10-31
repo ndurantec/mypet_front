@@ -48,7 +48,7 @@ function cadastrarloja() {
     }
 
     // Envia os dados via fetch
-     fetch("http://127.0.0.1:8080/responsaveis", { // altere a URL conforme seu endpoint
+     fetch("http://127.0.0.1:8080/loja/cadloja", { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
@@ -64,7 +64,7 @@ function alterarloja() {
 
 
     // Envia os dados via fetch
-    fetch("http://127.0.0.1:8080/responsaveis", { // altere a URL conforme seu endpoint
+    fetch("http://127.0.0.1:8080/loja/UpLoja", { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
@@ -79,7 +79,7 @@ function deletarloja() {
 
 
     // Envia os dados via fetch
-    fetch("http://127.0.0.1:8080/responsaveis", { // altere a URL conforme seu endpoint
+    fetch("http://127.0.0.1:8080/loja/deletar", { // altere a URL conforme seu endpoint
        
     }).then(response => {
            
