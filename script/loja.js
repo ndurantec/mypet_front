@@ -30,6 +30,8 @@ function cadastrarloja() {
    
       const nome = document.getElementById('nome').value;
     
+      alert (" loja cadastrada " + nome)
+
     if (nome.trim() === "") {        
         mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
     }
@@ -46,6 +48,8 @@ function cadastrarloja() {
         mostrarErro('erro-email', 'E-mail inválido.');
         ok = false;
     }
+
+
 
     // Envia os dados via fetch
      fetch("http://127.0.0.1:8080/loja/cadloja", { // altere a URL conforme seu endpoint
