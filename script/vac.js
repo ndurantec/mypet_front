@@ -1,72 +1,3 @@
-function cadastro() {
-
-    const imagem = document.getElementById("imagem").value;
-    console.log(imagem);
-
-    const nome = document.getElementById("nome").value;
-    document.getElementById('erro-nome').textContent = validarNome(nome);
-    console.log(nome);
-
-    const descricao = document.getElementById("descricao").value;
-    document.getElementById('erro-descricao').textContent = validarDescricao(descricao);
-    console.log(descricao);
-
-    const preco = document.getElementById("preco").value;   
-    document.getElementById('erro-preco').textContent = validarPrecoReais(preco);
-    console.log(preco);
-    
-}
-
-
-function validarNome(nome) {
-
-    if (nome.trim() === "") {
-        return "Campo nome não pode estar vazio.";
-    }
-    if (nome.length < 3) {
-        return "Digite pelo menos 3 caracteres.";
-    }
-    return ""; 
-    
-    // sem erro
-}
-
-
-function validarDescricao(descricao) {
-
-    if (descricao.trim() === "") {
-        return "Campo descrição não pode estar vazio.";
-    }
-    if (descricao.length < 3) {
-        return "Digite pelo menos 3 caracteres.";
-    }
-    return ""; 
-    
-    // sem erro
-}
-
-
-function validarPrecoReais(Preco) {
-    // aceita "12,50" ou "12.50" 
-    
-    Preco = Preco.replace(",", ".");   
-    if (isNaN(Preco)) {
-        return "Preço monetário inválido.";
-    }
-    if (Number(Preco) <= 0) {
-        return "Preço deve ser maior que zero.";
-    }
-     
-    //return "";
-}
-
-
-function limparErros() {
-    let erros = document.querySelectorAll('.erro');
-    erros.forEach(e => e.textContent = '');
-}
-
-
 function validarFormulario() {
     //limparErros();
 
@@ -83,7 +14,6 @@ function validarFormulario() {
     return ok;
 }
 
-
 function coletarDados() {
     const canvas = document.getElementById('signaturePad');
   
@@ -93,29 +23,24 @@ function coletarDados() {
     };
 }
 
+function limparErros() {
+    let erros = document.querySelectorAll('.erro');
+    erros.forEach(e => e.textContent = '');
+}
 
-function cadastro() {
-
+function salvarVacinacao(){
     limparErros();
 
     if (!validarFormulario()) return;
 
     const dados = coletarDados();
 
-    if (nome.trim() === "") {
-        return "Campo nome não pode estar vazio.";
-    }
-    if (nome.length < 3) {
-        return "Digite pelo menos 3 caracteres.";
-    }
-    
-    // sem erro
-
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
-    // Envia os dados via fetch
+
+    //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
 
         method: 'POST',
@@ -126,6 +51,7 @@ function cadastro() {
         ),
     
         headers: headers
+
        
     }).then(response => {
            
@@ -136,8 +62,7 @@ function cadastro() {
     });
 }
 
-function alterar() {
-
+function consultarVacinacao(){
     limparErros();
 
     if (!validarFormulario()) return;
@@ -148,7 +73,7 @@ function alterar() {
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
-    // Envia os dados via fetch
+    //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
 
         method: 'POST',
@@ -159,6 +84,7 @@ function alterar() {
         ),
     
         headers: headers
+
        
     }).then(response => {
            
@@ -169,8 +95,7 @@ function alterar() {
     });
 }
 
-function consultar() {
-
+function alterarVacinacao(){
     limparErros();
 
     if (!validarFormulario()) return;
@@ -181,7 +106,7 @@ function consultar() {
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
-    // Envia os dados via fetch
+    //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
 
         method: 'POST',
@@ -192,6 +117,7 @@ function consultar() {
         ),
     
         headers: headers
+
        
     }).then(response => {
            
@@ -202,9 +128,7 @@ function consultar() {
     });
 }
 
-
-function deletar() {
-
+function deletarVacinacao(){
     limparErros();
 
     if (!validarFormulario()) return;
@@ -215,9 +139,9 @@ function deletar() {
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
-    // Envia os dados via fetch
+    //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
-
+        
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -226,6 +150,7 @@ function deletar() {
         ),
     
         headers: headers
+
        
     }).then(response => {
            

@@ -170,8 +170,21 @@ function salvar() {
 
         } 
 
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
     fetch('http://127.0.0.1:8080/responsavel/cadresponsavel', { // altere a URL conforme seu endpoint
        
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
     }).then(response => {
            
     }).then(data => {
@@ -184,8 +197,25 @@ function salvar() {
 
 function consultar() {
 
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
     fetch('http://127.0.0.1:8080/responsavel/nome/{nome}', { // altere a URL conforme seu endpoint
        
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+
     }).then(response => {
            
     }).then(data => {
@@ -198,8 +228,25 @@ function consultar() {
 
 function atualizar() {
 
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
     fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
        
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+
     }).then(response => {
            
     }).then(data => {
@@ -211,9 +258,26 @@ function atualizar() {
 }
 
 function deletar() {
+
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
     
     fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
        
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+
     }).then(response => {
            
     }).then(data => {
