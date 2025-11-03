@@ -71,12 +71,14 @@ function cadastraendereco() {
    
     fetch('http://127.0.0.1:8080/endereco/cadendereco', { 
 
-               method: 'POST',
+        method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
         body: JSON.stringify(
             dados
         ),
+    
+        headers: headers
 
 
        
