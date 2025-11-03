@@ -166,7 +166,7 @@ function salvarConta(){
 
         } 
 
-         var headers = new Headers();
+        var headers = new Headers();
         headers.append("Content-Type", "application/json");
         headers.append("Access-Control-Allow-Origin", "*");
 
@@ -196,9 +196,28 @@ function salvarConta(){
 
 
 function consultarConta(){
+    limparErros();
+
+     if (!validarFormulario()) return;
+
+     const dados = coletarDados();
+
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        headers.append("Access-Control-Allow-Origin", "*");
+
     //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
-       
+        
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
     }).then(response => {
            
     }).then(data => {
@@ -209,8 +228,27 @@ function consultarConta(){
 }
 
 function alterarConta(){
+    limparErros();
+
+     if (!validarFormulario()) return;
+
+     const dados = coletarDados();
+
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        headers.append("Access-Control-Allow-Origin", "*");
+
     //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
        
     }).then(response => {
            
@@ -222,8 +260,28 @@ function alterarConta(){
 }
 
 function deletarConta(){
+    limparErros();
+
+     if (!validarFormulario()) return;
+
+     const dados = coletarDados();
+
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        headers.append("Access-Control-Allow-Origin", "*");
+
+
     //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
        
     }).then(response => {
            
