@@ -34,6 +34,14 @@ function enviarCadastro() {
 
 function cadastraendereco() {
 
+    
+
+    limparErros();
+
+   if (!validarFormulario()) return;
+
+     const dados = coletarDados();
+
 
       var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -122,6 +130,9 @@ function coletarDados() {
    
 
 function consultarendereco() {
+      var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
    
    limparErros();
 
@@ -132,6 +143,14 @@ function consultarendereco() {
    
     fetch('http://127.0.0.1:8080/endereco/findById/{id}', { 
 
+    method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
 
     }).then(response => {
            
@@ -145,10 +164,28 @@ function consultarendereco() {
 
 function deletarendereco() {
    
-
+  var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
    
+limparErros();
+
+   if (!validarFormulario()) return;
+
+     const dados = coletarDados();
+
+
     fetch('http://127.0.0.1:8080/endereco/{id}', { 
        
+    method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
     }).then(response => {
            
     }).then(data => {
@@ -161,10 +198,29 @@ function deletarendereco() {
 
 function atualizarendereco() {
    
+  var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
+    limparErros();
+
+   if (!validarFormulario()) return;
+
+     const dados = coletarDados();
+    
 
    
     fetch('http://127.0.0.1:8080/endereco/UpEndereco/{id}', { 
        
+    method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+        
     }).then(response => {
            
     }).then(data => {
