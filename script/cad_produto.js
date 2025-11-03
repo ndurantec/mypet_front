@@ -101,7 +101,6 @@ function cadastro() {
     if (!validarFormulario()) return;
 
     const dados = coletarDados();
-    //console.log("Enviando criar conta:", dados);
 
     if (nome.trim() === "") {
         return "Campo nome não pode estar vazio.";
@@ -139,9 +138,27 @@ function cadastro() {
 
 function alterar() {
 
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
 
     // Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
        
     }).then(response => {
            
@@ -154,9 +171,27 @@ function alterar() {
 
 function consultar() {
 
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
 
     // Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
        
     }).then(response => {
            
@@ -170,9 +205,27 @@ function consultar() {
 
 function deletar() {
 
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
 
     // Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
        
     }).then(response => {
            
