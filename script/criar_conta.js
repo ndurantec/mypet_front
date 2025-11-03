@@ -66,7 +66,44 @@ function mostrarErro(idCampo, mensagem) {
   document.getElementById(idCampo).textContent = mensagem;
 }
 
+function validarFormulario() {
+    //limparErros();
+
+    // Captura dos valores do formulário
+    let nome = document.getElementById("nome").value;
+    let cpf = document.getElementById("cpf").value;
+    
+    let ok = true;
+
+    if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
+    if (!cpf) { mostrarErro('erro-cpf', 'Verifique se possui cpf para continuar.'); ok = false; }
+    
+
+    return ok;
+}
+
+function coletarDados() {
+    const canvas = document.getElementById('signaturePad');
+  
+    return {
+        nome: document.getElementById("nome").value.trim(),
+        cpf: document.getElementById("cpf").value.trim()
+    };
+}
+
+function limparErros() {
+    let erros = document.querySelectorAll('.erro');
+    erros.forEach(e => e.textContent = '');
+}
+
 function salvarConta(){
+
+     limparErros();
+
+     if (!validarFormulario()) return;
+
+     const dados = coletarDados();
+
 
     let nome = document.getElementById("nome").value;
     
