@@ -170,8 +170,21 @@ function salvar() {
 
         } 
 
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
     fetch('http://127.0.0.1:8080/responsavel/cadresponsavel', { // altere a URL conforme seu endpoint
        
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
     }).then(response => {
            
     }).then(data => {
