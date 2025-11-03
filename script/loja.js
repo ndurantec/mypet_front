@@ -93,12 +93,12 @@ function cadastrarloja() {
     // Envia os dados via fetch
      fetch("http://127.0.0.1:8080/loja/cadloja", { // altere a URL conforme seu endpoint
 
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
-    body: JSON.stringify(
-    dados),
-    headers: headers
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+        dados),
+        headers: headers
 
 
 
@@ -114,6 +114,7 @@ function cadastrarloja() {
 
 
 function coletarDados() {
+    
     const canvas = document.getElementById('signaturePad');
   
     return {
@@ -124,6 +125,12 @@ function coletarDados() {
 
 
 function alterarloja() {
+
+    limparErros();
+
+     if (!validarFormulario()) return;
+
+    const dados = coletarDados();
    
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -151,8 +158,14 @@ function alterarloja() {
        
     });
 }
+
 function deletarloja() {
-   
+     
+    limparErros();
+
+     if (!validarFormulario()) return;
+
+    const dados = coletarDados();
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -163,12 +176,49 @@ function deletarloja() {
     fetch("http://127.0.0.1:8080/loja/deletar", { // altere a URL conforme seu endpoint
        
 
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
-    body: JSON.stringify(
-    dados),
-    headers: headers
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+        dados),
+        headers: headers
+
+
+    }).then(response => {
+           
+    }).then(data => {
+       
+    }).catch(error => {
+       
+    });
+}
+
+ 
+function consultarloja() {
+   
+    limparErros();
+
+     if (!validarFormulario()) return;
+
+
+    const dados = coletarDados();
+
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
+
+    // Envia os dados via fetch
+    fetch("http://127.0.0.1:8080/loja/deletar", { // altere a URL conforme seu endpoint
+       
+
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+        dados),
+        headers: headers
 
 
     }).then(response => {
