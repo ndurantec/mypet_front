@@ -33,6 +33,11 @@ function enviarCadastro() {
 
 
 function cadastraendereco() {
+
+
+      var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
    
     let rua = document.getElementById("rua").value;
     let numero = document.getElementById("numero").value;
@@ -65,6 +70,15 @@ function cadastraendereco() {
 
    
     fetch('http://127.0.0.1:8080/endereco/cadendereco', { 
+
+               method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+
+
        
     }).then(response => {
            
@@ -103,9 +117,7 @@ function coletarDados() {
     };
 }
 
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
+   
 
 function consultarendereco() {
    
@@ -117,15 +129,6 @@ function consultarendereco() {
 
    
     fetch('http://127.0.0.1:8080/endereco/findById/{id}', { 
-       
-
-          method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-            dados
-        ),
-
 
 
     }).then(response => {
