@@ -76,11 +76,11 @@
         input[type="file"],
         select {
             padding: 18px 20px;
-            border: 2px solid #4F0C5C;
+            border: 2px solid #e3e8f0;
             border-radius: 12px;
             font-size: 18px;
             transition: all 0.3s ease;
-            background-color: #fbf5fd;
+            background-color: #fff;
         }
         
         input[type="text"]:focus,
@@ -115,19 +115,19 @@
             grid-column: span 2;
             color: #ffffff;
             border: none;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 22px;
+            padding: 22px;
+            border-radius: 14px;
+            font-size: 30px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 20px;
-            display: flex;
+            margin-top: 22px;
+            display: 10px;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 18px;
             box-shadow: 0 5px 15px rgba(145, 47, 165, 0.3);
-            margin-left: 4px;
+            margin-left: 35px;
         }
         
         button:hover {
@@ -197,5 +197,7 @@
         display: flex;
         padding-bottom: 40px;
          justify-content: center;
+
+    
     }
 

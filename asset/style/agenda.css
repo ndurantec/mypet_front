@@ -227,6 +227,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.footer p {
+    margin: 2px 0; /* reduz o espaço entre os textos */
+}
+
 .text-danger {
     color: #dc3545 !important;
 }
