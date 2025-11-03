@@ -29,10 +29,9 @@ function limparErros() {
 }
 
 function salvarVacinacao(){
-
     limparErros();
 
-     if (!validarFormulario()) return;
+    if (!validarFormulario()) return;
 
     const dados = coletarDados();
 
@@ -64,8 +63,28 @@ function salvarVacinacao(){
 }
 
 function consultarVacinacao(){
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
     //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
        
     }).then(response => {
            
@@ -77,8 +96,28 @@ function consultarVacinacao(){
 }
 
 function alterarVacinacao(){
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
     //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
        
     }).then(response => {
            
@@ -90,8 +129,28 @@ function alterarVacinacao(){
 }
 
 function deletarVacinacao(){
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
     //Envia os dados via fetch
     fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+        
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
        
     }).then(response => {
            
