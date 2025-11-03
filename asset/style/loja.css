@@ -10,6 +10,7 @@
     --verde: #28a745;
 }
 
+/* Reset e configurações base */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,24 +20,25 @@
 body {
     background-color: var(--cinza-claro);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
     line-height: 1.5;
 }
 
+/* Layout principal */
 .container {
     max-width: 700px;
     width: 100%;
     margin: 0 auto;
 }
 
+/* Cabeçalho */
 .header {
-    background: linear-gradient(135deg, var(--roxo-escuro), var(--roxo-claro));
-    color: var(--branco);
+    background: var(--branco);
+    color: var(--roxo-escuro);
     padding: 25px;
     border-radius: 10px 10px 0 0;
     text-align: center;
@@ -52,13 +54,9 @@ body {
 .header p {
     font-size: 1.1rem;
     opacity: 0.9;
-    margin-bottom: 0;
 }
 
-.mb-0 {
-    margin-bottom: 0 !important;
-}
-
+/* Formulário */
 .form-container {
     background-color: var(--branco);
     padding: 30px;
@@ -66,18 +64,14 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Grupos de endereço */
 .address-group {
     border: 1px solid var(--cinza-medio);
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
     background-color: var(--branco);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.address-group:hover {
-    box-shadow: 0 2px 8px rgba(211, 75, 75, 0.1);
+    animation: fadeIn 0.3s ease-out;
 }
 
 .address-group-header {
@@ -95,9 +89,9 @@ body {
     font-size: 1.2rem;
 }
 
+/* Campos do formulário */
 .form-group {
     margin-bottom: 20px;
-    position: relative;
 }
 
 .form-label {
@@ -114,12 +108,12 @@ body {
 
 .form-control {
     width: 100%;
-    border-radius: 5px;
     padding: 10px 12px;
     border: 1px solid var(--cinza-escuro);
-    transition: all 0.3s;
+    border-radius: 5px;
     font-size: 1rem;
     background-color: var(--branco);
+    transition: all 0.3s;
 }
 
 .form-control:focus {
@@ -128,6 +122,7 @@ body {
     outline: none;
 }
 
+/* Estados de erro */
 .form-control.error {
     border-color: var(--vermelho);
     box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
@@ -135,16 +130,16 @@ body {
 
 .erro {
     display: none;
-    width: 100%;
-    margin-top: 0.25rem;
-    font-size: 0.875em;
     color: var(--vermelho);
+    font-size: 0.875em;
+    margin-top: 0.25rem;
 }
 
-.form-control.error ~ .erro {
+.form-control.error + .erro {
     display: block;
 }
 
+/* Botões base */
 .btn {
     padding: 10px 20px;
     border: none;
@@ -153,64 +148,50 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s;
-    text-decoration: none;
     display: inline-block;
     text-align: center;
 }
 
+/* Variantes de botões */
 .btn-primary {
     background-color: var(--roxo-claro);
-    border: 1px solid var(--roxo-claro);
     color: white;
+    border: 1px solid var(--roxo-claro);
 }
 
-.btn-primary:hover, .btn-primary:focus {
+.btn-primary:hover {
     background-color: var(--roxo-escuro);
-    border-color: var(--roxo-escuro);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
     background-color: var(--cinza-escuro);
-    border: 1px solid var(--cinza-escuro);
     color: white;
+    border: 1px solid var(--cinza-escuro);
 }
 
 .btn-secondary:hover {
     background-color: #5a6268;
-    border-color: #545b62;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn-outline {
-    background-color: transparent;
-    border: 1px solid var(--cinza-escuro);
-    color: var(--cinza-escuro);
-}
-
-.btn-outline:hover {
-    background-color: var(--cinza-medio);
-    transform: translateY(-2px);
-}
-
 .btn-danger {
     background-color: var(--vermelho);
-    border: 1px solid var(--vermelho);
     color: white;
-    border-radius: 5px;
+    border: 1px solid var(--vermelho);
     padding: 8px 15px;
     font-size: 0.9rem;
 }
 
 .btn-danger:hover {
     background-color: #c82333;
-    border-color: #bd2130;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Botão especial para adicionar endereço */
 .btn-add-address {
     background-color: transparent;
     color: var(--roxo-claro);
@@ -219,13 +200,13 @@ body {
     border-radius: 5px;
     font-weight: 500;
     margin-bottom: 20px;
-    transition: all 0.3s;
     width: 100%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    transition: all 0.3s;
 }
 
 .btn-add-address:hover {
@@ -234,6 +215,7 @@ body {
     transform: translateY(-2px);
 }
 
+/* Rodapé do formulário */
 .form-footer {
     margin-top: 30px;
     padding-top: 20px;
@@ -243,11 +225,10 @@ body {
 .form-actions {
     display: flex;
     gap: 10px;
-    width: 100%;
-    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
+/* Elementos específicos */
 select.form-control {
     cursor: pointer;
     appearance: none;
@@ -269,14 +250,16 @@ textarea.form-control {
     opacity: 0.7;
 }
 
+/* Controle de visibilidade */
 .remove-address {
-    display: inline-block !important;
+    display: inline-block;
 }
 
 #main-address .remove-address {
     display: none !important;
 }
 
+/* Estados de foco */
 button:focus,
 input:focus,
 select:focus,
@@ -285,23 +268,21 @@ textarea:focus {
     outline-offset: 2px;
 }
 
-.success-message {
-    background-color: var(--verde);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: none;
-}
-
 /* Animações */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.address-group {
-    animation: fadeIn 0.3s ease-out;
+/* Utilitários */
+.mb-0 {
+    margin-bottom: 0 !important;
 }
 
 /* Responsividade */
@@ -325,16 +306,13 @@ textarea:focus {
         margin: 0;
     }
     
-    .form-container {
-        padding: 20px;
+    .form-container,
+    .header {
+        padding: 20px 15px;
     }
     
     .address-group {
         padding: 15px;
-    }
-    
-    .header {
-        padding: 20px 15px;
     }
     
     .header h1 {
@@ -347,8 +325,8 @@ textarea:focus {
     
     .address-group-header {
         flex-direction: column;
-        gap: 10px;
         align-items: flex-start;
+        gap: 10px;
     }
     
     .form-actions {
