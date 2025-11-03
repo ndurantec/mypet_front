@@ -21,7 +21,14 @@ function limparErros() {
 function salvarServico() {
       limparErros();
 
-    
+    function coletarDados() {
+    const canvas = document.getElementById('signaturePad');
+  
+    return {
+        nome: document.getElementById("nome").value.trim(),
+        cpf: document.getElementById("cpf").value.trim()
+    };
+}
     let hoje = new Date();
     let dataDigitada = new Date(data);
     if (dataDigitada > hoje) return "A data não pode ser futura";
