@@ -119,8 +119,19 @@ function salvarCadastro() {
  }
 
  function consultarCadastro() {
+    limparErros();
+    
+    if (!validarFormulario()) return;
+    const dados = coletarDados();
 
-    fetch('http://127.0.0.1:8080/pet/buscarNomePet/', { 
+    fetch('http://127.0.0.1:8080/pet/buscarNomePet/', {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    body: JSON.stringify(
+     dados
+    ),
+    headers: headers 
        
     }).then(response => {
            
@@ -131,10 +142,23 @@ function salvarCadastro() {
     });
  }
 
- function deletarCadastro() 
+ function deletarCadastro() {
+    limparErros();
+    
+    if (!validarFormulario()) return;
+    const dados = coletarDados();
+
+    
 
 
     fetch('http://127.0.0.1:8080/pet/apagar/', { 
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    body: JSON.stringify(
+     dados
+    ),
+    headers: headers
        
     }).then(response => {
            
@@ -145,10 +169,21 @@ function salvarCadastro() {
     });
  }
 
- function alterarCadastro() 
+ function alterarCadastro() {
+    limparErros();
+    
+    if (!validarFormulario()) return;
+    const dados = coletarDados();
 
 
     fetch('http://127.0.0.1:8080/responsaveis', { 
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    body: JSON.stringify(
+     dados
+    ),
+    headers: headers
        
     }).then(response => {
            
