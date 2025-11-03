@@ -103,6 +103,9 @@ function coletarDados() {
     };
 }
 
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
 
 function consultarendereco() {
    
@@ -115,6 +118,16 @@ function consultarendereco() {
    
     fetch('http://127.0.0.1:8080/endereco/findById/{id}', { 
        
+
+          method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+
+
+
     }).then(response => {
            
     }).then(data => {
@@ -127,12 +140,6 @@ function consultarendereco() {
 
 function deletarendereco() {
    
-      
-   limparErros();
-
-   if (!validarFormulario()) return;
-
-     const dados = coletarDados();
 
    
     fetch('http://127.0.0.1:8080/endereco/{id}', { 
@@ -149,12 +156,6 @@ function deletarendereco() {
 
 function atualizarendereco() {
    
-      
-   limparErros();
-
-   if (!validarFormulario()) return;
-
-     const dados = coletarDados();
 
    
     fetch('http://127.0.0.1:8080/endereco/UpEndereco/{id}', { 
