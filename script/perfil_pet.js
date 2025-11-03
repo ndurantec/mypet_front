@@ -54,11 +54,8 @@ function coletarDados() {
     };
 }
 
-
-
-
-
-
+  
+  
 function salvarCadastro() {
 
     limparErros();
@@ -67,7 +64,6 @@ function salvarCadastro() {
 
     const dados = coletarDados();
     //console.log("Enviando criar conta:", dados);
-
 
 
 
@@ -88,15 +84,30 @@ function salvarCadastro() {
         campo.style.color = "";
         return true;
      }
- 
- const nomeOK = validarCampo(nome, "Campo nome é obrigatorio");
- const idadeOK = validarCampo(idade, "Campo idade é obrigatorio");
- const racaOK = validarCampo(raca, "Campo raça é obrigatorio");
- const responsavelOK = validarCampo(responsavel, "Campo responsavel é obrigatorio");
+     
+    const nomeOK = validarCampo(nome, "Campo nome é obrigatorio");
+    const idadeOK = validarCampo(idade, "Campo idade é obrigatorio");
+    const racaOK = validarCampo(raca, "Campo raça é obrigatorio");
+    const responsavelOK = validarCampo(responsavel, "Campo responsavel é obrigatorio");
+
+   var headers = new Headers();
+   headers.append("Content-Type", "application/json");
+   headers.append("Access-Control-Allow-Origin", "*");
+
+
 
    
-   
     fetch('http://127.0.0.1:8080/pet/cadpet', { 
+            
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
        
     }).then(response => {
            
@@ -109,15 +120,6 @@ function salvarCadastro() {
 
  function consultarCadastro() {
 
-
-       limparErros();
-    
-    if (!validarFormulario()) return;
-
-    const dados = coletarDados();
-    //console.log("Enviando criar conta:", dados);
-
-
     fetch('http://127.0.0.1:8080/pet/buscarNomePet/', { 
        
     }).then(response => {
@@ -129,14 +131,8 @@ function salvarCadastro() {
     });
  }
 
- function deletarCadastro() {
-   
-    limparErros();
-    
-    if (!validarFormulario()) return;
+ function deletarCadastro() 
 
-    const dados = coletarDados();
-    //console.log("Enviando criar conta:", dados);
 
     fetch('http://127.0.0.1:8080/pet/apagar/', { 
        
@@ -149,14 +145,8 @@ function salvarCadastro() {
     });
  }
 
- function alterarCadastro() {
-   
-    limparErros();
-    
-    if (!validarFormulario()) return;
+ function alterarCadastro() 
 
-    const dados = coletarDados();
-    //console.log("Enviando criar conta:", dados);
 
     fetch('http://127.0.0.1:8080/responsaveis', { 
        
