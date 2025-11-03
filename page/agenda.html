@@ -25,7 +25,7 @@
                             <i class="bi bi-scissors icon-service"></i>
                             <div class="mb-2">
                                 <label for="loja-label" class="form-label" id="loja">Loja</label>
-                                <select class="form-select" id="tipoTosa">
+                                <select class="form-select" id="escolhaLoja">
                                     <option selected>Selecione a Loja</option>
                                     <option value="1">Loja Centro</option>
                                     <option value="2">Loja Avenida Brasil</option>
@@ -49,8 +49,8 @@
 
 
                             <div class="mb-2">
-                                <label for="data-label" class="form-label">Data e Horário</label>
-                                <input class="form-control" type="datetime-local" id="data ">
+                                <label for="data-label" id="data" class="form-label">Data e Horário</label>
+                                <input class="form-control" type="datetime-local" id="dataDigitada ">
                             </div>
                             <button class="btn btn-agendar" type="button" onclick="salvarServico()"> Salvar serviço <i class="bi bi-arrow-right"></i></button>
                               <button class="btn btn-agendar" type="button" onclick="consultarServico()">Consultar serviço <i class="bi bi-arrow-right"></i></button>
