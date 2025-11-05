@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda Pet</title>
-   <link rel="stylesheet" href="/asset/style/agenda.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="/asset/style/agenda.css">
 </head>
 <body>
      <div class="container-wrapper">
@@ -14,17 +14,17 @@
                 <p class="text-muted">Agende serviços para seu pet de forma rápida</p>
             </div>
 
-            <div class="row ">
-                
+            <div class="row">
                 <div class="col mb-3">
                     <div class="card card-service">
                         <div class="card-header">
-                            <i class="bi bi-scissors"></i>Estética
+                            <i class="bi bi-scissors"></i> Estética
                         </div>
                         <div class="card-body">
                             <i class="bi bi-scissors icon-service"></i>
+                            
                             <div class="mb-2">
-                                <label for="loja-label" class="form-label" id="loja">Loja</label>
+                                <label for="escolhaLoja" class="form-label">Loja</label>
                                 <select class="form-select" id="escolhaLoja">
                                     <option selected>Selecione a Loja</option>
                                     <option value="1">Loja Centro</option>
@@ -34,43 +34,39 @@
                                 </select>
                             </div>
 
-                           
-
-                             <div class="mb-2">
-                                <label for="pet-label" class="form-label" id="pet">Pet</label>
+                            <div class="mb-2">
+                                <label for="tipoTosa" class="form-label">Pet</label>
                                 <select class="form-select" id="tipoTosa">
                                     <option selected>Selecione o tipo de estética</option>
                                     <option value="1">Tosa Higiênica</option>
                                     <option value="2">Tosa na Máquina</option>
                                     <option value="3">Tosa Tesoura</option>
                                     <option value="4">Tosa de Raça</option>
+                                    
                                 </select>
                             </div>
 
-
                             <div class="mb-2">
-                                <label for="data-label" id="data" class="form-label">Data e Horário</label>
-                                <input class="form-control" type="datetime-local" id="dataDigitada ">
+                                <label for="dataDigitada" class="form-label">Data e Horário</label>
+                                <input class="form-control" type="datetime-local" id="dataDigitada">
                             </div>
-                          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
-                            <button class="btn btn-agendar" type="button" onclick="salvarservico()">Salvar serviço <i class="bi bi-arrow-right"></i></button>
-                              <button class="btn btn-agendar" type="button" onclick="consultarservico()">Consultar serviço <i class="bi bi-arrow-right"></i></button>
-                                <button class="btn btn-agendar" type="button" onclick="alterarservico()">Alterar serviço <i class="bi bi-arrow-right"></i></button>
-                                  <button class="btn btn-agendar" type="button" onclick="deletarservico()">Deletar serviço <i class="bi bi-arrow-right"></i></button>
-                                  </div>
+                            
+                            <div class="btn-group">
+                                <button class="btn btn-agendar" type="button" onclick="salvarservico()">
+                                    Salvar serviço <i class="bi bi-arrow-right"></i>
+                                </button>
+                                <button class="btn btn-agendar" type="button" onclick="consultarservico()">
+                                    Consultar serviço <i class="bi bi-arrow-right"></i>
+                                </button>
+                                <button class="btn btn-agendar" type="button" onclick="alterarservico()">
+                                    Alterar serviço <i class="bi bi-arrow-right"></i>
+                                </button>
+                                <button class="btn btn-agendar" type="button" onclick="deletarservico()">
+                                    Deletar serviço <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-              
-                    </div>
-                </div>
-                
-                
-                    </div>
-                </div>
-                
-               
                 </div>
             </div>
         </div>
