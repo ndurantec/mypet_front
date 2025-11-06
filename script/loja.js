@@ -3,12 +3,12 @@
 function validarFormulario() {
   
     let nome = document.getElementById("nome").value;
-    let cpf = document.getElementById("cpf").value;
+    let cnpj = document.getElementById("cnpj").value;
     
     let ok = true;
 
     if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
-    if (!cpf) { mostrarErro('erro-cpf', 'Verifique se possui cpf para continuar.'); ok = false; }
+    if (!cnpj) { mostrarErro('erro-cnpj', 'Verifique se possui cnpj para continuar.'); ok = false; }
     
 
     return ok;
@@ -25,7 +25,7 @@ function coletarDados() {
   
     return {
         nome: document.getElementById("nome").value.trim(),
-        cpf: document.getElementById("cpf").value.trim()
+        cnpj: document.getElementById("cnpj").value.trim()
     };
 }
 
@@ -119,7 +119,7 @@ function coletarDados() {
   
     return {
         nome: document.getElementById("nome").value.trim(),
-        cpf: document.getElementById("cpf").value.trim()
+        cnpj: document.getElementById("cnpj").value.trim()
     };
 }
 
@@ -210,7 +210,7 @@ function consultarloja() {
 
 
     // Envia os dados via fetch
-    fetch("http://127.0.0.1:8080/loja/deletar", { // altere a URL conforme seu endpoint
+    fetch("http://127.0.0.1:8080/loja/nome", { // altere a URL conforme seu endpoint
        
 
         method: 'POST',
