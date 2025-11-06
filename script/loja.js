@@ -1,5 +1,4 @@
 
-
 function validarFormulario() {
   
     let nome = document.getElementById("nome").value;
@@ -55,12 +54,11 @@ function validarNome() {
 
 function cadastrarloja() {
 
-     limparErros();
+    limparErros();
+    if (!validarFormulario()) return;
 
-     if (!validarFormulario()) return;
 
-
-    const dados = coletarDados();
+const dados = coletarDados();
 
    
       const nome = document.getElementById('nome').value;

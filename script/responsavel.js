@@ -74,38 +74,32 @@ function limparErros() {
     erros.forEach(e => e.textContent = '');
 }
 
-function validarFormulario() {
-    //limparErros();
+// function validarFormulario() {
+//     //limparErros();
 
-    // Captura dos valores do formulário
-    let nome = document.getElementById("nome").value;
-    let cpf = document.getElementById("cpf").value;
+//     // Captura dos valores do formulário
+//     let nome = document.getElementById("nome").value;
     
-    let ok = true;
+//     // let ok = true;
 
-    if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
-    if (!cpf) { mostrarErro('erro-cpf', 'Verifique se possui cpf para continuar.'); ok = false; }
+//     if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
     
+//     return ok;
+// }
 
-    return ok;
-}
-
-function coletarDados() {
-    const canvas = document.getElementById('signaturePad');
+// function coletarDados() {
+//     const canvas = document.getElementById('signaturePad');
   
-    return {
-        nome: document.getElementById("nome").value.trim(),
-        cpf: document.getElementById("cpf").value.trim()
-    };
-}
+//     return {
+//         nome: document.getElementById("nome").value.trim(),
+//     };
+// }
 
 function salvar() {
 
     limparErros();
 
-    if (!validarFormulario()) return;
-
-    const dados = coletarDados();
+   
 
     let nome = document.getElementById("nome").value;
     
@@ -168,120 +162,157 @@ function salvar() {
 
     } 
 
+
+
+
+
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
-    fetch('http://127.0.0.1:8080/responsavel/cadresponsavel', { // altere a URL conforme seu endpoint
+
+
+    // 🧠 Se deu erro na validação, para aqui
+    if (!ok) {
+        return;
+    }
+
+
+  // ====== ENVIO PARA O BACKEND ======
+    const dataToSend = {
+        nome: nome,
+        email: email,
+        senha: senha,
+        telefone: telefone.replace(/\D/g, ""), 
+        enderecoDto: { id: 1 }
+    };
+
+
+
+ fetch("http://127.0.0.1:8080/responsavel/cadresponsavel", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dataToSend)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao cadastrar usuário.");
+            alert("Responsável já cadastrado");
+        } else{
+            alert("Responsável cadastrado com sucesso!");
+        }
+        return response.json();
+    })
+
+ .then(data => {
+        const responsavel_id = data.id;
+        console.log("Id do registro salvo:", responsavel_id);
+        localStorage.setItem('id_responsavel', responsavel_id);
+    })
+    .catch(error => {
+        console.error("Erro na requisição:", error);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+// function consultar() {
+
+//     limparErros();
+
+//     if (!validarFormulario()) return;
+
+//     const dados = coletarDados();
+
+//     var headers = new Headers();
+//     headers.append("Content-Type", "application/json");
+//     headers.append("Access-Control-Allow-Origin", "*");
+
+//     fetch('http://127.0.0.1:8080/responsavel/nome/{nome}', { // altere a URL conforme seu endpoint
        
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-            dados
-        ),
+//         method: 'POST',
+//         mode: 'cors',
+//         cache: 'no-cache',
+//         body: JSON.stringify(
+//             dados
+//         ),
+
+//     }).then(response => {
+           
+//     }).then(data => {
+       
+//     }).catch(error => {
+       
+//     });
+
+// }
+
+// function atualizar() {
+
+//     limparErros();
+
+//     if (!validarFormulario()) return;
+
+//     const dados = coletarDados();
+
+//     var headers = new Headers();
+//     headers.append("Content-Type", "application/json");
+//     headers.append("Access-Control-Allow-Origin", "*");
+
+//     fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
+       
+//         method: 'POST',
+//         mode: 'cors',
+//         cache: 'no-cache',
+//         body: JSON.stringify(
+//             dados
+//         ),
+
+//     }).then(response => {
+           
+//     }).then(data => {
+       
+//     }).catch(error => {
+       
+//     });
+
+// }
+
+// function deletar() {
+
+//     limparErros();
+
+//     if (!validarFormulario()) return;
+
+//     const dados = coletarDados();
+
+//     var headers = new Headers();
+//     headers.append("Content-Type", "application/json");
+//     headers.append("Access-Control-Allow-Origin", "*");
     
-        headers: headers
+//     fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
+       
+//         method: 'POST',
+//         mode: 'cors',
+//         cache: 'no-cache',
+//         body: JSON.stringify(
+//             dados
+//         ),
 
-    }).then(response => {
+//     }).then(response => {
            
-    }).then(data => {
+//     }).then(data => {
        
-    }).catch(error => {
+//     }).catch(error => {
        
-    });
+//     });
 
-}
 
-function consultar() {
-
-    limparErros();
-
-    if (!validarFormulario()) return;
-
-    const dados = coletarDados();
-
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-
-    fetch('http://127.0.0.1:8080/responsavel/nome/{nome}', { // altere a URL conforme seu endpoint
-       
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-            dados
-        ),
-
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
-
-}
-
-function atualizar() {
-
-    limparErros();
-
-    if (!validarFormulario()) return;
-
-    const dados = coletarDados();
-
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-
-    fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
-       
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-            dados
-        ),
-
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
-
-}
-
-function deletar() {
-
-    limparErros();
-
-    if (!validarFormulario()) return;
-
-    const dados = coletarDados();
-
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-    
-    fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
-       
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-            dados
-        ),
-
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
-
-}
