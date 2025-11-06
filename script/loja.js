@@ -55,15 +55,15 @@ function validarNome() {
 function cadastrarloja() {
 
     limparErros();
+
     if (!validarFormulario()) return;
 
-
-const dados = coletarDados();
+    const dados = coletarDados();
 
    
-      const nome = document.getElementById('nome').value;
+    const nome = document.getElementById('nome').value;
     
-      alert (" loja cadastrada " + nome)
+    alert (" loja cadastrada " + nome)
 
     if (nome.trim() === "") {        
         mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
@@ -129,6 +129,7 @@ function alterarloja() {
      if (!validarFormulario()) return;
 
     const dados = coletarDados();
+    
    
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -201,6 +202,7 @@ function consultarloja() {
 
     const dados = coletarDados();
 
+    console.log("Cadastrar ok")
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -208,7 +210,7 @@ function consultarloja() {
 
 
     // Envia os dados via fetch
-    fetch("http://127.0.0.1:8080/loja/nome", { // altere a URL conforme seu endpoint
+    fetch("http://127.0.0.1:8080/loja/busacaPorNome/nome", { // altere a URL conforme seu endpoint
        
 
         method: 'POST',
