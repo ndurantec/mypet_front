@@ -71,15 +71,15 @@ function validarFormulario() {
 
     // Captura dos valores do formulário
     let nome = document.getElementById("nome").value;
-    let cpf = document.getElementById("cpf").value;
+    //let cpf = document.getElementById("cpf").value;
     
     let ok = true;
 
     if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
-    if (!cpf) { mostrarErro('erro-cpf', 'Verifique se possui cpf para continuar.'); ok = false; }
+    //if (!cpf) { mostrarErro('erro-cpf', 'Verifique se possui cpf para continuar.'); ok = false; }
     
 
-    return ok;
+    //return ok;
 }
 
 function coletarDados() {
