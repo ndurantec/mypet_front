@@ -61,7 +61,7 @@ body {
     background-color: var(--branco);
     padding: 30px;
     border-radius: 0 0 10px 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  
 }
 
 /* Grupos de endereço */
@@ -101,6 +101,15 @@ body {
     display: block;
 }
 
+/* Labels específicos em roxo escuro - CORRIGIDO */
+.form-label[for="nome"],
+.form-label[for="email"],
+.form-label[for="cnpj"],
+.form-label[for="telefone"],
+.form-label[for="endereco"] {
+    color: var(--roxo-escuro) !important;
+}
+
 .form-label.required::after {
     content: " *";
     color: var(--vermelho);
@@ -114,6 +123,7 @@ body {
     font-size: 1rem;
     background-color: var(--branco);
     transition: all 0.3s;
+    color: #333;
 }
 
 .form-control:focus {
@@ -228,7 +238,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* Elementos específicos */
+/* MODIFICADO: Select com mesma cor dos inputs - CORRIGIDO */
 select.form-control {
     cursor: pointer;
     appearance: none;
@@ -237,12 +247,20 @@ select.form-control {
     background-position: right 12px center;
     background-size: 16px;
     padding-right: 40px;
+    color: #333 !important;
+}
+
+/* Garantir que as opções do select também tenham cor escura */
+select.form-control option {
+    color: #333;
+    background-color: var(--branco);
 }
 
 textarea.form-control {
     resize: vertical;
     min-height: 80px;
     font-family: inherit;
+    color: #333;
 }
 
 .form-control::placeholder {

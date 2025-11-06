@@ -140,12 +140,12 @@ function alterarloja() {
     fetch("http://127.0.0.1:8080/loja/UpLoja", { // altere a URL conforme seu endpoint
        
 
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
-    body: JSON.stringify(
-    dados),
-    headers: headers
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+        dados),
+        headers: headers
 
 
 
