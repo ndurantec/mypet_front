@@ -1,7 +1,4 @@
-// Variável global para headers
-const headers = new Headers();
-headers.append("Content-Type", "application/json");
-headers.append("Access-Control-Allow-Origin", "*");
+
 
 function limparErros() {
     let erros = document.querySelectorAll('.erro');
@@ -63,6 +60,8 @@ function salvarCadastro() {
         return;
     }
 
+    limparErros();
+
     const dados = coletarDados();
     console.log("Enviando cadastro:", dados);
 
@@ -73,19 +72,58 @@ function salvarCadastro() {
         body: JSON.stringify(dados),
         headers: headers
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro na resposta do servidor');
+    .then(async response => {
+      let data = await response.json();
+
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
         }
-        return response.json();
+        throw new Error("Erro de validação");
+      }
+
+      return data;
     })
     .then(data => {
-        console.log("Sucesso:", data);
-   
+      if (data.id) {
+        localStorage.setItem("id_usuario", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
     })
-    .catch(error => {
-        console.error("Erro:", error);
-    });
+    .catch(error => console.error(error));
 }
 
 function consultarCadastro() {
