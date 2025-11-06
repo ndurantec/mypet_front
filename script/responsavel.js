@@ -64,135 +64,60 @@ function mostrarErro(idCampo, mensagem) {
   document.getElementById(idCampo).textContent = mensagem;
 }
 
-
-
-
-
-
 function limparErros() {
     let erros = document.querySelectorAll('.erro');
     erros.forEach(e => e.textContent = '');
 }
 
-// function validarFormulario() {
-//     //limparErros();
-
-//     // Captura dos valores do formulário
-//     let nome = document.getElementById("nome").value;
+function validarFormulario() {
     
-//     // let ok = true;
-
-//     if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
+    // Captura dos valores do formulário
+    let nome = document.getElementById("nome").value;
     
-//     return ok;
-// }
+    let ok = true;
 
-// function coletarDados() {
-//     const canvas = document.getElementById('signaturePad');
+    if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
+    if (!email) { mostrarErro('erro-email', 'Verifique se possui email para continuar.'); ok = false; }
+    if (!senha) { mostrarErro('erro-senha', 'Verifique se possui senha para continuar.'); ok = false; }
+    if (!telefone) { mostrarErro('erro-telefone', 'Verifique se possui telefone para continuar.'); ok = false; }
+    
+    return ok;
+}
+
+function coletarDados() {
+    const canvas = document.getElementById('signaturePad');
   
-//     return {
-//         nome: document.getElementById("nome").value.trim(),
-//     };
-// }
+    return {
+        nome: document.getElementById("nome").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        senha: document.getElementById("senha").value.trim(),
+        telefone: document.getElementById("telefone").value.trim()
+    };
+}
 
 function salvar() {
 
     limparErros();
 
-   
+    if (!validarFormulario()) return;
 
-    let nome = document.getElementById("nome").value;
-    
-    if (nome === '') {
-        mostrarErro('erro-nome', 'O nome é obrigatório.');
-        ok = false;
-    } else 
-        if (nome.length < 3) {
-            mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
-        ok = false;
-    } else 
-        if (Number(nome)) {
-            mostrarErro('erro-nome', 'Seu nome não pode conter apenas números!');
-    } else 
-        if (nome.length > 255) {
-            mostrarErro('erro-nome', 'Seu nome apenas pode conter 255 caractéres');
-        } 
-
-    let email = document.getElementById("email").value;
-
-    if (email === '') {
-        mostrarErro('erro-email', 'Informe o e-mail.');
-        ok = false;
-    } else 
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        mostrarErro('erro-email', 'E-mail inválido.');
-        ok = false;
-        
-    } else 
-        if (email.length > 64) {
-            mostrarErro('erro-email', 'Seu email apenas pode conter 64 caractéres');
-
-    } 
-    
-
-    let senha = document.getElementById("senha").value;
-
-    if (senha === '') {
-        mostrarErro('erro-senha', 'A senha é obrigatória.');
-        ok = false;
-    } else 
-        if (senha.length < 8) {
-        mostrarErro('erro-senha', 'A senha deve ter pelo menos 8 caracteres.');
-        ok = false;
-    }
-    
-
-    let telefone = document.getElementById("telefone").value;
-
-    if (telefone === '') {
-        mostrarErro('erro-telefone', 'Informe o telefone.');
-        ok = false;
-    } else 
-        if (!/^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(telefone)) {
-        mostrarErro('erro-telefone', 'Formato inválido. Ex: (99) 99999-9999');
-        ok = false;
-    } else 
-        if (telefone.length > 40) {
-            mostrarErro('erro-telefone', 'Seu telefone apenas pode conter 40 caractéres');
-
-    } 
-
-
-
-
+    const dados = coletarDados();
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
+     fetch("http://127.0.0.1:8080/responsavel/cadresponsavel", {
 
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
 
-    // 🧠 Se deu erro na validação, para aqui
-    if (!ok) {
-        return;
-    }
-
-
-  // ====== ENVIO PARA O BACKEND ======
-    const dataToSend = {
-        nome: nome,
-        email: email,
-        senha: senha,
-        telefone: telefone.replace(/\D/g, ""), 
-        enderecoDto: { id: 1 }
-    };
-
-
-
- fetch("http://127.0.0.1:8080/responsavel/cadresponsavel", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToSend)
     })
     .then(response => {
         if (!response.ok) {
@@ -203,116 +128,381 @@ function salvar() {
         }
         return response.json();
     })
+    .then(async response => {
+      let data = await response.json();
 
- .then(data => {
-        const responsavel_id = data.id;
-        console.log("Id do registro salvo:", responsavel_id);
-        localStorage.setItem('id_responsavel', responsavel_id);
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
+        }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
     })
-    .catch(error => {
-        console.error("Erro na requisição:", error);
-    });
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_responsavel", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error));
+ 
 }
 
+function consultar() {
 
+    limparErros();
 
+    if (!validarFormulario()) return;
 
+    const dados = coletarDados();
 
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
 
-
-
-
-
-
-// function consultar() {
-
-//     limparErros();
-
-//     if (!validarFormulario()) return;
-
-//     const dados = coletarDados();
-
-//     var headers = new Headers();
-//     headers.append("Content-Type", "application/json");
-//     headers.append("Access-Control-Allow-Origin", "*");
-
-//     fetch('http://127.0.0.1:8080/responsavel/nome/{nome}', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/responsavel/nome/{nome}', { // altere a URL conforme seu endpoint
        
-//         method: 'POST',
-//         mode: 'cors',
-//         cache: 'no-cache',
-//         body: JSON.stringify(
-//             dados
-//         ),
-
-//     }).then(response => {
-           
-//     }).then(data => {
-       
-//     }).catch(error => {
-       
-//     });
-
-// }
-
-// function atualizar() {
-
-//     limparErros();
-
-//     if (!validarFormulario()) return;
-
-//     const dados = coletarDados();
-
-//     var headers = new Headers();
-//     headers.append("Content-Type", "application/json");
-//     headers.append("Access-Control-Allow-Origin", "*");
-
-//     fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
-       
-//         method: 'POST',
-//         mode: 'cors',
-//         cache: 'no-cache',
-//         body: JSON.stringify(
-//             dados
-//         ),
-
-//     }).then(response => {
-           
-//     }).then(data => {
-       
-//     }).catch(error => {
-       
-//     });
-
-// }
-
-// function deletar() {
-
-//     limparErros();
-
-//     if (!validarFormulario()) return;
-
-//     const dados = coletarDados();
-
-//     var headers = new Headers();
-//     headers.append("Content-Type", "application/json");
-//     headers.append("Access-Control-Allow-Origin", "*");
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
     
-//     fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
-       
-//         method: 'POST',
-//         mode: 'cors',
-//         cache: 'no-cache',
-//         body: JSON.stringify(
-//             dados
-//         ),
+        headers: headers
 
-//     }).then(response => {
-           
-//     }).then(data => {
-       
-//     }).catch(error => {
-       
-//     });
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao cadastrar usuário.");
+            alert("Responsável já cadastrado");
+        } else{
+            alert("Responsável cadastrado com sucesso!");
+        }
+        return response.json();
+    })
+    .then(async response => {
+      let data = await response.json();
+
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
 
 
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
+        }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_responsavel", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error));
+ 
+}
+
+function atualizar() {
+
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
+    fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
+       
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao cadastrar usuário.");
+            alert("Responsável já cadastrado");
+        } else{
+            alert("Responsável cadastrado com sucesso!");
+        }
+        return response.json();
+    })
+    .then(async response => {
+      let data = await response.json();
+
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
+        }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_responsavel", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error));
+
+}
+
+function deletar() {
+
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+    
+    fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
+       
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao cadastrar usuário.");
+            alert("Responsável já cadastrado");
+        } else{
+            alert("Responsável cadastrado com sucesso!");
+        }
+        return response.json();
+    })
+    .then(async response => {
+      let data = await response.json();
+
+      console.log(data);
+      
+
+      
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
+        }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_responsavel", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error));
+}
+
+//  let nome = document.getElementById("nome").value;
+    
+//     if (nome === '') {
+//         mostrarErro('erro-nome', 'O nome é obrigatório.');
+//         ok = false;
+//     } else 
+//         if (nome.length < 3) {
+//             mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
+//         ok = false;
+//     } else 
+//         if (Number(nome)) {
+//             mostrarErro('erro-nome', 'Seu nome não pode conter apenas números!');
+//     } else 
+//         if (nome.length > 255) {
+//             mostrarErro('erro-nome', 'Seu nome apenas pode conter 255 caractéres');
+//         } 
+
+//     let email = document.getElementById("email").value;
+
+//     if (email === '') {
+//         mostrarErro('erro-email', 'Informe o e-mail.');
+//         ok = false;
+//     } else 
+//         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+//         mostrarErro('erro-email', 'E-mail inválido.');
+//         ok = false;
+        
+//     } else 
+//         if (email.length > 64) {
+//             mostrarErro('erro-email', 'Seu email apenas pode conter 64 caractéres');
+
+//     } 
+    
+
+//     let senha = document.getElementById("senha").value;
+
+//     if (senha === '') {
+//         mostrarErro('erro-senha', 'A senha é obrigatória.');
+//         ok = false;
+//     } else 
+//         if (senha.length < 8) {
+//         mostrarErro('erro-senha', 'A senha deve ter pelo menos 8 caracteres.');
+//         ok = false;
+//     }
+    
+
+//     let telefone = document.getElementById("telefone").value;
+
+//     if (telefone === '') {
+//         mostrarErro('erro-telefone', 'Informe o telefone.');
+//         ok = false;
+//     } else 
+//         if (!/^\(\d{2}\)\s?\d{4,5}-\d{4}$/.test(telefone)) {
+//         mostrarErro('erro-telefone', 'Formato inválido. Ex: (99) 99999-9999');
+//         ok = false;
+//     } else 
+//         if (telefone.length > 40) {
+//             mostrarErro('erro-telefone', 'Seu telefone apenas pode conter 40 caractéres');
+
+//     } 
