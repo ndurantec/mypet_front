@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Serviços-Estética</title>
     <link rel="stylesheet" href="/asset/style/agenda.css">
 </head>
 <body>
@@ -24,9 +24,9 @@
                             <i class="bi bi-scissors icon-service"></i>
                             
                             <div class="mb-2">
-                                <label for="escolhaLoja" class="form-label">Loja</label>
+                                <label for="escolhaLoja" id="loja" class="form-label">Loja</label>
                                 <select class="form-select" id="escolhaLoja">
-                                    <option selected>Selecione a Loja</option>
+                                    <option select>Selecione a Loja</option>
                                     <option value="1">Loja Centro</option>
                                     <option value="2">Loja Avenida Brasil</option>
                                     <option value="3">Loja Do Bairro</option>
@@ -35,9 +35,21 @@
                             </div>
 
                             <div class="mb-2">
+                                <label for="tipoTosa" class="form-label">Estética</label>
+                                <select class="form-select" id="tipoTosa">
+                                    <option select>Selecione o tipo de estética</option>
+                                    <option value="1">Tosa</option>
+                                    <option value="2">Banho</option>
+                                    <option value="3">CheckUp</option>
+                                    <option value="4">Vacinar</option>
+                                    
+                                </select>
+                            </div>
+
+                             <div class="mb-2">
                                 <label for="tipoTosa" class="form-label">Pet</label>
                                 <select class="form-select" id="tipoTosa">
-                                    <option selected>Selecione o tipo de estética</option>
+                                    <option select>Selecione a estética para seu pet</option>
                                     <option value="1">Tosa Higiênica</option>
                                     <option value="2">Tosa na Máquina</option>
                                     <option value="3">Tosa Tesoura</option>
@@ -52,16 +64,16 @@
                             </div>
                             
                             <div class="btn-group">
-                                <button class="btn btn-agendar" type="button" onclick="salvarservico()">
+                                <button class="btn btn-agendar" type="button" onclick="salvar()">
                                     Salvar serviço <i class="bi bi-arrow-right"></i>
                                 </button>
-                                <button class="btn btn-agendar" type="button" onclick="consultarservico()">
+                                <button class="btn btn-agendar" type="button" onclick="consultar()">
                                     Consultar serviço <i class="bi bi-arrow-right"></i>
                                 </button>
-                                <button class="btn btn-agendar" type="button" onclick="alterarservico()">
+                                <button class="btn btn-agendar" type="button" onclick="alterar()">
                                     Alterar serviço <i class="bi bi-arrow-right"></i>
                                 </button>
-                                <button class="btn btn-agendar" type="button" onclick="deletarservico()">
+                                <button class="btn btn-agendar" type="button" onclick="deletar()">
                                     Deletar serviço <i class="bi bi-arrow-right"></i>
                                 </button>
                             </div>
