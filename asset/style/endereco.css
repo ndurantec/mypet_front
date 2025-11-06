@@ -1,7 +1,7 @@
 :root {
-    --roxo-hover: #4F0C5C;     /* Cor de hover / texto */
-    --lilas-pastel: #EEBFF7;   /* Cor base suave */
-    --lilas-claro: #DE86F0;    /* Lilás */
+    --roxo-hover: #4F0C5C;    
+    --lilas-pastel: #EEBFF7;   
+    --lilas-claro: #DE86F0;    
     --roxo-escuro: #912FA5;    
     --branco: #FFFFFF;
 }
@@ -16,6 +16,15 @@ body {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.form-control:focus,
+.form-control:hover {
+  outline: none !important;
+  box-shadow: 0 0 5px  #912FA5 !important;
+  border-color: #912FA5 !important;
+}
+
+
 
 
 .header {
