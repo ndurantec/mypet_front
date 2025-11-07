@@ -30,7 +30,9 @@ function coletarDados() {
         cnpj: document.getElementById("cnpj").value.trim(),
         telefone: document.getElementById("telefone").value.trim(),
         email: document.getElementById("email").value.trim(),
-        endereco: document.getElementById("endereco").value.trim()
+        enderecoDto:{  
+          id: localStorage.getItem ("id_endereco") 
+          }
     };
 }
 
@@ -67,7 +69,7 @@ function cadastrar() {
     const dados = coletarDados();
 
    
-    const nome = document.getElementById('nome').value;
+    const nome = document.getElementById('nome').value; //comemntar sobre isso de novo
     
     alert (" loja cadastrada " + nome)
 
@@ -101,11 +103,10 @@ function cadastrar() {
         mode: 'cors',
         cache: 'no-cache',
         body: JSON.stringify(
-        dados
+          dados
         ),
         headers: headers
-
-         })
+        })
 
 
     .then(async response => {
@@ -155,7 +156,7 @@ function cadastrar() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_usuario", data.id);
+        localStorage.setItem("id_loja", data.id);
         // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
       }
     })
@@ -247,8 +248,8 @@ function alterar() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_usuario", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        localStorage.setItem("id_loja", data.id);
+        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
       }
     })
     .catch(error => console.error(error))
@@ -329,8 +330,8 @@ function deletar() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_usuario", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        localStorage.setItem("id_loja", data.id);
+        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
       }
     })
     .catch(error => console.error(error))
@@ -414,8 +415,8 @@ function consultar() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_usuario", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        localStorage.setItem("id_loja", data.id);
+        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
       }
     })
     .catch(error => console.error(error))
