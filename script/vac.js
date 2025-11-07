@@ -1,3 +1,7 @@
+function mostrarErro(idElemento, mensagem) {
+    document.getElementById(idElemento).textContent = mensagem;
+}
+
 function validarFormulario() {
     //limparErros();
 
