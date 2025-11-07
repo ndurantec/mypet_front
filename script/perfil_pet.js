@@ -1,4 +1,12 @@
+function limparFormulario() {
+    document.querySelectorAll('input, select').forEach(campo => {
+        campo.value = "";
+    });
+    limparErros();
+}
+
 function limparErros() {
+
     let erros = document.querySelectorAll('.erro');
     erros.forEach(e => e.textContent = '');
 
@@ -25,6 +33,7 @@ function validarCampo(campo, texto) {
 }
 
 function validarFormulario() {
+
     limparErros();
 
     const nome = document.getElementById("nome");
@@ -83,6 +92,7 @@ function salvarCadastro() {
       
 
       if (!response.ok) {
+
         // Caso sejam erros de validação no DTO
         if (typeof data === "object") {
           let mensagens = Object.values(data).join("<br>");
@@ -369,9 +379,3 @@ function alterarCadastro() {
         .catch(error => console.error(error));
 }
 
-function limparFormulario() {
-    document.querySelectorAll('input, select').forEach(campo => {
-        campo.value = "";
-    });
-    limparErros();
-}
