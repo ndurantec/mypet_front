@@ -93,9 +93,6 @@ function coletarDados() {
         senha: document.getElementById("senha").value.trim(),
         telefone: document.getElementById("telefone").value.trim(),
         idUsuario: localStorage.getItem("id_usuario"),
-        enderecoDto : {
-          id : localStorage.getItem("id_")
-        }
     };
 }
 
@@ -182,7 +179,7 @@ function salvar() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_responsavel", data.id);
+        localStorage.setItem("id_usuario", data.id);
         // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
       }
     })
