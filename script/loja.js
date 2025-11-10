@@ -5,7 +5,7 @@ function validarFormulario() {
     let cnpj = document.getElementById("cnpj").value;
     let telefone = document.getElementById("telefone").value;
     let email = document.getElementById("email").value;
-    let endereco = document.getElementById("endereço").value;
+    let endereco = document.getElementById("endereco").value;
     let ok = true;
 
     if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
@@ -67,31 +67,10 @@ function cadastrar() {
 
     if (!validarFormulario()) return;
 
-    const dados = coletarDados();
+    const dados = coletarDados();   
 
-   
-    const nome = document.getElementById('nome').value; //comemntar sobre isso de novo
+    console.log (dados);
     
-    alert (" loja cadastrada " + nome)
-
-    if (nome.trim() === "") {        
-        mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
-    }
-
-    if (nome.length < 3) {
-        return "Digite pelo menos 3 caracteres";
-    }
-
-    const email = document.getElementById('email').value;
-    if (email === '') {
-        mostrarErro('erro-email', 'Informe o e-mail.');
-        ok = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        mostrarErro('erro-email', 'E-mail inválido.');
-        ok = false;
-    }
-
-
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
@@ -169,18 +148,18 @@ function cadastrar() {
     
 //     const canvas = document.getElementById('signaturePad');
   
-HEAD
-    return {
-        nome: document.getElementById("nome").value.trim(),
-        cnpj: document.getElementById("cnpj").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        telefone: document.getElementById("telefone").value.trim(),
+
+    // return {
+    //     nome: document.getElementById("nome").value.trim(),
+    //     cnpj: document.getElementById("cnpj").value.trim(),
+    //     email: document.getElementById("email").value.trim(),
+    //     telefone: document.getElementById("telefone").value.trim(),
         
-        endereco: localStorage.getItem ("")
+    //     endereco: localStorage.getItem ("")
          
-    };
+    // };
    
-    console.log (coletarDados);
+    // console.log (coletarDados);
 
 
 //     return {
@@ -438,3 +417,26 @@ function consultar() {
     .catch(error => console.error(error))
     });
 }
+
+
+
+// const nome = document.getElementById('nome').value; //comemntar sobre isso de novo
+    
+    // alert (" loja cadastrada " + nome)
+
+    // if (nome.trim() === "") {        
+    //     mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
+    // }
+
+    // if (nome.length < 3) {
+    //     return "Digite pelo menos 3 caracteres";
+    // }
+
+    // const email = document.getElementById('email').value;
+    // if (email === '') {
+    //     mostrarErro('erro-email', 'Informe o e-mail.');
+    //     ok = false;
+    // } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    //     mostrarErro('erro-email', 'E-mail inválido.');
+    //     ok = false;
+    // }
