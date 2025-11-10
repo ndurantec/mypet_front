@@ -58,8 +58,11 @@ function coletarDados() {
         raca: document.getElementById("raca").value.trim(),
         tipo: document.getElementById("tipo").value.trim(),
         responsavel: document.getElementById("responsavel").value.trim(),
-        outro_tipo: document.getElementById("outro_tipo").value.trim()
-    };
+        outro_tipo: document.getElementById("outro_tipo").value.trim(),
+
+        user: localStorage.getItem("id_usuario")
+
+        };
 }
 
 function salvarCadastro() {
@@ -69,6 +72,8 @@ function salvarCadastro() {
     if (!validarFormulario()) return;
 
     const dados = coletarDados();
+
+    console.log(dados);
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
