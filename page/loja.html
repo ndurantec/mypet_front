@@ -24,29 +24,26 @@
                     <div class="form-group">
                         <label class="form-label required" for="nome">Nome da Loja</label>
                         <input type="text" class="form-control" id="nome" placeholder="Digite o nome da loja" name="nome" >
-                       
                          <div id="erro-nome" class="erro"></div>
                     </div>
                     
                     <div class="form-group">
                         
                         <label class="form-label required" for="email">E-mail</label> 
-
                         <input type="email" class="form-control" id="email" placeholder="Digite o e-mail" name="email" >
-                        
                         <div id="erro-email" class="erro"></div>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label required" for="telefone">Telefone</label>
                         <input type="text" class="form-control" id="telefone" placeholder="Digite o telefone" name="telefone" >
-                    
+                        <div id="erro-telefone" class="erro"></div>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label required" for="cnpj">CNPJ</label>
                         <input type="text" class="form-control" id="cnpj" placeholder="Digite o CNPJ" name="cnpj" >
-             
+                        <div id="erro-cnpj" class="erro"></div>
                     </div>
                     
                     <div class="form-group">
@@ -70,13 +67,13 @@
                 <div class="form-footer">
                     <div class="form-actions">
 
-                        <button type="button" class="btn btn-primary" onclick="cadastrarloja()"> Cadastrar </button>
+                        <button type="button" class="btn btn-primary" onclick="cadastrar()"> Cadastrar </button>
 
-                        <button type="button" class="btn btn-primary" onclick="consultarloja()"> consultar </button>
+                        <button type="button" class="btn btn-primary" onclick="consultar()"> Consultar </button>
 
-                        <button type="button" class="btn btn-primary" onclick="deletarloja()"> deletar </button>
+                        <button type="button" class="btn btn-primary" onclick="deletar()"> Deletar </button>
 
-                        <button type="button" class="btn btn-primary" onclick="alterarloja()"> alterar</button>
+                        <button type="button" class="btn btn-primary" onclick="alterar()"> Alterar</button>
 
                         <button type="reset" class="btn btn-secondary">Limpar Formulário</button>
                     </div>
@@ -106,11 +103,14 @@
             <div class="form-group">
                 <label class="form-label">Tipo de Endereço</label>
                 <input type="text" class="form-control" placeholder="Ex: Filial, Entrega, etc." name="tipo_endereco">
+                <div id="erro-endereco" class="erro"></div>
             </div>
+            
             
             <div class="form-group">
                 <label class="form-label">Observações</label>
                 <textarea class="form-control" placeholder="Observações sobre este endereço" name="observacoes" rows="2"></textarea>
+                <div id="erro-observacoes" class="erro"></div>
             </div>
         </div>
     </template>

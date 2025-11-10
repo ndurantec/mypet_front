@@ -1,55 +1,59 @@
+//ok
+function mostrarErro(idElemento, mensagem) {
+    document.getElementById(idElemento).textContent = mensagem;
+}
+
+//ok
 function limparErros() {
     let erros = document.querySelectorAll('.erro');
     erros.forEach(e => e.textContent = '');
+}
 
-    // Limpar estilos dos campos
-    const campos = document.querySelectorAll('input, select');
-    campos.forEach(campo => {
-        campo.style.border = "";
-        campo.style.color = "";
-        campo.placeholder = "";
+function limparFormulario() {
+    document.querySelectorAll('input, select').forEach(campo => {
+        campo.value = "";
     });
-}
-
-function validarCampo(campo, texto) {
-    if (campo.value.trim() === "") {
-        campo.placeholder = texto;
-        campo.style.border = "2px solid red";
-        campo.style.color = "red";
-        return false;
-    } else {
-        campo.style.border = "";
-        campo.style.color = "";
-        return true;
-    }
-}
-
-function validarFormulario() {
     limparErros();
-
-    const nome = document.getElementById("nome");
-    const idade = document.getElementById("idade");
-    const raca = document.getElementById("raca");
-    const tipo = document.getElementById("tipo");
-    const responsavel = document.getElementById("responsavel");
-
-    const nomeOK = validarCampo(nome, "Campo nome é obrigatório");
-    const idadeOK = validarCampo(idade, "Campo idade é obrigatório");
-    const racaOK = validarCampo(raca, "Campo raça é obrigatório");
-    const tipoOK = validarCampo(tipo, "Campo tipo é obrigatório");
-    const responsavelOK = validarCampo(responsavel, "Campo responsável é obrigatório");
-
-    return nomeOK && idadeOK && racaOK && tipoOK && responsavelOK;
 }
 
+// function validarCampo(campo, texto) {
+//     if (campo.value.trim() === "") {
+//         campo.placeholder = texto;
+//         campo.style.border = "2px solid red";
+//         campo.style.color = "red";
+//         return false;
+//     } else {
+//         campo.style.border = "";
+//         campo.style.color = "";
+//         return true;
+//     }
+// }
+
+//ok
+function validarFormulario() {
+
+    //limparErros();
+
+    // Captura dos valores do formulário
+    let nome = document.getElementById("nome").value;
+    let cpf = document.getElementById("cpf").value;
+    
+    let ok = true;
+
+    if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
+    if (!cpf) { mostrarErro('erro-cpf', 'Verifique se possui cpf para continuar.'); ok = false; }
+    
+
+    return ok;
+}
+
+//ok
 function coletarDados() {
+    const canvas = document.getElementById('signaturePad');
+  
     return {
         nome: document.getElementById("nome").value.trim(),
-        idade: document.getElementById("idade").value.trim(),
-        raca: document.getElementById("raca").value.trim(),
-        tipo: document.getElementById("tipo").value.trim(),
-        responsavel: document.getElementById("responsavel").value.trim(),
-        outro_tipo: document.getElementById("outro_tipo").value.trim()
+        cpf: document.getElementById("cpf").value.trim()
     };
 }
 
@@ -60,6 +64,10 @@ function salvarCadastro() {
     if (!validarFormulario()) return;
 
     const dados = coletarDados();
+    //console.log("Enviando criar conta:", dados);
+
+    console.log(JSON.stringify(dados));
+
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -83,6 +91,7 @@ function salvarCadastro() {
       
 
       if (!response.ok) {
+
         // Caso sejam erros de validação no DTO
         if (typeof data === "object") {
           let mensagens = Object.values(data).join("<br>");
@@ -369,9 +378,3 @@ function alterarCadastro() {
         .catch(error => console.error(error));
 }
 
-function limparFormulario() {
-    document.querySelectorAll('input, select').forEach(campo => {
-        campo.value = "";
-    });
-    limparErros();
-}
