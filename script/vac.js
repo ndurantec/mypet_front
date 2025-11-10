@@ -22,17 +22,21 @@ function coletarDados() {
     const canvas = document.getElementById('signaturePad');
   
     return {
-        // nome: document.getElementById("nome").value.trim(),
-        // cpf: document.getElementById("cpf").value.trim(),
-        campo1: document.getElementById("campo1").value.trim(),
-        campo2: document.getElementById("campo2").value.trim(),
-        campo3: document.getElementById("campo3").value.trim(),
-        campo4: document.getElementById("campo4").value.trim(),
-        campo5: document.getElementById("campo5").value.trim(),
-        campo6: document.getElementById("campo6").value.trim(),
-        campo7: document.getElementById("campo7").value.trim(),
-        campo8: document.getElementById("campo8").value.trim(),
-        campo9: document.getElementById("campo9").value.trim()
+        campo1: document.getElementById("campo2").value.trim(),
+        campo2: document.getElementById("campo3").value.trim(),
+        campo3: document.getElementById("campo4").value.trim(),
+        campo4: document.getElementById("campo5").value.trim(),
+        campo5: document.getElementById("campo6").value.trim(),
+        campo6: document.getElementById("campo7").value.trim(),
+        campo7: document.getElementById("campo8").value.trim(),
+        campo8: document.getElementById("campo9").value.trim()
+        // campo9: document.getElementById("campo10").value.trim(),
+        // campo10: document.getElementById("campo11").value.trim(),
+        // campo11: document.getElementById("campo12").value.trim(),
+        // campo12: document.getElementById("campo13").value.trim(),
+        // campo13: document.getElementById("campo14").value.trim(),
+        // campo14: document.getElementById("campo15").value.trim(),
+        // campo15: document.getElementById("campo16").value.trim()
 
     };
 }
