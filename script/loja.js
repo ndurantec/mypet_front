@@ -31,7 +31,7 @@ function coletarDados() {
         telefone: document.getElementById("telefone").value.trim(),
         email: document.getElementById("email").value.trim(),
         enderecoDto:{  
-          id = 1
+          id: 1
         //  id: localStorage.getItem ("id_endereco") 
           }
     };
@@ -169,7 +169,7 @@ function cadastrar() {
     
 //     const canvas = document.getElementById('signaturePad');
   
-<<<<<<< HEAD
+HEAD
     return {
         nome: document.getElementById("nome").value.trim(),
         cnpj: document.getElementById("cnpj").value.trim(),
@@ -182,14 +182,13 @@ function cadastrar() {
    
     console.log (coletarDados);
 
-}
-=======
+
 //     return {
 //         nome: document.getElementById("nome").value.trim(),
 //         cnpj: document.getElementById("cnpj").value.trim()
 //     };
 // }
->>>>>>> e9849bb79b6e0b6b3a4487c6b54b1707800a86a2
+
 
 
 function alterar() {
