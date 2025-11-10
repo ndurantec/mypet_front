@@ -163,8 +163,16 @@ function coletarDados() {
   
     return {
         nome: document.getElementById("nome").value.trim(),
-        cnpj: document.getElementById("cnpj").value.trim()
+        cnpj: document.getElementById("cnpj").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        telefone: document.getElementById("telefone").value.trim(),
+        
+        endereco: localStorage.getItem ("")
+         
     };
+   
+    console.log (coletarDados);
+
 }
 
 
@@ -245,7 +253,7 @@ function alterarloja() {
         // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
       }
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error(error))
 
    
     });
@@ -327,7 +335,7 @@ function deletarloja() {
         // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
       }
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error(error))
     });
 }
 
@@ -412,6 +420,6 @@ function consultarloja() {
         // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
       }
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error(error))
     });
 }
