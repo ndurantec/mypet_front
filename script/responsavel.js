@@ -92,7 +92,10 @@ function coletarDados() {
         email: document.getElementById("email").value.trim(),
         senha: document.getElementById("senha").value.trim(),
         telefone: document.getElementById("telefone").value.trim(),
-        idUsuario: localStorage.getItem("id_usuario")
+        idUsuario: localStorage.getItem("id_usuario"),
+        enderecoDto : {
+          id : localStorage.getItem("id_")
+        }
     };
 }
 
@@ -102,10 +105,10 @@ function salvar() {
     // console.log(limparErros());
 
     if (!validarFormulario()) return;
-   // console.log(validarFormulario());
+    // console.log(validarFormulario());
 
     const dados = coletarDados();
-  //  console.log(coletarDados());
+    console.log(dados);
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
