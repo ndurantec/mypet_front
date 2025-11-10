@@ -9,33 +9,35 @@ function mostrarErro(idElemento, mensagem) {
 
 function validarFormulario() {
        
-    let nome = document.getElementById("loja").value;
-    let cpf = document.getElementById("tipoTosa").value;
+    let loja = document.getElementById("loja").value;
+    let tosa = document.getElementById("tosa").value;
     
     let ok = true;
 
     if (!loja) { 
-        mostrarErro('erro-loja', 'Verifique se possui nome para continuar.'); 
+        mostrarErro('erro-loja', 'Verifique se possui loja para continuar.'); 
         ok = false; 
     }
-    if (!tipoTosa) { 
-        mostrarErro('erro-tipoTosa', 'Verifique se possui cpf para continuar.'); 
+    if (!tosa) { 
+        mostrarErro('erro-tosa', 'Verifique se possui tosa para continuar.'); 
         ok = false; 
     }
     
     return ok;
 }
 
-function coletarDados() {
+function coletarDados() { 
   
-    const loja = document.getElementById("escolhaLoja").value;
-    const tipoServico = document.getElementById("tipoTosa").value;
-    const dataHora = document.getElementById("dataDigitada").value;
+  
+  const disponivel = document.getElementById("loja").value;
+  // const lojaDto = document.getElementById("tosa").value;
+  const LocalDate = document.getElementById("dataDigitada").value;
+  const idLoja = localStorage.getItem("id_Loja"); 
     
     return {
-        loja: loja,
-        tipoServico: tipoServico,
-        dataHora: dataHora
+      
+     
+
     };
 }
 
