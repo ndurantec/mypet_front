@@ -60,7 +60,7 @@ function salvarVacinacao(){
 
 
     //Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/vacina/', { // altere a URL conforme seu endpoint
 
             method: 'POST',
             mode: 'cors',
@@ -138,7 +138,7 @@ function consultarVacinacao(){
     headers.append("Access-Control-Allow-Origin", "*");
 
     //Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/vacina/', { // altere a URL conforme seu endpoint
 
             method: 'POST',
             mode: 'cors',
@@ -217,7 +217,7 @@ function alterarVacinacao(){
     headers.append("Access-Control-Allow-Origin", "*");
 
     //Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/vacina/', { // altere a URL conforme seu endpoint
 
             method: 'POST',
             mode: 'cors',
@@ -295,7 +295,7 @@ function deletarVacinacao(){
     headers.append("Access-Control-Allow-Origin", "*");
 
     //Envia os dados via fetch
-    fetch('http://127.0.0.1:8080/responsaveis', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/vacina/', { // altere a URL conforme seu endpoint
         
             method: 'POST',
             mode: 'cors',
