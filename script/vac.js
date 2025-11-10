@@ -29,14 +29,14 @@ function coletarDados() {
         campo5: document.getElementById("campo6").value.trim(),
         campo6: document.getElementById("campo7").value.trim(),
         campo7: document.getElementById("campo8").value.trim(),
-        campo8: document.getElementById("campo9").value.trim()
-        // campo9: document.getElementById("campo10").value.trim(),
-        // campo10: document.getElementById("campo11").value.trim(),
-        // campo11: document.getElementById("campo12").value.trim(),
-        // campo12: document.getElementById("campo13").value.trim(),
-        // campo13: document.getElementById("campo14").value.trim(),
-        // campo14: document.getElementById("campo15").value.trim(),
-        // campo15: document.getElementById("campo16").value.trim()
+        campo8: document.getElementById("campo9").value.trim(),
+        campo9: document.getElementById("campo10").value.trim(),
+        campo10: document.getElementById("campo11").value.trim(),
+        campo11: document.getElementById("campo12").value.trim(),
+        campo12: document.getElementById("campo13").value.trim(),
+        campo13: document.getElementById("campo14").value.trim(),
+        campo14: document.getElementById("campo15").value.trim(),
+        campo15: document.getElementById("campo16").value.trim()
 
     };
 }
