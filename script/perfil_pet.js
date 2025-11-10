@@ -53,7 +53,6 @@ function coletarDados() {
   
     return {
         nome: document.getElementById("nome").value.trim(),
-<<<<<<< HEAD
         idade: document.getElementById("idade").value.trim(),
         raca: document.getElementById("raca").value.trim(),
         tipo: document.getElementById("tipo").value.trim(),
@@ -63,10 +62,6 @@ function coletarDados() {
         user: localStorage.getItem("id_usuario")
 
         };
-=======
-        cpf: document.getElementById("cpf").value.trim()
-    };
->>>>>>> 7d88f9f7ef9ca41462c196c661db2e23410174b1
 }
 
 function salvarCadastro() {
