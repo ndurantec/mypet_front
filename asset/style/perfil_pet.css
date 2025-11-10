@@ -183,7 +183,7 @@
         }
 
          .erro { 
-     text: 2px solid red; 
+     color: 2px solid red; 
  } 
 
 /* Estilo para a mensagem de erro */
