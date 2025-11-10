@@ -30,75 +30,6 @@ function enviarCadastro() {
 }
 
 
-
-
-function cadastraendereco() {
-
-    
-
-    limparErros();
-
-   if (!validarFormulario()) return;
-
-     const dados = coletarDados();
-
-
-      var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-   
-    let rua = document.getElementById("rua").value;
-    let numero = document.getElementById("numero").value;
-    let bairro = document.getElementById("bairro").value;
-    let cep = document.getElementById("cep").value;
-    let complemento = document.getElementById("complemento").value;
-    
-    if(rua == ""){
-        alert("Você precisa preencher o campo rua");
-    }
-
-    if(numero == ""){
-        alert("Você precisa preencher o campo numero");
-    }
-
-    if(bairro == ""){
-        alert("Você precisa preencher o campo bairro");
-    }
-
-    if( cep== ""){
-        alert("Você precisa preencher o campo cep");
-    }
-
-      if( complemento== ""){
-        alert("Você precisa preencher o campo complemento");
-    }
-
-
-         alert( rua + " - " + numero + " - " + bairro + " - " + cep + " - " + complemento);
-
-   
-    fetch('http://127.0.0.1:8080/endereco/cadendereco', { 
-
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-            dados
-        ),
-    
-        headers: headers
-
-
-       
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
-}
-
 function limparErros() {
     let erros = document.querySelectorAll('.erro');
     erros.forEach(e => e.textContent = '');
@@ -130,18 +61,22 @@ function coletarDados() {
    
 
 function consultarendereco() {
-      var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
+
+       limparErros();
+
+       if (!validarFormulario()) return;
+       
+       const dados = coletarDados();
+
+       console.log(JSON.stringify(dados));
+
+       var headers = new Headers();
+       headers.append("Content-Type", "application/json");
+       headers.append("Access-Control-Allow-Origin", "*");
+
+
    
-   limparErros();
-
-   if (!validarFormulario()) return;
-
-     const dados = coletarDados();
-
-   
-    fetch('http://127.0.0.1:8080/endereco/findById/{id}', { 
+    fetch('http://127.0.0.1:8080/endereco/findById/{id}'), { 
 
     method: 'POST',
         mode: 'cors',
@@ -152,65 +87,79 @@ function consultarendereco() {
     
         headers: headers
 
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
+    .then(async response => {
+      let data = await response.json();
+
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
+        }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_usuario", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error))
 }
+
+};
 
 
 function deletarendereco() {
-   
-  var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-   
-limparErros();
-
-   if (!validarFormulario()) return;
-
-     const dados = coletarDados();
-
-
-    fetch('http://127.0.0.1:8080/endereco/{id}', { 
-       
-    method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-            dados
-        ),
-    
-        headers: headers
-
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
-}
-
-
-function atualizarendereco() {
-   
-  var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
 
     limparErros();
 
-   if (!validarFormulario()) return;
+    if (!validarFormulario()) return;
 
-     const dados = coletarDados();
-    
+    const dados = coletarDados();
 
+    console.log(JSON.stringify(dados));
    
-    fetch('http://127.0.0.1:8080/endereco/UpEndereco/{id}', { 
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
+
+    fetch('http://127.0.0.1:8080/endereco/{id}'), { 
        
     method: 'POST',
         mode: 'cors',
@@ -220,12 +169,143 @@ function atualizarendereco() {
         ),
     
         headers: headers
-        
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
+
+   .then(async response => {
+      let data = await response.json();
+
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
+        }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_usuario", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error))
 }
+
+};
+
+
+function atualizarendereco() {
+
+    limparErros();
+
+    if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+     console.log(JSON.stringify(dados));
+   
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
+    
+
+   
+    fetch('http://127.0.0.1:8080/endereco/UpEndereco/{id}'), { 
+       
+    method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+         .then(async response => {
+      let data = await response.json();
+
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
+        }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_usuario", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error))
+}
+    
+};

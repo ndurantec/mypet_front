@@ -3,13 +3,16 @@ function validarFormulario() {
   
     let nome = document.getElementById("nome").value;
     let cnpj = document.getElementById("cnpj").value;
-    
+    let telefone = document.getElementById("telefone").value;
+    let email = document.getElementById("email").value;
+    let endereco = document.getElementById("endereço").value;
     let ok = true;
 
     if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
     if (!cnpj) { mostrarErro('erro-cnpj', 'Verifique se possui cnpj para continuar.'); ok = false; }
-    
-
+    if (!telefone) { mostrarErro('erro-telefone', 'Verifique se possui telefone para continuar.'); ok = false; }
+    if (!email) { mostrarErro('erre-mail', 'Verifique se possui email para continuar.'); ok = false; }
+    if (!endereco) { mostrarErro('erro-endereco', 'Verifique se possui endereço para continuar.'); ok = false; }
     return ok;
 }
 
@@ -24,35 +27,41 @@ function coletarDados() {
   
     return {
         nome: document.getElementById("nome").value.trim(),
-        cnpj: document.getElementById("cnpj").value.trim()
+        cnpj: document.getElementById("cnpj").value.trim(),
+        telefone: document.getElementById("telefone").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        enderecoDto:{  
+          id: 1
+        //  id: localStorage.getItem ("id_endereco") 
+          }
     };
 }
 
 
-function validarNome() {
+// function validarNome() {
 
-    const nome = document.getElementById('nome').value;
+//     const nome = document.getElementById('nome').value;
     
-    if (nome.trim() === "") {        
-        mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
-    }
+//     if (nome.trim() === "") {        
+//         mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
+//     }
 
-    if (nome.length < 3) {
-        return "Digite pelo menos 3 caracteres";
-    }
+//     if (nome.length < 3) {
+//         return "Digite pelo menos 3 caracteres";
+//     }
 
-    const email = document.getElementById('email').value;
-    if (email === '') {
-        mostrarErro('erro-email', 'Informe o e-mail.');
-        ok = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        mostrarErro('erro-email', 'E-mail inválido.');
-        ok = false;
-    }
-}
+//     const email = document.getElementById('email').value;
+//     if (email === '') {
+//         mostrarErro('erro-email', 'Informe o e-mail.');
+//         ok = false;
+//     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+//         mostrarErro('erro-email', 'E-mail inválido.');
+//         ok = false;
+//     }
+// }
 
 
-function cadastrarloja() {
+function cadastrar() {
 
     limparErros();
 
@@ -61,7 +70,7 @@ function cadastrarloja() {
     const dados = coletarDados();
 
    
-    const nome = document.getElementById('nome').value;
+    const nome = document.getElementById('nome').value; //comemntar sobre isso de novo
     
     alert (" loja cadastrada " + nome)
 
@@ -95,11 +104,10 @@ function cadastrarloja() {
         mode: 'cors',
         cache: 'no-cache',
         body: JSON.stringify(
-        dados
+          dados
         ),
         headers: headers
-
-         })
+        })
 
 
     .then(async response => {
@@ -149,7 +157,7 @@ function cadastrarloja() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_usuario", data.id);
+        localStorage.setItem("id_loja", data.id);
         // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
       }
     })
@@ -157,18 +165,33 @@ function cadastrarloja() {
 }
 
 
-function coletarDados() {
+// function coletarDados() {
     
-    const canvas = document.getElementById('signaturePad');
+//     const canvas = document.getElementById('signaturePad');
   
+HEAD
     return {
         nome: document.getElementById("nome").value.trim(),
-        cnpj: document.getElementById("cnpj").value.trim()
+        cnpj: document.getElementById("cnpj").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        telefone: document.getElementById("telefone").value.trim(),
+        
+        endereco: localStorage.getItem ("")
+         
     };
-}
+   
+    console.log (coletarDados);
 
 
-function alterarloja() {
+//     return {
+//         nome: document.getElementById("nome").value.trim(),
+//         cnpj: document.getElementById("cnpj").value.trim()
+//     };
+// }
+
+
+
+function alterar() {
 
     limparErros();
 
@@ -241,17 +264,17 @@ function alterarloja() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_usuario", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        localStorage.setItem("id_loja", data.id);
+        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
       }
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error(error))
 
    
     });
 }
 
-function deletarloja() {
+function deletar() {
      
     limparErros();
 
@@ -323,16 +346,16 @@ function deletarloja() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_usuario", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        localStorage.setItem("id_loja", data.id);
+        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
       }
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error(error))
     });
 }
 
  
-function consultarloja() {
+function consultar() {
    
     limparErros();
 
@@ -408,10 +431,10 @@ function consultarloja() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_usuario", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        localStorage.setItem("id_loja", data.id);
+        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
       }
     })
-    .catch(error => console.error(error));
+    .catch(error => console.error(error))
     });
 }

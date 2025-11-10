@@ -91,17 +91,21 @@ function coletarDados() {
         nome: document.getElementById("nome").value.trim(),
         email: document.getElementById("email").value.trim(),
         senha: document.getElementById("senha").value.trim(),
-        telefone: document.getElementById("telefone").value.trim()
+        telefone: document.getElementById("telefone").value.trim(),
+        idUsuario: localStorage.getItem("id_usuario"),
     };
 }
 
 function salvar() {
 
     limparErros();
+    // console.log(limparErros());
 
     if (!validarFormulario()) return;
+    // console.log(validarFormulario());
 
     const dados = coletarDados();
+    console.log(dados);
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -175,7 +179,7 @@ function salvar() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_responsavel", data.id);
+        localStorage.setItem("id_usuario", data.id);
         // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
       }
     })
@@ -445,6 +449,13 @@ function deletar() {
     })
     .catch(error => console.error(error));
 }
+
+
+
+
+
+
+
 
 //  let nome = document.getElementById("nome").value;
     

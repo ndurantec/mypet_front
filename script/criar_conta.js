@@ -62,8 +62,8 @@
      
 // }
 
-function mostrarErro(idCampo, mensagem) {
-  document.getElementById(idCampo).textContent = mensagem;
+function mostrarErro(idElemento, mensagem) {
+  document.getElementById(idElemento).textContent = mensagem;
 }
 
 function validarFormulario() {
@@ -185,18 +185,6 @@ function salvarConta(){
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 function consultarConta(){
     limparErros();
