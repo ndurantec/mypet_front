@@ -225,5 +225,12 @@ body {
         width: 100%;
     }
 }
+.erro {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #ff0000; /* azul moderno do Google */
+  margin: 8px 0;
+}
+
 
 
