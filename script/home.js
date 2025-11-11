@@ -7,6 +7,7 @@ function voltar() {
 }
 
 function entrar() {
+    console.log("chamou o javascript");
     window.location.href = '/page/login.html';
 }
 
