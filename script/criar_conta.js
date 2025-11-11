@@ -66,6 +66,18 @@ function mostrarErro(idElemento, mensagem) {
   document.getElementById(idElemento).textContent = mensagem;
 }
 
+function mostrarMensagem(texto, tipo) {
+  const mensagemDiv = document.getElementById("mensagem");
+  mensagemDiv.innerHTML = texto;
+
+  if (tipo === "sucesso") {
+    mensagemDiv.className = "mensagem sucesso";
+  } else {
+    mensagemDiv.className = "mensagem erro";
+  }
+}
+
+
 function validarFormulario() {
     //limparErros();
 
@@ -377,6 +389,8 @@ function alterarConta(){
 }
 
 function deletarConta(){
+
+    console.log("chamou limpar conta");
     limparErros();
 
     //if (!validarFormulario()) return;
