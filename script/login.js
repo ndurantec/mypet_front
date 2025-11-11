@@ -5,7 +5,7 @@ function limparErros() {
     let erros = document.querySelectorAll('.erro');
     erros.forEach(e => e.textContent = '');
  
-
+}
     function validarFormulario() {
         //limparErros();
     
@@ -32,57 +32,8 @@ function limparErros() {
 }
 
 
+function salvarLogin() {    
 
- document.getElementById('loginForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // evita que o formulário seja enviado para um servidor
-
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value.trim();
-
-  if (!email || !password) {
-    alert('Por favor, preencha todos os campos.');
-    return;
-  }
-
-  // Aqui você pode colocar a lógica de autenticação, por exemplo:
-  console.log('Login com:', { email, password });
-  alert('Login realizado com sucesso! (simulado)');
-});
-   
-function limparErros() {
-    let erros = document.querySelectorAll('.erro');
-    erros.forEach(e => e.textContent = '');
-}
-
-function validarFormulario() {
-    //limparErros();
-
-    // Captura dos valores do formulário
-    let email = document.getElementById("email").value;
-    let senha = document.getElementById("senha").value;
-       
-    let ok = true;
-
-    if (!email) { mostrarErro('erro-email', 'Verifique se possui email para continuar.'); ok = false; }
-    if (!senha) { mostrarErro('erro-senha', 'Verifique se possui senha para continuar.'); ok = false; }
-    
-
-    return ok;
-}
-
-function coletarDados() {
-    const canvas = document.getElementById('signaturePad');
-  
-    return {
-        email: document.getElementById("email").value.trim(),
-        senha: document.getElementById("senha").value.trim()
-    };
-}
-
-function Logar() {
-
-
-  
     limparErros();
     
     if (!validarFormulario()) return;
@@ -90,23 +41,13 @@ function Logar() {
     const dados = coletarDados();
     //console.log("Enviando criar conta:", dados);
 
-   
+    console.log(JSON.stringify(dados));
 
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
 
-    // Envia os dados via fetch
-    fetch("http://127.0.0.1:8080/login/authenticate", { // altere a URL conforme seu endpoint
-       
-    }).then(response => {
-           
-    }).then(data => {
-       
-    }).catch(error => {
-       
-    });
-}
-
-
-    fetch('http://localhost:8080/professor/insert', {
+    fetch('http://localhost:8080/auth/login', {
         
         method: 'POST',
         mode: 'cors',
@@ -119,33 +60,7 @@ function Logar() {
 
 
     })
-
-    
-function Logar() {
-
-    limparErros();
-
-    if (!validarFormulario)) return
-
-    const dados = coletarDados ();
-    //console.log ("Enviando criar conta:", dados);
-
-    
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-
-
-
-    }
-}
-
-    fetch(`http://127.0.0.1:8080/pet/buscarNomePet/${encodeURIComponent(email)}`, {
-        method: 'GET',
-        mode: 'cors',
-        headers: headers
-    })
- .then(async response => {
+    .then(async response => {
       let data = await response.json();
 
       console.log(data);
@@ -164,8 +79,8 @@ function Logar() {
             let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
 
             for (const [campo, mensagem] of Object.entries(data)) {
-                // Mapeia o email do campo do backend ('email', 'senha', etc.) para o ID do elemento no HTML
-                const idElementoErro = "erro-" + campo; // Ex: 'email_error_message'
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
 
                 console.log("========================================================");
                 console.log(idElementoErro);
@@ -180,4 +95,54 @@ function Logar() {
 
 
             }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
         }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_usuario", data.id);
+        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  document.getElementById('loginForm').addEventListener('submit', function(event) {
+//   event.preventDefault(); // evita que o formulário seja enviado para um servidor
+
+//   const email = document.getElementById('email').value.trim();
+//   const password = document.getElementById('password').value.trim();
+
+//   if (!email || !password) {
+//     alert('Por favor, preencha todos os campos.');
+//     return;
+//   }
+//   // Aqui você pode colocar a lógica de autenticação, por exemplo:
+//   console.log('Login com:', { email, password });
+//   alert('Login realizado com sucesso! (simulado)');
+  
+// });

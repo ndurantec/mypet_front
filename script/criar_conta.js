@@ -97,11 +97,13 @@ function coletarDados() {
     const id = localStorage.getItem("id_usuario"); 
 
     return {
+
         id: id,
         nome: nome,
         email: email,
         telefone: telefone,
         senha: senha        
+
     };
 }
 
@@ -226,7 +228,9 @@ function consultarConta(){
         headers.append("Access-Control-Allow-Origin", "*");
 
     //Envia os dados via fetch
+
     fetch('http://127.0.0.1:8080/responsavel/buscarPorNome', { // altere a URL conforme seu endpoint
+
         
             method: 'POST',
             mode: 'cors',
@@ -305,7 +309,9 @@ function alterarConta(){
         headers.append("Access-Control-Allow-Origin", "*");
 
     //Envia os dados via fetch
+
     fetch('http://127.0.0.1:8080/responsavel/alterar', { // altere a URL conforme seu endpoint
+
 
             method: 'POST',
             mode: 'cors',
@@ -383,7 +389,10 @@ function deletarConta(){
 
 
     //Envia os dados via fetch
+
     fetch('http://127.0.0.1:8080/responsavel/deletar', { // altere a URL conforme seu endpoint
+
+
 
             method: 'POST',
             mode: 'cors',

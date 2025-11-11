@@ -16,18 +16,18 @@ function limparFormulario() {
     limparErros();
 }
 
-// function validarCampo(campo, texto) {
-//     if (campo.value.trim() === "") {
-//         campo.placeholder = texto;
-//         campo.style.border = "2px solid red";
-//         campo.style.color = "red";
-//         return false;
-//     } else {
-//         campo.style.border = "";
-//         campo.style.color = "";
-//         return true;
-//     }
-// }
+function validarCampo(campo, texto) {
+    if (campo.value.trim() === "") {
+        campo.placeholder = texto;
+        campo.style.border = "2px solid red";
+        campo.style.color = "red";
+        return false;
+    } else {
+        campo.style.border = "";
+        campo.style.color = "";
+        return true;
+    }
+}
 
 //ok
 function validarFormulario() {
@@ -36,12 +36,19 @@ function validarFormulario() {
 
     // Captura dos valores do formulário
     let nome = document.getElementById("nome").value;
-    let cpf = document.getElementById("cpf").value;
+    let idade = document.getElementById("idade").value;
+    let raca = document.getElementById("raca").value;
+    let tipo = document.getElementById("tipo").value;
+    let responsavel = document.getElementById("responsavel").value;
     
     let ok = true;
 
     if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
-    if (!cpf) { mostrarErro('erro-cpf', 'Verifique se possui cpf para continuar.'); ok = false; }
+    if (!idade) { mostrarErro('erro-idade', 'Verifique se possui idade para continuar.'); ok = false; }
+    if (!raca) { mostrarErro('erro-raca', 'Verifique se possui raça para continuar.'); ok = false; }
+    if (!tipo) { mostrarErro('erro-tipo', 'Verifique se possui tipo para continuar.'); ok = false; }
+    if (!responsavel) { mostrarErro('erro-responsavel', 'Verifique se possui responsavel para continuar.'); ok = false; }
+ 
     
 
     return ok;
@@ -53,8 +60,15 @@ function coletarDados() {
   
     return {
         nome: document.getElementById("nome").value.trim(),
-        cpf: document.getElementById("cpf").value.trim()
-    };
+        idade: document.getElementById("idade").value.trim(),
+        raca: document.getElementById("raca").value.trim(),
+        tipo: document.getElementById("tipo").value.trim(),
+        responsavel: document.getElementById("responsavel").value.trim(),
+        outro_tipo: document.getElementById("outro_tipo").value.trim(),
+
+        user: localStorage.getItem("id_usuario")
+
+        };
 }
 
 function salvarCadastro() {
@@ -68,6 +82,8 @@ function salvarCadastro() {
 
     console.log(JSON.stringify(dados));
 
+
+    console.log(dados);
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");

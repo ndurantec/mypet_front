@@ -182,9 +182,9 @@
             }
         }
 
-        .erro {
-    border: 2px solid red;
-}
+         .erro { 
+     color: 2px solid red; 
+ } 
 
 /* Estilo para a mensagem de erro */
     .mensagem-erro {
@@ -200,4 +200,6 @@
 
     
     }
+
+
 
