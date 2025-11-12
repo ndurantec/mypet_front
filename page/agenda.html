@@ -7,74 +7,122 @@
     <link rel="stylesheet" href="/asset/style/agenda.css">
 </head>
 <body>
+  
+  
      <div class="container-wrapper">
         <div class="container container-main">
             <div class="text-center mb-3">
-                <h1 class="header-title"><i class="bi bi-calendar-check"></i> Serviços </h1>
-                <p class="text-muted">Agende serviços para seu pet de forma rápida</p>
+                <h1 class="header-title"><i class="bi bi-scissors"></i> Serviços </h1>
+                <p class="text-muted">Agende serviços premium para seu pet de forma rápida e prática</p>
             </div>
 
             <div class="row">
                 <div class="col mb-3">
-                    <div class="card card-service">
+                    <div class="card card-service highlight-animation">
                         <div class="card-header">
-                            <i class="bi bi-scissors"></i> Estética
+                            <i class="bi bi-star-fill"></i> Estética
                         </div>
                         <div class="card-body">
                             <i class="bi bi-scissors icon-service"></i>
                             
-                            <div class="mb-2">
-                                <label for="label-loja" class="form-label">Loja</label>
-                                <select class="form-select" id="disponivel">
-                                    <option select>Selecione a Loja</option>
-                                    <option value="1">Loja Centro</option>
-                                    <option value="2">Loja Avenida Brasil</option>
-                                    <option value="3">Loja Do Bairro</option>
-                                    <option value="4">Loja Do Shopping</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-2">
-                                <label for="label-estetica" class="form-label">Estética</label>
-                                <select class="form-select" id="lojaDto">
-                                    <option select>Selecione o tipo de estética</option>
-                                    <option value="1">Tosa</option>
-                                    <option value="2">Banho</option>
-                                    <option value="3">CheckUp</option>
-                                    <option value="4">Vacinar</option> 
+                            <div class="service-section">
+                                <h3 class="section-title"><i class="bi bi-shop"></i></h3>
+                                <div class="form-grid">
+                                    <div class="mb-2">
+                                        <label for="label-loja" class="form-label">Loja</label>
+                                        <select class="form-select" id="disponivel">
+                                            <option selected>Selecione a Loja</option>
+                                            <option value="1">Loja Centro</option>
+                                            <option value="2">Loja Avenida Brasil</option>
+                                            <option value="3">Loja Do Bairro</option>
+                                            <option value="4">Loja Do Shopping</option>
+                                        </select>
+                                    </div>
                                     
-                                </select>
+                                    <div class="mb-2">
+                                        <label for="label-estetica" class="form-label">Tipo de Serviço</label>
+                                        <select class="form-select" id="lojaDto">
+                                            <option selected>Selecione o tipo de serviço</option>
+                                            <option value="1">Tosa</option>
+                                            <option value="2">Banho</option>
+                                            <option value="3">Check-Up</option>
+                                            <option value="4">Tratamentos Especiais</option> 
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
+                            
+                            <div class="service-section">
+                                <h3 class="section-title"><i class="bi bi-heart-pulse"></i> Serviços Disponíveis</h3>
+                                <div class="form-grid">
+                                    <div class="mb-2">
+                                        <label for="label-tosa" class="form-label">Opções de Tosa</label>
+                                        <select class="form-select" id="petDto">
+                                            <option selected>Selecione a tosa</option>
+                                            <option value="1">Tosa Higiênica</option>
+                                            <option value="2">Tosa na Máquina</option>
+                                            <option value="3">Tosa Tesoura</option>
+                                            <option value="4">Tosa de Raça</option>
+                                        </select>
+                                    </div>
 
-                             <div class="mb-2">
-                                <label for="label-tosa" class="form-label">Pet</label>
-                                <select class="form-select" id="petDto">
-                                    <option select>Selecione a estética para seu pet</option>
-                                    <option value="1">Tosa Higiênica</option>
-                                    <option value="2">Tosa na Máquina</option>
-                                    <option value="3">Tosa Tesoura</option>
-                                    <option value="4">Tosa de Raça</option>
+                                    <div class="mb-2">
+                                        <label for="label-banho" class="form-label">Opções de Banho</label>
+                                        <select class="form-select" id="banhoDto">
+                                            <option selected>Selecione o banho</option>
+                                            <option value="1">Banho Tradicional</option>
+                                            <option value="2">Banho Medicamentoso</option>
+                                            <option value="3">Banho Premium</option>
+                                            <option value="4">Banho Hidratante</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="label-checkup" class="form-label">Opções de Check-Up</label>
+                                        <select class="form-select" id="checkupDto">
+                                            <option selected>Selecione o Check-Up</option>
+                                            <option value="1">Check-Up Tradicional</option>
+                                            <option value="2">Check-Up Premium</option>
+                                            <option value="3">Check-Up Sênior</option>
+                                            <option value="4">Check-Up Pré-Cirúrgico</option>
+                                        </select>
+                                    </div>
                                     
-                                </select>
+                                    <div class="mb-2">
+                                        <label for="label-tratamentos" class="form-label">Tratamentos Especiais</label>
+                                        <select class="form-select" id="tratamentosDto">
+                                            <option selected>Selecione o Tratamento</option>
+                                            <option value="1">Limpeza de Ouvidos</option>
+                                            <option value="2">Corte de Unhas</option>
+                                            <option value="3">Escovação de Dentes</option>
+                                            <option value="4">Perfumaria e Acessórios</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="mb-2">
-                                <label for="dataDigitada" class="form-label">Data e Horário</label>
-                                <input class="form-control" type="datetime-local" id="dataDigitada">
+                                
+                            <div class="service-section">
+                                <h3 class="section-title"><i class="bi bi-calendar-event"></i> Agendamento</h3>
+                                <div class="form-full">
+                                    <div class="mb-2">
+                                        <label for="dataDigitada" class="form-label">Data e Horário</label>
+                                        <input class="form-control" type="datetime-local" id="dataDigitada">
+                                    </div>
+                                </div>
                             </div>
                             
                             <div class="btn-group">
                                 <button class="btn btn-agendar" type="button" onclick="salvar()">
-                                    Salvar serviço <i class="bi bi-arrow-right"></i>
+                                    <i class="bi bi-check-circle"></i> Salvar serviço
                                 </button>
                                 <button class="btn btn-agendar" type="button" onclick="consultar()">
-                                    Consultar serviço <i class="bi bi-arrow-right"></i>
+                                    <i class="bi bi-search"></i> Consultar serviço
                                 </button>
                                 <button class="btn btn-agendar" type="button" onclick="alterar()">
-                                    Alterar serviço <i class="bi bi-arrow-right"></i>
+                                    <i class="bi bi-pencil-square"></i> Alterar serviço
                                 </button>
                                 <button class="btn btn-agendar" type="button" onclick="deletar()">
-                                    Deletar serviço <i class="bi bi-arrow-right"></i>
+                                    <i class="bi bi-trash"></i> Deletar serviço
                                 </button>
                             </div>
                         </div>
