@@ -67,7 +67,7 @@ function mostrarErro(idElemento, mensagem) {
 }
 
 function mostrarMensagem(texto, tipo) {
-  const mensagemDiv = document.getElementById("mensagem");
+  const mensagemDiv = document.getElementById("erro-mensagem");
   mensagemDiv.innerHTML = texto;
 
   if (tipo === "sucesso") {

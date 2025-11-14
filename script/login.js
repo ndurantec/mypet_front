@@ -1,38 +1,52 @@
 function mostrarErro(idElemento, mensagem) {
     document.getElementById(idElemento).textContent = mensagem;
 }
+
 function limparErros() {
     let erros = document.querySelectorAll('.erro');
     erros.forEach(e => e.textContent = '');
  
 }
-    function validarFormulario() {
-        //limparErros();
-    
-        // Captura dos valores do formulário
-        let email = document.getElementById("email").value;
-        let senha = document.getElementById("senha").value;
-           
-        let ok = true;
-    
-        if (!email) { mostrarErro('erro-email', 'Verifique se possui email para continuar.'); ok = false; }
-        if (!senha) { mostrarErro('erro-senha', 'Verifique se possui senha para continuar.'); ok = false; }
-        
-    
-        return ok;
-    } 
- 
-   function coletarDados() {
-    const canvas = document.getElementById('signaturePad');
-  
-    return {
-        email: document.getElementById("email").value.trim(),
-        senha: document.getElementById("senha").value.trim()
-    };
+
+function mostrarMensagem(texto, tipo) {
+  const mensagemDiv = document.getElementById("erro-mensagem");
+  mensagemDiv.innerHTML = texto;
+
+  if (tipo === "sucesso") {
+    mensagemDiv.className = "mensagem sucesso";
+  } else {
+    mensagemDiv.className = "mensagem erro";
+  }
 }
 
 
-function salvarLogin() {    
+function validarFormulario() {
+    //limparErros();
+
+    // Captura dos valores do formulário
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+        
+    let ok = true;
+
+    if (!email) { mostrarErro('erro-email', 'Verifique se possui email para continuar.'); ok = false; }
+    if (!senha) { mostrarErro('erro-senha', 'Verifique se possui senha para continuar.'); ok = false; }
+    
+
+    return ok;
+} 
+ 
+function coletarDados() {
+  const canvas = document.getElementById('signaturePad');
+
+  return {
+      email: document.getElementById("email").value.trim(),
+      senha: document.getElementById("senha").value.trim()
+  };
+}
+
+
+function login() {    
 
     limparErros();
     
@@ -41,7 +55,7 @@ function salvarLogin() {
     const dados = coletarDados();
     //console.log("Enviando criar conta:", dados);
 
-    console.log(JSON.stringify(dados));
+    console.log( dados );
 
     var headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -63,6 +77,7 @@ function salvarLogin() {
     .then(async response => {
       let data = await response.json();
 
+      console.log("resposta do servidor");//resposta do servidor
       console.log(data);
       
 
@@ -108,7 +123,7 @@ function salvarLogin() {
     .then(data => {
       if (data.id) {
         localStorage.setItem("id_usuario", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        mostrarMensagem(data.message || "✅ Login efetuado com sucesso!", "sucesso");
       }
     })
     .catch(error => console.error(error));
