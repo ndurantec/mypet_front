@@ -9,8 +9,8 @@ function mostrarErro(idElemento, mensagem) {
 
 function validarFormulario() {
        
-    let loja = document.getElementById("loja").value;
-    let tosa = document.getElementById("tosa").value;
+    let loja = document.getElementById("disponivel").value; // ID corrigido
+    let tosa = document.getElementById("lojaDto").value; // ID corrigido
     
     let ok = true;
 
@@ -28,8 +28,7 @@ function validarFormulario() {
 
 function coletarDados() { 
   
-  
-  const disponivel = document.getElementById("loja").value;
+  const disponivel = document.getElementById("disponivel").value; // ID corrigido
   // const lojaDto = document.getElementById("tosa").value;
   const LocalDate = document.getElementById("dataDigitada").value;
   const idLoja = localStorage.getItem("id_Loja"); 
@@ -41,6 +40,7 @@ function coletarDados() {
     };
 }
 
+// As funções salvar(), consultar(), alterar(), deletar() permanecem EXATAMENTE como estão
 function salvar() {   
     
     limparErros();
@@ -362,31 +362,3 @@ function deletar() {
     .catch(error => console.error(error));
        
 }
-
-
-
-
-
-// if (loja === "Selecione a Loja" || tipoServico === "Selecione o tipo de estética" || dataHora === "") {
-    //     alert("Por favor, preencha todos os campos antes de salvar o serviço.");
-    //     return;
-    // }
-
-    // Simulação de salvamento (poderia ser um fetch() para API futuramente)
-    // alert("Serviço agendado com sucesso!");
-    // console.log("Serviço agendado!");
-    // console.log("Loja:", loja);
-    // console.log("Tipo de serviço:", tipoServico);
-    // console.log("Data e Horário:", dataHora);
-
-    // limparErros();
-    // const dados = coletarDados();
-
-    // if (!validarFormulario()) return;
-
-    // let hoje = new Date();
-    // let dataDigitada = new Date(dataHora);
-    // if (dataDigitada > hoje) {
-    //     alert("A data não pode ser futura");
-    //     return;
-    // }
