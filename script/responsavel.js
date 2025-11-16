@@ -92,8 +92,26 @@ function coletarDados() {
         email: document.getElementById("email").value.trim(),
         senha: document.getElementById("senha").value.trim(),
         telefone: document.getElementById("telefone").value.trim(),
-        idUsuario: localStorage.getItem("id_usuario"),
+        id: localStorage.getItem("id_usuario"),
     };
+}
+
+function popularDados(usuario) {
+    if (!usuario) {
+        console.error("Nenhum dado de usuário encontrado para popular a tela.");
+        return;
+    }
+
+    // Preenche os campos do formulário
+    document.getElementById("nome").value = usuario.nome || "";
+    document.getElementById("email").value = usuario.email || "";
+    document.getElementById("senha").value = usuario.senha || "";
+    document.getElementById("telefone").value = usuario.telefone || "";    
+
+    // Armazena o id do usuário no localStorage (caso ainda não esteja salvo)
+    if (usuario.id) {
+        localStorage.setItem("id_usuario", usuario.id);
+    }
 }
 
 function salvar() {
@@ -122,15 +140,85 @@ function salvar() {
     
         headers: headers
 
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Erro ao cadastrar usuário.");
-            alert("Responsável já cadastrado");
-        } else{
-            alert("Responsável cadastrado com sucesso!");
+    }).then(async response => {
+      let data = await response.json();
+
+      console.log("retornou ao front");
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
         }
-        return response.json();
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_usuario", data.id);
+        mostrarMensagem(data.message || "✅ Responsável cadastrado com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error(error));
+ 
+}
+
+function consultar() {
+
+    limparErros();
+
+    //if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
+    fetch('http://127.0.0.1:8080/responsavel/buscarPorNome', { // altere a URL conforme seu endpoint
+       
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: JSON.stringify(
+            dados
+        ),
+    
+        headers: headers
+  
     })
     .then(async response => {
       let data = await response.json();
@@ -181,94 +269,7 @@ function salvar() {
       if (data.id) {
         localStorage.setItem("id_usuario", data.id);
         // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
-      }
-    })
-    .catch(error => console.error(error));
- 
-}
-
-function consultar() {
-
-    limparErros();
-
-    if (!validarFormulario()) return;
-
-    const dados = coletarDados();
-
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-
-    fetch('http://127.0.0.1:8080/responsavel/nome/{nome}', { // altere a URL conforme seu endpoint
-       
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-            dados
-        ),
-    
-        headers: headers
-
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Erro ao cadastrar usuário.");
-            alert("Responsável já cadastrado");
-        } else{
-            alert("Responsável cadastrado com sucesso!");
-        }
-        return response.json();
-    })
-    .then(async response => {
-      let data = await response.json();
-
-      console.log(data);
-      
-
-      if (!response.ok) {
-        // Caso sejam erros de validação no DTO
-        if (typeof data === "object") {
-          let mensagens = Object.values(data).join("<br>");
-
-          console.log("Entrou dento do if data ==== object");
-          console.log("----------------------------------------------");
-          console.log(mensagens);
-          console.log("----------------------------------------------");
-
-            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
-
-            for (const [campo, mensagem] of Object.entries(data)) {
-                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
-                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
-
-                console.log("========================================================");
-                console.log(idElementoErro);
-                console.log("========================================================");
-                // Tenta exibir o erro no elemento específico
-                if (document.getElementById(idElementoErro)) {
-                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
-                    mostrarErro(idElementoErro, mensagem);
-                                        
-                } 
-
-
-
-            }
-
-          
-        } else {
-          mostrarMensagem("⚠️ Erro desconhecido", "erro");
-        }
-        throw new Error("Erro de validação");
-      }
-
-      return data;
-    })
-    .then(data => {
-      if (data.id) {
-        localStorage.setItem("id_responsavel", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        popularDados(data);
       }
     })
     .catch(error => console.error(error));
@@ -287,7 +288,7 @@ function atualizar() {
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
-    fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/responsavel/alterar', { // altere a URL conforme seu endpoint
        
         method: 'POST',
         mode: 'cors',
@@ -298,16 +299,7 @@ function atualizar() {
     
         headers: headers
 
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Erro ao cadastrar usuário.");
-            alert("Responsável já cadastrado");
-        } else{
-            alert("Responsável cadastrado com sucesso!");
-        }
-        return response.json();
-    })
+    }) 
     .then(async response => {
       let data = await response.json();
 
@@ -355,8 +347,8 @@ function atualizar() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_responsavel", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        localStorage.setItem("id_usuario", data.id);
+        mostrarMensagem(data.message || "✅ Responsável alterado com sucesso!", "sucesso");
       }
     })
     .catch(error => console.error(error));
@@ -367,7 +359,7 @@ function deletar() {
 
     limparErros();
 
-    if (!validarFormulario()) return;
+    //if (!validarFormulario()) return;
 
     const dados = coletarDados();
 
@@ -375,7 +367,7 @@ function deletar() {
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
     
-    fetch('http://127.0.0.1:8080/responsavel/{id}', { // altere a URL conforme seu endpoint
+    fetch('http://127.0.0.1:8080/responsavel/deletar', { // altere a URL conforme seu endpoint
        
         method: 'POST',
         mode: 'cors',
@@ -386,14 +378,6 @@ function deletar() {
     
         headers: headers
 
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error("Erro ao cadastrar usuário.");
-            alert("Responsável já cadastrado");
-        } else{
-            alert("Responsável cadastrado com sucesso!");
-        }
-        return response.json();
     })
     .then(async response => {
       let data = await response.json();
@@ -443,8 +427,8 @@ function deletar() {
     })
     .then(data => {
       if (data.id) {
-        localStorage.setItem("id_responsavel", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        localStorage.removeItem("id_usuario");
+        mostrarMensagem(data.message || "✅ Responsável deletado com sucesso!", "sucesso");
       }
     })
     .catch(error => console.error(error));
