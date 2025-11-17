@@ -23,7 +23,7 @@
             </div>
 
             <div class="form-group">
-                <label for="nome"><i class="fas fa-dog"></i> Nome do Pet:</label>
+                <label for="nome"><i class="fas fa-dog"></i>*Nome do Pet:</label>
                 <input type="text" name="nome" id="nome" placeholder="Digite o nome do seu pet">
                 <div id="erro-nome" class="erro"></div>
             </div>
@@ -63,10 +63,12 @@
             <div class="form-divider"></div>
 
             <div class="form-group">
-                <label for="responsavel"><i class="fas fa-user"></i> Responsavel do pet:</label>
-                <input type="text" name="responsavel" id="responsavel" placeholder="Digite o seu nome">
+                <label for="responsavel"><i class="fas fa-user"></i>*Responsavel do pet:</label>
+                <select name="responsavel" id="responsaveis" class="form-control"> 
+                    <option value="responsavel">Todas os responsaveis</option>                               
+                </select>          
                 <div id="erro-responsavel" class="erro"></div>
-              </div>
+            </div>
 
             <div class="form-group">
                 <label for="sexo"><i class="fas fa-venus-mars "></i> Sexo do Pet:</label>
@@ -78,15 +80,15 @@
                 <div id="erro-sexo" class="erro"></div>
                </div>
 </form>   
-          
             <div class="btn-group">
-            <!-- <button type="button" onclick="enviarCadastro()" ><i class="fas " ></i> Enviar Cadastro</button> -->
-            <button type="button" onclick="salvarCadastro()" ><i class="fas " ></i>Salvar</button>
-            <button type="button" onclick="consultarCadastro()" ><i class="fas " ></i>Consultar</button>
-            <button type="button" onclick="deletarCadastro()" ><i class="fas " ></i>Deletar</button>
-            <button type="button" onclick="alterarCadastro()" ><i class="fas " ></i>Alterar</button>
+                <!-- <button type="button" onclick="enviarCadastro()" ><i class="fas " ></i> Enviar Cadastro</button> -->
+                <button type="button" onclick="salvarCadastro()" ><i class="fas " ></i>Salvar</button>
+                <button type="button" onclick="consultarCadastro()" ><i class="fas " ></i>Consultar</button>
+                <button type="button" onclick="deletarCadastro()" ><i class="fas " ></i>Deletar</button>
+                <button type="button" onclick="alterarCadastro()" ><i class="fas " ></i>Alterar</button>
             </div> 
-
+            <div id="erro-mensagem"></div>
+          
            
         
     </div>
