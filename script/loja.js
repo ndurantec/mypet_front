@@ -335,7 +335,7 @@ function deletar() {
      
     limparErros();
 
-     if (!validarFormulario()) return;
+    //if (!validarFormulario()) return;
 
     const dados = coletarDados();
 
@@ -345,7 +345,7 @@ function deletar() {
 
 
     // Envia os dados via fetch
-    fetch("http://127.0.0.1:8080/loja/deletar", { // altere a URL conforme seu endpoint
+    fetch("http://localhost:8080/loja/deletar", { // altere a URL conforme seu endpoint
        
 
         method: 'POST',
@@ -404,7 +404,8 @@ function deletar() {
     .then(data => {
       if (data.id) {
         localStorage.setItem("id_loja", data.id);
-        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
+        mostrarMensagem(data.message || "✅ loja deletada com sucesso!", "sucesso");
+        limparCampos();
       }
     })
     .catch(error => console.error(error))
