@@ -182,6 +182,89 @@ function limparCampos() {
     console.log("Limpeza concluída. Formulário pronto para novo registro.");
 }
 
+/**
+ * Captura a imagem selecionada em um input file, exibe uma pré-visualização,
+ * e retorna o objeto File lido.
+ *
+ * @param {HTMLInputElement} fileInput - O elemento <input type="file">.
+ * @param {HTMLElement} previewElement - O elemento <img> ou <div> onde a pré-visualização será exibida.
+ * @returns {Promise<File | null>} Uma Promise que resolve para o objeto File (a imagem) ou null em caso de erro.
+ */
+function capturarImagem(fileInput, previewElement) {
+    return new Promise((resolve) => {
+        // Verifica se o input tem arquivos selecionados
+        if (fileInput.files && fileInput.files[0]) {
+            const file = fileInput.files[0];
+            
+            // Verifica se é realmente um arquivo de imagem
+            if (!file.type.startsWith('image/')) {
+                console.error("O arquivo selecionado não é uma imagem.");
+                previewElement.src = ''; // Limpa a pré-visualização
+                resolve(null);
+                return;
+            }
+
+            const reader = new FileReader();
+
+            // Quando o arquivo for lido (carregado)
+            reader.onload = function(e) {
+                // 1. Pré-visualização: 
+                // Define a URL Base64 gerada como fonte do elemento de pré-visualização
+                previewElement.src = e.target.result; 
+                
+                // 2. Captura: 
+                // Resolve a Promise, retornando o objeto File original.
+                resolve(file); 
+            };
+
+            // Lê o arquivo como uma URL de dados (Base64)
+            reader.readAsDataURL(file);
+        } else {
+            // Nenhum arquivo selecionado ou seleção cancelada
+            previewElement.src = '';
+            resolve(null);
+        }
+    });
+}
+
+
+const inputImagem = document.getElementById('imagemPet');
+const imgPreview = document.getElementById('previewPet');
+let imagemCapturada = null; // Variável para armazenar o objeto File
+
+// Adiciona o listener para o evento de seleção de arquivo
+inputImagem.addEventListener('change', async () => {
+    // Chama a função e armazena o resultado (o objeto File)
+    imagemCapturada = await capturarImagem(inputImagem, imgPreview);
+    
+    if (imagemCapturada) {
+        console.log('Imagem capturada:', imagemCapturada.name, imagemCapturada.size, imagemCapturada.type);
+    } else {
+        console.log('Nenhuma imagem selecionada ou falha na leitura.');
+    }
+});
+
+// --- Exemplo de como usar no seu Fetch (Submit) ---
+
+// Se você estiver usando FormData:
+// Você simplesmente adiciona o objeto File ao seu FormData:
+document.getElementById('cadastroPetForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(this); // Captura o resto do formulário
+    
+    // Sobrescreve (ou adiciona) a imagem usando o File que foi capturado e armazenado.
+    // O nome 'imagem' deve corresponder ao esperado pelo seu servidor.
+    if (imagemCapturada) {
+        formData.set('imagem', imagemCapturada, imagemCapturada.name);
+    }
+    
+    // Exemplo de fetch:
+    // fetch('/api/pets/cadastro', { method: 'POST', body: formData })
+    //     .then(response => ...)
+});
+
+
 function salvarCadastro() {
     
     limparErros();
