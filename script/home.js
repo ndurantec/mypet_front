@@ -26,3 +26,11 @@ function agenda() {
 function produtos() {
     window.location.href = '/page/cad_produto.html';
 }
+
+function loja() {
+    window.location.href = '/page/loja.html';
+}
+
+function vacina() {
+    window.location.href = '/page/vac.html';
+}

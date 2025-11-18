@@ -1,67 +1,89 @@
+function mostrarErro(idElemento, mensagem) {
+  document.getElementById(idElemento).textContent = mensagem;
+}
+
+function mostrarMensagem(texto, tipo) {
+  const mensagemDiv = document.getElementById("erro-mensagem");
+  mensagemDiv.innerHTML = texto;
+
+  if (tipo === "sucesso") {
+    mensagemDiv.className = "mensagem sucesso";
+  } else {
+    mensagemDiv.className = "mensagem erro";
+  }
+}
+
+function limparErros() {
+  let erros = document.querySelectorAll('.erro');
+  erros.forEach(e => e.textContent = '');
+}
+
+function limparMensagem() {
+  const mensagem = document.getElementById('erro-mensagem');
+  if (mensagem) mensagem.textContent = '';
+}
 
 function validarFormulario() {
   
     let nome = document.getElementById("nome").value;
     let cnpj = document.getElementById("cnpj").value;
     let telefone = document.getElementById("telefone").value;
-    let email = document.getElementById("email").value;
-    let endereco = document.getElementById("endereco").value;
+    let email = document.getElementById("email").value;    
     let ok = true;
 
     if (!nome) { mostrarErro('erro-nome', 'Verifique se possui nome para continuar.'); ok = false; }
     if (!cnpj) { mostrarErro('erro-cnpj', 'Verifique se possui cnpj para continuar.'); ok = false; }
     if (!telefone) { mostrarErro('erro-telefone', 'Verifique se possui telefone para continuar.'); ok = false; }
     if (!email) { mostrarErro('erre-mail', 'Verifique se possui email para continuar.'); ok = false; }
-    if (!endereco) { mostrarErro('erro-endereco', 'Verifique se possui endereço para continuar.'); ok = false; }
+    
     return ok;
 }
 
-
-function limparErros() {
-    let erros = document.querySelectorAll('.erro');
-    erros.forEach(e => e.textContent = '');
-}
-
 function coletarDados() {
-    const canvas = document.getElementById('signaturePad');
-  
+   
     return {
         nome: document.getElementById("nome").value.trim(),
         cnpj: document.getElementById("cnpj").value.trim(),
         telefone: document.getElementById("telefone").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        enderecoDto:{  
-          id: 1
-        //  id: localStorage.getItem ("id_endereco") 
-          }
+        email: document.getElementById("email").value.trim()        
     };
 }
 
+function limparCampos() {
+  console.log("Iniciando limpeza dos campos do formulário...");
 
-// function validarNome() {
+  // 1. Limpa os campos de texto/input
+  document.getElementById("nome").value = "";
+  document.getElementById("cnpj").value = "";
+  document.getElementById("telefone").value = "";
+  document.getElementById("email").value = "";   
+  
+  console.log("Limpeza concluída. Formulário pronto para novo registro.");
+}
 
-//     const nome = document.getElementById('nome').value;
-    
-//     if (nome.trim() === "") {        
-//         mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
-//     }
+function popularDados(data) {
 
-//     if (nome.length < 3) {
-//         return "Digite pelo menos 3 caracteres";
-//     }
+  console.log("Chamou a função popularDados");
 
-//     const email = document.getElementById('email').value;
-//     if (email === '') {
-//         mostrarErro('erro-email', 'Informe o e-mail.');
-//         ok = false;
-//     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-//         mostrarErro('erro-email', 'E-mail inválido.');
-//         ok = false;
-//     }
-// }
+  if (!data) {
+      console.error("Nenhuma loja encontrada.");
+      return;
+  }
+
+  // Preenche os campos do formulário
+  document.getElementById("nome").value = data.nome || "";
+  document.getElementById("email").value = data.email || "";
+  document.getElementById("telefone").value = data.telefone || "";  
+  document.getElementById("cnpj").value = data.cnpj || "";
+
+  // Armazena o id do usuário no localStorage (caso ainda não esteja salvo)
+  if (data.id) {
+      localStorage.setItem("id_loja", data.id);
+  }
+}
 
 
-function cadastrar() {
+function salvar() {
 
     limparErros();
 
@@ -75,9 +97,10 @@ function cadastrar() {
     headers.append("Content-Type", "application/json");
     headers.append("Access-Control-Allow-Origin", "*");
 
+    
 
     // Envia os dados via fetch
-     fetch("http://127.0.0.1:8080/loja/cadloja", { // altere a URL conforme seu endpoint
+    fetch("http://localhost:8080/loja/cadloja", { // altere a URL conforme seu endpoint
 
         method: 'POST',
         mode: 'cors',
@@ -85,13 +108,94 @@ function cadastrar() {
         body: JSON.stringify(
           dados
         ),
+
         headers: headers
-        })
 
-
+    })
     .then(async response => {
       let data = await response.json();
 
+      console.log("Resposta do Servidor");
+      console.log(data);
+      
+
+      if (!response.ok) {
+        // Caso sejam erros de validação no DTO
+        if (typeof data === "object") {
+          let mensagens = Object.values(data).join("<br>");
+
+          console.log("Entrou dento do if data ==== object");
+          console.log("----------------------------------------------");
+          console.log(mensagens);
+          console.log("----------------------------------------------");
+
+            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
+
+            for (const [campo, mensagem] of Object.entries(data)) {
+                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
+                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
+
+                console.log("========================================================");
+                console.log(idElementoErro);
+                console.log("========================================================");
+                // Tenta exibir o erro no elemento específico
+                if (document.getElementById(idElementoErro)) {
+                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
+                    limparCampos();
+                    mostrarErro(idElementoErro, mensagem);
+                                        
+                } 
+
+            }
+
+          
+        } else {
+          mostrarMensagem("⚠️ Erro desconhecido", "erro");
+        }
+        throw new Error("Erro de validação");
+      }
+
+      return data;
+    })
+    .then(data => {
+      if (data.id) {
+        localStorage.setItem("id_loja", data.id);
+        mostrarMensagem(data.message || "✅ Loja cadastrada com sucesso!", "sucesso");
+      }
+    })
+    .catch(error => console.error("Erro ao cadastrar:", error));
+}
+
+function consultar() {
+   
+    limparErros();
+
+    //if (!validarFormulario()) return;
+
+    const dados = coletarDados();
+
+    console.log( dados );
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("Access-Control-Allow-Origin", "*");
+
+
+    // Envia os dados via fetch
+    fetch("http://localhost:8080/loja/consultar", { // altere a URL conforme seu endpoint
+       
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+
+        body: JSON.stringify( dados ),
+        
+        headers: headers
+   
+    }).then(async response => {
+      let data = await response.json();
+
+      console.log("Resposta do Servidor");
       console.log(data);
       
 
@@ -137,46 +241,22 @@ function cadastrar() {
     .then(data => {
       if (data.id) {
         localStorage.setItem("id_loja", data.id);
-        // mostrarMensagem(data.message || "✅ Usuario cadastrado com sucesso!", "sucesso");
+        popularDados(data);
+        mostrarMensagem(data.message || "✅ loja encontrada!", "sucesso");
       }
     })
-    .catch(error => console.error(error));
-}
-
-
-// function coletarDados() {
-    
-//     const canvas = document.getElementById('signaturePad');
-  
-
-    // return {
-    //     nome: document.getElementById("nome").value.trim(),
-    //     cnpj: document.getElementById("cnpj").value.trim(),
-    //     email: document.getElementById("email").value.trim(),
-    //     telefone: document.getElementById("telefone").value.trim(),
-        
-    //     endereco: localStorage.getItem ("")
-         
-    // };
-   
-    // console.log (coletarDados);
-
-
-//     return {
-//         nome: document.getElementById("nome").value.trim(),
-//         cnpj: document.getElementById("cnpj").value.trim()
-//     };
-// }
-
+    .catch(error => console.error("Erro ao cadastrar:", error));
+ }
 
 
 function alterar() {
 
     limparErros();
 
-     if (!validarFormulario()) return;
+    if (!validarFormulario()) return;
 
     const dados = coletarDados();
+    dados.id = localStorage.getItem("id_loja");
     
    
     var headers = new Headers();
@@ -184,21 +264,22 @@ function alterar() {
     headers.append("Access-Control-Allow-Origin", "*");
 
     // Envia os dados via fetch
-    fetch("http://127.0.0.1:8080/loja/UpLoja", { // altere a URL conforme seu endpoint
+    fetch("http://localhost:8080/loja/alterar", { // altere a URL conforme seu endpoint
        
-
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
-        body: JSON.stringify(
-        dados),
+
+        body: JSON.stringify( dados ),
+
         headers: headers
 
 
         
-    .then(async response => {
+    }).then(async response => {
       let data = await response.json();
 
+      console.log("Resposta do servidor");
       console.log(data);
       
 
@@ -244,14 +325,11 @@ function alterar() {
     .then(data => {
       if (data.id) {
         localStorage.setItem("id_loja", data.id);
-        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
+        mostrarMensagem(data.message || "✅ loja alterada com sucesso!", "sucesso");
       }
     })
-    .catch(error => console.error(error))
-
-   
-    });
-}
+    .catch(error => console.error("Erro ao cadastrar:", error));
+}  
 
 function deletar() {
      
@@ -334,89 +412,6 @@ function deletar() {
 }
 
  
-function consultar() {
-   
-    limparErros();
-
-     if (!validarFormulario()) return;
-
-
-    const dados = coletarDados();
-
-    console.log("Cadastrar ok")
-
-    var headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    headers.append("Access-Control-Allow-Origin", "*");
-
-
-    // Envia os dados via fetch
-    fetch("http://127.0.0.1:8080/loja/busacaPorNome/nome", { // altere a URL conforme seu endpoint
-       
-
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(
-        dados),
-        headers: headers
-
-
-    
-    .then(async response => {
-      let data = await response.json();
-
-      console.log(data);
-      
-
-      if (!response.ok) {
-        // Caso sejam erros de validação no DTO
-        if (typeof data === "object") {
-          let mensagens = Object.values(data).join("<br>");
-
-          console.log("Entrou dento do if data ==== object");
-          console.log("----------------------------------------------");
-          console.log(mensagens);
-          console.log("----------------------------------------------");
-
-            let mensagensGlobais = []; // Para erros que não mapeiam para um campo específico
-
-            for (const [campo, mensagem] of Object.entries(data)) {
-                // Mapeia o nome do campo do backend ('cpf', 'email', etc.) para o ID do elemento no HTML
-                const idElementoErro = "erro-" + campo; // Ex: 'cpf_error_message'
-
-                console.log("========================================================");
-                console.log(idElementoErro);
-                console.log("========================================================");
-                // Tenta exibir o erro no elemento específico
-                if (document.getElementById(idElementoErro)) {
-                    //CHAMANDO A SUA FUNÇÃO mostrarErro(idElemento, mensagem)
-                    mostrarErro(idElementoErro, mensagem);
-                                        
-                } 
-
-
-
-            }
-
-          
-        } else {
-          mostrarMensagem("⚠️ Erro desconhecido", "erro");
-        }
-        throw new Error("Erro de validação");
-      }
-
-      return data;
-    })
-    .then(data => {
-      if (data.id) {
-        localStorage.setItem("id_loja", data.id);
-        // mostrarMensagem(data.message || "✅ loja cadastrado com sucesso!", "sucesso");
-      }
-    })
-    .catch(error => console.error(error))
-    });
-}
 
 
 
