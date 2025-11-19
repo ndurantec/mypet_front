@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-  carregarComboResponsavel();
-  //carregarComboOperacao();
-  //definirNegativo()
+  carregarComboResponsavel();  
 });
 
 function carregarComboResponsavel() {
@@ -585,11 +583,3 @@ function alterarCadastro() {
         })
         .catch(error => console.error(error));
     }
-
-    
-    // function limparFormulario() {
-    //     document.querySelectorAll('input, select').forEach(campo => {
-    //         campo.value = "";
-    //     });
-    //     limparErros();
-    // }

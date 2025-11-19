@@ -40,15 +40,6 @@ function validarvalidade(validade) {
     return "";
 }
 
-// function validarcategoria(categoria) {
-//     let cat = document.getElementById(categoria);
-//     alert("Chamou o validarCategoria");
-//     console.log(cat);
-//     if (cat.value === "" || cat.value === "selecione") {
-//         return "Escolha uma opção válida";
-//     }
-//     return "";
-// }
 
 function validarindicacao(indicacao) {
     if (indicacao.trim() === "") {

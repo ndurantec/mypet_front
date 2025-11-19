@@ -22,12 +22,9 @@
                 
                 <div class="form-group">                                     
                     <label for="imagem"><i class="fas fa-camera"></i> Imagem do Pet:</label>
-                    <input type="file" name="imagem" id="imagemPet" placeholder="Selecione a foto do seu pet">
+                    <input type="file" name="imagem" id="imagemPet" placeholder="Selecione a foto do seu pet">  
                     
-                    <!-- <input type="file" id="imagemPet" accept="image/*"> -->
-                    
-                    <div class="img-preview-container">
-                        <!-- <img id="previewPet" src="image_a5dbec.png" alt="Pré-visualização do Pet" style="max-width: 150px; max-height: 150px;"> -->
+                    <div class="img-preview-container">                        
                         <img id="previewPet" src="" alt="Pré-visualização do Pet" style="max-width: 200px; max-height: 200px; display: block; margin-top: 10px;">
                     </div>
 
@@ -50,10 +47,7 @@
                     <input type="text" name="idade" id="idade" placeholder="Digite a idade do seu pet">
                     <div id="erro-idade" class="erro"></div>
                 </div>
-            </div>
-
-
-            <!-- <div class="form-divider"></div> -->
+            </div>         
 
             <div class="col-md-6">
                 <div class="form-group">
@@ -84,9 +78,7 @@
                 <div id="erro-outro_tipo" class="erro"></div>
                 </div>
             </div>
-
-            <!-- <div class="form-divider"></div> -->
-
+         
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="responsavel"><i class="fas fa-user"></i>*Responsavel do pet:</label>
@@ -111,8 +103,7 @@
 
         </form>   
 
-            <div class="btn-group">
-                <!-- <button type="button" onclick="enviarCadastro()" ><i class="fas " ></i> Enviar Cadastro</button> -->
+            <div class="btn-group">                
                 <button type="button" onclick="salvar()" ><i class="fas " ></i>Salvar</button>
                 <button type="button" onclick="consultar()" ><i class="fas " ></i>Consultar</button>
                 <button type="button" onclick="alterar()" ><i class="fas " ></i>Alterar</button>

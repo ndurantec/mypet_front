@@ -411,28 +411,3 @@ function deletar() {
     .catch(error => console.error(error))
     });
 }
-
- 
-
-
-
-// const nome = document.getElementById('nome').value; //comemntar sobre isso de novo
-    
-    // alert (" loja cadastrada " + nome)
-
-    // if (nome.trim() === "") {        
-    //     mostrarErro('erro-nome', 'O nome deve ter pelo menos 3 caracteres.');
-    // }
-
-    // if (nome.length < 3) {
-    //     return "Digite pelo menos 3 caracteres";
-    // }
-
-    // const email = document.getElementById('email').value;
-    // if (email === '') {
-    //     mostrarErro('erro-email', 'Informe o e-mail.');
-    //     ok = false;
-    // } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    //     mostrarErro('erro-email', 'E-mail inválido.');
-    //     ok = false;
-    // }
