@@ -34,3 +34,7 @@ function loja() {
 function vacina() {
     window.location.href = '/page/vac.html';
 }
+
+function agenda() {
+    window.location.href = '/page/agenda.html';
+}

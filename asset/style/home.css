@@ -13,3 +13,7 @@
     height: 550px;   /* Aqui você ajusta a altura*/
     width: 100%;
   }
+
+  .nav-link {
+    cursor: pointer;
+}
